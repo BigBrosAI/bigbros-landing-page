@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 142 76% 36%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 84% 4.9%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 142 70% 49%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 142 76% 36%;
+  --radius: 0.75rem;
+  --chart-1: 142 76% 36%;
+  --chart-2: 142 70% 49%;
+  --chart-3: 160 60% 45%;
+  --chart-4: 43 74% 66%;
+  --chart-5: 27 87% 67%;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 6%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 6%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 142 76% 36%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 142 70% 49%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 142 76% 36%;
+  --chart-1: 142 76% 36%;
+  --chart-2: 142 70% 49%;
+  --chart-3: 160 60% 45%;
+  --chart-4: 43 74% 66%;
+  --chart-5: 27 87% 67%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.whatsapp-green {
+  background-color: #25D366;
+}
+
+.whatsapp-green:hover {
+  background-color: #128C7E;
+}
+
+.whatsapp-chat-bg {
+  background-color: #0B141A;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(37, 211, 102, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(18, 140, 126, 0.1) 0%, transparent 50%);
+}
+
+.message-bubble {
+  border-radius: 18px;
+  padding: 8px 16px;
+  max-width: 85%;
+  word-wrap: break-word;
+}
+
+.message-bubble.sent {
+  background-color: #25D366;
+  color: white;
+  margin-left: auto;
+  border-bottom-right-radius: 4px;
+}
+
+.message-bubble.received {
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-bottom-left-radius: 4px;
+}
+
+.dark .message-bubble.received {
+  background-color: #1F2937;
+  border-color: #374151;
+}
+
+.chat-input {
+  border-radius: 24px;
+  padding: 12px 20px;
+  background-color: hsl(var(--background));
+  border: 1px solid hsl(var(--border));
+}
+
+.whatsapp-card {
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  transition: all 0.2s ease-in-out;
+}
+
+.whatsapp-card:hover {
+  border-color: hsl(var(--primary));
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dark .whatsapp-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-online {
+  background-color: #25D366;
+  box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.3);
+}
+
+.status-away {
+  background-color: #FFA500;
+  box-shadow: 0 0 0 2px rgba(255, 165, 0, 0.3);
+}
+
+.status-offline {
+  background-color: #6B7280;
+  box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.3);
+}
+
+.hero-bg {
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(37, 211, 102, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(18, 140, 126, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(37, 211, 102, 0.05) 0%, transparent 50%);
+}
+
+.section-bg {
+  background: linear-gradient(to bottom, transparent 0%, hsl(var(--muted))/30 100%);
+}
