@@ -19,7 +19,8 @@ import {
   Eye,
   EyeOff,
   Plus,
-  Trash2
+  Trash2,
+  MoreHorizontal
 } from 'lucide-react';
 import { useState } from 'react';
 

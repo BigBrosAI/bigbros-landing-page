@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { TrendingUp, TrendingDown, DivideIcon as LucideIcon } from 'lucide-react';
+import { TrendingUp, TrendingDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface KpiCardProps {
@@ -10,7 +10,7 @@ interface KpiCardProps {
   value: string;
   change: string;
   trend: 'up' | 'down';
-  icon: LucideIcon;
+  icon: any;
   description: string;
 }
 
