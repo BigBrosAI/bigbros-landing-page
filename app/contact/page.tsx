@@ -186,8 +186,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="font-medium">Email</p>
-                      <p className="text-muted-foreground">hello@bigbros.ai</p>
-                      <p className="text-muted-foreground">support@bigbros.ai</p>
+                      <p className="text-muted-foreground">support@bigbrosai.com</p>
                     </div>
                   </div>
 
@@ -197,8 +196,8 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="font-medium">Phone</p>
-                      <p className="text-muted-foreground">+91 80 4567 8900</p>
-                      <p className="text-muted-foreground">+91 98765 43210</p>
+                      <p className="text-muted-foreground">+91 70 1775 3527</p>
+                      <p className="text-muted-foreground">+91 82 7951 0767</p>
                     </div>
                   </div>
 
@@ -209,8 +208,13 @@ export default function ContactPage() {
                     <div>
                       <p className="font-medium">Office</p>
                       <p className="text-muted-foreground">
-                        Koramangala, Bangalore<br />
-                        Karnataka 560034, India
+                      48-A KALAKUNJ, SUBHASH NAGAR<br />
+                        Agra, UP 282010, India
+                      </p>
+                      <br />
+                      <p className="text-muted-foreground">
+                      E93, Goving Nagar <br />
+                      Mathura, UP 281001, India
                       </p>
                     </div>
                   </div>

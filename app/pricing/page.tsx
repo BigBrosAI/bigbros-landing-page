@@ -38,7 +38,7 @@ const plans = {
     },
     {
       name: "Growth",
-      price: "₹3,999",
+      price: "₹1500",
       originalPrice: null,
       description: "For growing businesses with advanced needs",
       icon: Zap,
@@ -60,7 +60,7 @@ const plans = {
     },
     {
       name: "Scale",
-      price: "₹11,999",
+      price: "₹3200",
       originalPrice: null,
       description: "For enterprises with high-volume campaigns",
       icon: Crown,
@@ -108,8 +108,8 @@ const plans = {
     },
     {
       name: "Growth",
-      price: "₹3,199",
-      originalPrice: "₹3,999",
+      price: "₹1350",
+      originalPrice: "₹1500",
       description: "For growing businesses with advanced needs",
       icon: Zap,
       features: [
@@ -130,8 +130,8 @@ const plans = {
     },
     {
       name: "Scale",
-      price: "₹9,599",
-      originalPrice: "₹11,999",
+      price: "₹2880",
+      originalPrice: "₹3200",
       description: "For enterprises with high-volume campaigns",
       icon: Crown,
       features: [
@@ -161,7 +161,7 @@ export default function PricingPage() {
   return (
     <main className="min-h-screen">
       <Navbar />
-      
+
       <section className="py-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -179,7 +179,7 @@ export default function PricingPage() {
               <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
                 Choose the perfect plan for your business. Upgrade or downgrade at any time.
               </p>
-              
+
               <div className="flex items-center justify-center gap-4 mb-2">
                 <span className={`text-sm ${!isYearly ? 'text-foreground' : 'text-muted-foreground'}`}>
                   Monthly
@@ -191,11 +191,9 @@ export default function PricingPage() {
                 <span className={`text-sm ${isYearly ? 'text-foreground' : 'text-muted-foreground'}`}>
                   Yearly
                 </span>
-                {isYearly && (
-                  <Badge variant="secondary" className="ml-2">
-                    Save 20%
-                  </Badge>
-                )}
+                <Badge variant="secondary" className="ml-2">
+                  Save 10%
+                </Badge>
               </div>
             </motion.div>
           </div>
@@ -214,14 +212,14 @@ export default function PricingPage() {
                       Most Popular
                     </Badge>
                   )}
-                  
+
                   <CardHeader className="text-center pb-8">
                     <div className={`w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center ${plan.popular ? 'bg-[#25D366]/10' : 'bg-muted/50'}`}>
                       <plan.icon className={`w-8 h-8 ${plan.popular ? 'text-[#25D366]' : 'text-muted-foreground'}`} />
                     </div>
                     <CardTitle className="text-2xl">{plan.name}</CardTitle>
                     <CardDescription>{plan.description}</CardDescription>
-                    
+
                     <div className="mt-6">
                       <div className="flex items-baseline justify-center gap-1">
                         {plan.originalPrice && (
@@ -245,10 +243,10 @@ export default function PricingPage() {
                       )}
                     </div>
                   </CardHeader>
-                  
+
                   <CardContent className="space-y-6">
                     <Link href={plan.href}>
-                      <Button 
+                      <Button
                         className={`w-full rounded-full ${plan.popular ? 'shadow-lg' : ''}`}
                         variant={plan.popular ? "default" : "outline"}
                         size="lg"
@@ -256,7 +254,7 @@ export default function PricingPage() {
                         {plan.cta}
                       </Button>
                     </Link>
-                    
+
                     <div className="space-y-3">
                       {plan.features.map((feature, featureIndex) => (
                         <div key={featureIndex} className="flex items-center gap-3">
@@ -338,7 +336,7 @@ export default function PricingPage() {
           </motion.div>
         </div>
       </section>
-      
+
       <Footer />
     </main>
   );

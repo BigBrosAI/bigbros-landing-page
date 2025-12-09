@@ -10,7 +10,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-4">
-            <Logo />
+          <img src="https://raw.githubusercontent.com/shashank026/trip_planner/refs/heads/main/bbai_logo_main.png" alt="BigBros AI" width={150} height={150} />
             <p className="text-muted-foreground text-sm leading-relaxed">
               AI-powered WhatsApp campaigns that convert. Scale your business with intelligent messaging.
             </p>

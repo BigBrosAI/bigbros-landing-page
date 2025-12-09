@@ -19,26 +19,26 @@ import Link from 'next/link';
 
 const team = [
   {
-    name: "Rajesh Kumar",
-    role: "CEO & Co-founder",
-    image: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop",
-    bio: "Former WhatsApp engineer with 10+ years in messaging platforms",
+    name: "Manju Sharma",
+    role: "Director & Co-founder",
+    // image: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop",
+    // bio: "Former WhatsApp engineer with 10+ years in messaging platforms",
     linkedin: "#",
     twitter: "#"
   },
   {
-    name: "Priya Sharma",
-    role: "CTO & Co-founder", 
-    image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop",
-    bio: "AI/ML expert, previously at Google and Microsoft",
+    name: "Ranu Sharma",
+    role: "Director & Co-founder", 
+    // image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop",
+    // bio: "AI/ML expert, previously at Google and Microsoft",
     linkedin: "#",
     twitter: "#"
   },
   {
-    name: "Arjun Patel",
-    role: "Head of Product",
-    image: "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop",
-    bio: "Product leader with experience scaling B2B SaaS platforms",
+    name: "Rumi Devi",
+    role: "Director & Co-founder",
+    // image: "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop",
+    // bio: "Product leader with experience scaling B2B SaaS platforms",
     linkedin: "#",
     twitter: "#"
   }
@@ -160,12 +160,12 @@ export default function AboutPage() {
               <Card key={member.name} className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="pt-8">
                   <Avatar className="h-24 w-24 mx-auto mb-4 border-4 border-primary/20">
-                    <AvatarImage src={member.image} alt={member.name} />
+                    {/* <AvatarImage src={member?.image || ''} alt={member.name} /> */}
                     <AvatarFallback>{member.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                   </Avatar>
                   <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
                   <p className="text-primary font-medium mb-3">{member.role}</p>
-                  <p className="text-muted-foreground text-sm mb-4">{member.bio}</p>
+                  {/* <p className="text-muted-foreground text-sm mb-4">{member?.bio}</p> */}
                   <div className="flex justify-center gap-2">
                     <Button variant="ghost" size="sm" className="w-9 px-0">
                       <Linkedin className="h-4 w-4" />
@@ -182,7 +182,7 @@ export default function AboutPage() {
       </section>
 
       {/* Company Timeline */}
-      <section className="py-16">
+      {/* <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
@@ -216,7 +216,7 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Location */}
       <section className="py-16 section-bg">

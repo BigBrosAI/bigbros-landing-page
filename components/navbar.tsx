@@ -14,7 +14,7 @@ export function Navbar() {
   const { user } = useAuth();
 
   const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
+    setTheme(theme === 'light' ? 'light' : 'light');
   };
 
   return (
@@ -22,7 +22,7 @@ export function Navbar() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="flex items-center">
-            <Logo />
+            <img src="https://raw.githubusercontent.com/shashank026/trip_planner/refs/heads/main/bbai_logo_main.png" alt="BigBros AI" width={120} height={120} />
           </Link>
 
           {/* Desktop Navigation */}
@@ -42,9 +42,9 @@ export function Navbar() {
             <Link href="/docs" className="text-muted-foreground hover:text-[#25D366] transition-colors font-medium">
               Docs
             </Link>
-            
+
             <div className="flex items-center space-x-4">
-              <Button
+              {/* <Button
                 variant="ghost"
                 size="sm"
                 onClick={toggleTheme}
@@ -53,8 +53,8 @@ export function Navbar() {
                 <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
                 <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
                 <span className="sr-only">Toggle theme</span>
-              </Button>
-              
+              </Button> */}
+
               {user ? (
                 <Link href="/dashboard">
                   <Button className="gap-2 rounded-full px-6">
@@ -126,7 +126,7 @@ export function Navbar() {
               >
                 Docs
               </Link>
-              
+
               <div className="pt-4 space-y-2">
                 {user ? (
                   <Link href="/dashboard" onClick={() => setIsOpen(false)}>
