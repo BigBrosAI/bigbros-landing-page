@@ -179,7 +179,6 @@ export default function PricingPage() {
               <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
                 Choose the perfect plan for your business. Upgrade or downgrade at any time.
               </p>
-
               <div className="flex items-center justify-center gap-4 mb-2">
                 <span className={`text-sm ${!isYearly ? 'text-foreground' : 'text-muted-foreground'}`}>
                   Monthly
