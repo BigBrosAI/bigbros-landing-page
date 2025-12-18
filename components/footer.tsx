@@ -56,8 +56,9 @@ export function Footer() {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li><Link href="/legal/privacy" className="hover:text-foreground transition-colors">Privacy Policy</Link></li>
               <li><Link href="/legal/terms" className="hover:text-foreground transition-colors">Terms of Service</Link></li>
-              <li><Link href="/legal/cookies" className="hover:text-foreground transition-colors">Cookie Policy</Link></li>
-              <li><Link href="/security" className="hover:text-foreground transition-colors">Security</Link></li>
+              <li><Link href="/legal/refund" className="hover:text-foreground transition-colors">Refund & Cancellation Policy</Link></li>
+              <li><Link href="/legal/plateform-policy" className="hover:text-foreground transition-colors">Platform Usage Policy</Link></li>
+              {/* <li><Link href="/security" className="hover:text-foreground transition-colors">Security</Link></li> */}
             </ul>
           </div>
         </div>
