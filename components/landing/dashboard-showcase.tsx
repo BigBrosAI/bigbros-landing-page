@@ -353,7 +353,7 @@ function DashboardScreen({ t }: { t: number }) {
   const line = pts.map(([x, y]) => `${x},${y}`).join(' ');
   const hover = Math.min(series.length - 1, Math.floor(progress(t, 2600, 4200) * (series.length - 1)));
   const feed = [
-    { at: 600, icon: <MessageCircle className="h-4 w-4 text-[#16A34A]" />, text: 'New chat from Rahul K.', time: 'now' },
+    { at: 600, icon: <MessageCircle className="h-4 w-4 text-[#16A34A]" />, text: 'New chat from Ayesha K.', time: 'now' },
     { at: 1500, icon: <BrandTile slug="shopify" size={18} />, text: 'Order #1042 synced from Shopify', time: '1m' },
     { at: 2600, icon: <CreditCard className="h-4 w-4 text-[#7C3AED]" />, text: '₹1,299 received via WhatsApp Pay', time: '2m' },
     { at: 3600, icon: <FileText className="h-4 w-4 text-[#2E90FA]" />, text: 'Template “order_update” approved', time: '5m' },
@@ -427,7 +427,7 @@ function DashboardScreen({ t }: { t: number }) {
 
 /* ---------- Live chat ---------- */
 
-const REPLY = 'Hi Rahul! Your order #2231 is out for delivery and will reach you by 6 pm today 🚚';
+const REPLY = 'Hi Ayesha! Your order #2231 is out for delivery and will reach you by 6 pm today 🚚';
 
 function ChatScreen({ t }: { t: number }) {
   const arrived = t >= 500;
@@ -436,7 +436,7 @@ function ChatScreen({ t }: { t: number }) {
   const sent = t >= 5600;
   const tick = t >= 6400 ? 'read' : t >= 5900 ? 'delivered' : 'sent';
   const chats = [
-    { name: 'Rahul Kumar', text: arrived ? 'Where is my order #2231?' : '', unread: !sent ? 1 : 0, time: 'now', isNew: true },
+    { name: 'Ayesha Khan', text: arrived ? 'Where is my order #2231?' : '', unread: !sent ? 1 : 0, time: 'now', isNew: true },
     { name: 'Sana Mirza', text: 'Do you ship to Pune?', unread: 2, time: '3m' },
     { name: 'Imran Shaikh', text: 'You: Refund initiated ✅', unread: 0, time: '12m' },
     { name: 'Neha Patil', text: 'Is COD available?', unread: 0, time: '25m' },
@@ -490,9 +490,9 @@ function ChatScreen({ t }: { t: number }) {
       {/* conversation */}
       <div className="flex min-w-0 flex-col bg-[#EFE7DD]">
         <div className="flex items-center gap-3 border-b border-black/5 bg-white px-4 py-2.5">
-          <Avatar name="Rahul Kumar" />
+          <Avatar name="Ayesha Khan" />
           <div className="leading-tight">
-            <p className="font-semibold">Rahul Kumar</p>
+            <p className="font-semibold">Ayesha Khan</p>
             <p className="text-[11.5px] text-black/50">+91 98•••• 2231 · Order status</p>
           </div>
           <div className="ml-auto flex items-center gap-2">
@@ -556,8 +556,8 @@ function ChatScreen({ t }: { t: number }) {
       {/* contact */}
       <div className="space-y-4 border-l border-black/5 bg-white p-4">
         <div className="flex flex-col items-center text-center">
-          <Avatar name="Rahul Kumar" className="h-14 w-14 text-base" />
-          <p className="mt-2 font-semibold">Rahul Kumar</p>
+          <Avatar name="Ayesha Khan" className="h-14 w-14 text-base" />
+          <p className="mt-2 font-semibold">Ayesha Khan</p>
           <p className="text-[12px] text-black/50">+91 98•••• 2231</p>
         </div>
         <div>

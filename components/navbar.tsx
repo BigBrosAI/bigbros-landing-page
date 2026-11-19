@@ -170,16 +170,21 @@ export function Navbar() {
 
 function AnnouncementBar() {
   return (
-    <Link
-      href="/products/email-api"
+    <a
+      href="https://www.nvidia.com/en-us/startups/"
+      target="_blank"
+      rel="noopener noreferrer"
       className="group flex h-9 items-center justify-center gap-2 bg-forest px-4 text-center text-[13px] font-medium text-white/90"
     >
-      <span className="rounded-full bg-lime-300 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-forest">New</span>
+      <span className="flex items-center gap-1 rounded-full bg-black px-2 py-0.5">
+        <BrandIcon slug="nvidia" className="h-3 w-3" />
+        <span className="text-[10px] font-bold tracking-wide text-white">NVIDIA</span>
+      </span>
       <span className="truncate">
-        Email API is live — <span className="text-white">300 free emails every day</span> on every plan
+        BigBrosAI is now <span className="text-white">backed by NVIDIA</span>
       </span>
       <ArrowRight className="h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5" />
-    </Link>
+    </a>
   );
 }
 

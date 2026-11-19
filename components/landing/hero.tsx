@@ -1,4 +1,3 @@
-import { CheckCircle2 } from 'lucide-react';
 import { BrandIcon, BrandTile } from '@/components/landing/brand-icon';
 import { ButtonLink, Container } from '@/components/site/primitives';
 import { Reveal } from '@/components/site/reveal';
@@ -57,7 +56,7 @@ export function Hero() {
       <div aria-hidden className="bg-grain absolute inset-0 [mask-image:linear-gradient(to_bottom,#000,transparent_85%)]" />
       <RayBurst />
 
-      <Container className="relative grid items-center gap-14 pb-20 pt-12 sm:pt-16 lg:grid-cols-[0.95fr_1.05fr] lg:gap-6 lg:pb-28 lg:pt-20">
+      <Container className="relative grid items-center gap-14 pb-24 pt-16 sm:pt-24 lg:grid-cols-[0.95fr_1.05fr] lg:gap-10 lg:pb-32 lg:pt-28">
         <div>
           <Reveal className="flex flex-wrap items-center gap-2">
             <p className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50/80 py-1 pl-1 pr-3 text-[13px] font-medium text-brand-800">
@@ -75,16 +74,16 @@ export function Hero() {
                   <BrandIcon slug="nvidia" className="h-3.5 w-3.5" />
                   <span className="text-[10.5px] font-bold tracking-wide text-white">NVIDIA</span>
                 </span>
-                Backed by NVIDIA Inception
+                Backed by NVIDIA
               </a>
             )}
           </Reveal>
 
           <Reveal delay={0.06}>
-            <h1 className="mt-7 font-display text-[2.7rem] font-extrabold leading-[1.0] tracking-[-0.045em] text-foreground sm:text-6xl lg:text-[4.75rem]">
-              Sell, support and grow{' '}
+            <h1 className="mt-8 font-display text-[2.5rem] font-bold leading-[1.06] tracking-[-0.035em] text-foreground sm:text-[3.4rem] lg:text-[4rem]">
+              Turn WhatsApp into your{' '}
               <span className="text-gradient-brand relative whitespace-nowrap">
-                inside WhatsApp.
+                best sales channel.
                 <svg aria-hidden viewBox="0 0 300 18" preserveAspectRatio="none" className="absolute -bottom-2 left-0 h-3 w-full sm:-bottom-3 sm:h-4">
                   <path
                     d="M3 13 C 60 4, 140 3, 297 9"
@@ -101,13 +100,13 @@ export function Hero() {
           </Reveal>
 
           <Reveal delay={0.12}>
-            <p className="mt-7 max-w-xl text-lg leading-relaxed text-ink-600 sm:text-xl">
-              BigBrosAI brings a shared live-chat inbox, approved broadcast campaigns, AI chatbot flows and WhatsApp
-              Pay together on the official API — so every chat moves a customer forward.
+            <p className="mt-8 max-w-[34rem] text-lg leading-relaxed text-ink-600">
+              Send approved campaigns, answer every chat from one shared inbox, automate replies with AI and collect
+              payments — all on the official WhatsApp Business API.
             </p>
           </Reveal>
 
-          <Reveal delay={0.18} className="mt-9 flex flex-col gap-3 sm:flex-row">
+          <Reveal delay={0.18} className="mt-10 flex flex-col gap-3 sm:flex-row">
             <ButtonLink href={siteConfig.links.signup} size="xl" arrow className="rounded-full">
               Start for free
             </ButtonLink>
@@ -116,16 +115,6 @@ export function Hero() {
             </ButtonLink>
           </Reveal>
 
-          <Reveal delay={0.24}>
-            <ul className="mt-9 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-600">
-              {['Free WhatsApp API', '₹50 signup bonus', '300 free emails / day', 'No setup fees']
-                .map((t) => (
-                  <li key={t} className="flex items-center gap-1.5">
-                    <CheckCircle2 className="h-4 w-4 text-brand-600" /> {t}
-                  </li>
-                ))}
-            </ul>
-          </Reveal>
         </div>
 
         <div aria-label="Illustrative product demo of a WhatsApp conversation" className="relative lg:pl-6">

@@ -34,7 +34,7 @@ export const siteConfig = {
       id: 'nvidia-inception',
       enabled: true,
       name: 'NVIDIA Inception',
-      label: 'Backed by NVIDIA Inception',
+      label: 'Backed by NVIDIA',
       description:
         "BigBrosAI is a member of NVIDIA Inception, NVIDIA's program that supports startups building with AI and accelerated computing.",
       href: 'https://www.nvidia.com/en-us/startups/',
