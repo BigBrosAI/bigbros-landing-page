@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Switch } from '@/components/ui/switch';
 import { Check, Send, Zap, Crown } from 'lucide-react';
 import Link from 'next/link';
+import { siteConfig } from '@/lib/site';
 import { motion } from 'framer-motion';
 
 const plans = {
@@ -33,7 +34,7 @@ const plans = {
         "Basic reporting"
       ],
       cta: "Start free",
-      href: "/auth/sign-up",
+      href: siteConfig.links.signup,
       popular: false
     },
     {
@@ -55,7 +56,7 @@ const plans = {
       ],
       limitations: [],
       cta: "Start free trial",
-      href: "/auth/sign-up",
+      href: siteConfig.links.signup,
       popular: true
     },
     {
@@ -103,7 +104,7 @@ const plans = {
         "Basic reporting"
       ],
       cta: "Start free",
-      href: "/auth/sign-up",
+      href: siteConfig.links.signup,
       popular: false
     },
     {
@@ -125,7 +126,7 @@ const plans = {
       ],
       limitations: [],
       cta: "Start free trial",
-      href: "/auth/sign-up",
+      href: siteConfig.links.signup,
       popular: true
     },
     {

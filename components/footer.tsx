@@ -1,80 +1,83 @@
 import Link from 'next/link';
 import { Logo } from '@/components/logo';
-import { Button } from '@/components/ui/button';
-import { Github, Twitter, Linkedin, Send } from 'lucide-react';
+import { Container, SmartLink } from '@/components/site/primitives';
+import { footerNav } from '@/lib/navigation';
+import { activeAffiliations, siteConfig } from '@/lib/site';
 
 export function Footer() {
+  const year = new Date().getFullYear();
   return (
-    <footer className="bg-background border-t">
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Brand */}
-          <div className="space-y-4">
-          <img src="https://raw.githubusercontent.com/shashank026/trip_planner/refs/heads/main/bbai_logo_main.png" alt="BigBros AI" width={150} height={150} />
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              AI-powered WhatsApp campaigns that convert. Scale your business with intelligent messaging.
+    <footer className="forest relative overflow-hidden">
+      <div aria-hidden className="bg-grain-light absolute inset-0 opacity-60" />
+      <Container className="relative py-16 sm:py-20">
+        <div className="grid gap-12 lg:grid-cols-[1.5fr_repeat(4,1fr)]">
+          <div className="max-w-xs">
+            <Link href="/" aria-label="BigBrosAI home">
+              <Logo width={150} tone="light" />
+            </Link>
+            <p className="mt-5 text-sm leading-relaxed text-white/65">
+              The WhatsApp Business API platform for teams that sell and support in chat — inbox, campaigns, AI
+              flows and payments in one place.
             </p>
-            <div className="flex space-x-4">
-              <Button variant="ghost" size="sm" className="w-9 px-0">
-                <Twitter className="h-4 w-4" />
-              </Button>
-              <Button variant="ghost" size="sm" className="w-9 px-0">
-                <Github className="h-4 w-4" />
-              </Button>
-              <Button variant="ghost" size="sm" className="w-9 px-0">
-                <Linkedin className="h-4 w-4" />
-              </Button>
-            </div>
+            <a
+              href={`mailto:${siteConfig.email}`}
+              className="mt-4 inline-block text-sm font-medium text-white underline-offset-4 hover:underline"
+            >
+              {siteConfig.email}
+            </a>
+            {activeAffiliations.length > 0 && (
+              <ul className="mt-6 space-y-2">
+                {activeAffiliations.map((a) => (
+                  <li key={a.id}>
+                    <a
+                      href={a.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1 text-xs font-medium text-white/70 transition-colors hover:text-white"
+                    >
+                      <span className="h-1.5 w-1.5 rounded-full bg-brand-400" />
+                      {a.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
 
-          {/* Product */}
-          <div>
-            <h3 className="font-semibold mb-4">Product</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><Link href="/#features" className="hover:text-foreground transition-colors">Features</Link></li>
-              <li><Link href="/pricing" className="hover:text-foreground transition-colors">Pricing</Link></li>
-              <li><Link href="/security" className="hover:text-foreground transition-colors">Security</Link></li>
-              <li><Link href="/docs" className="hover:text-foreground transition-colors">API Docs</Link></li>
-              <li><Link href="/changelog" className="hover:text-foreground transition-colors">Changelog</Link></li>
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h3 className="font-semibold mb-4">Company</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><Link href="/about" className="hover:text-foreground transition-colors">About</Link></li>
-              <li><Link href="/blog" className="hover:text-foreground transition-colors">Blog</Link></li>
-              <li><Link href="/careers" className="hover:text-foreground transition-colors">Careers</Link></li>
-              <li><Link href="/contact" className="hover:text-foreground transition-colors">Contact</Link></li>
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h3 className="font-semibold mb-4">Legal</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><Link href="/legal/privacy" className="hover:text-foreground transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/legal/terms" className="hover:text-foreground transition-colors">Terms of Service</Link></li>
-              <li><Link href="/legal/refund" className="hover:text-foreground transition-colors">Refund & Cancellation Policy</Link></li>
-              <li><Link href="/legal/plateform-policy" className="hover:text-foreground transition-colors">Platform Usage Policy</Link></li>
-              {/* <li><Link href="/security" className="hover:text-foreground transition-colors">Security</Link></li> */}
-            </ul>
+          <div className="grid grid-cols-2 gap-10 sm:grid-cols-4 lg:col-span-4">
+            {footerNav.map((col) => (
+              <div key={col.title}>
+                <h3 className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-brand-300">
+                  {col.title}
+                </h3>
+                <ul className="mt-4 space-y-3">
+                  {col.items.map((item) => (
+                    <li key={item.href + item.label}>
+                      <SmartLink href={item.href} className="text-sm text-white/65 transition-colors hover:text-white">
+                        {item.label}
+                      </SmartLink>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className="border-t mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-muted-foreground">
-            © 2025 BIGBROS AI Pvt. Ltd. All rights reserved.
+        <p
+          aria-hidden
+          className="pointer-events-none mt-16 select-none text-center text-[19vw] font-semibold leading-[0.8] tracking-[-0.06em] text-white/[0.04] sm:text-[15vw] lg:text-[12.5rem]"
+        >
+          bigbrosai
+        </p>
+
+        <div className="mt-6 flex flex-col gap-3 border-t border-white/10 pt-8 text-sm text-white/50 sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © {year} {siteConfig.legalName}. All rights reserved.
           </p>
-          <div className="flex items-center gap-2 mt-4 md:mt-0">
-            <Send className="w-4 h-4 text-primary" />
-            <span className="text-sm text-muted-foreground">
-              Powered by WhatsApp Business API
-            </span>
-          </div>
+          <p>WhatsApp is a trademark of Meta Platforms, Inc.</p>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

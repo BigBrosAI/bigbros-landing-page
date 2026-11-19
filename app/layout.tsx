@@ -1,92 +1,83 @@
 import './globals.css';
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import type { Metadata, Viewport } from 'next';
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
-import { AuthProvider } from '@/components/auth-provider';
-
-const inter = Inter({ subsets: ['latin'] });
+import { JsonLd } from '@/components/site/primitives';
+import { RevealObserver } from '@/components/site/reveal-observer';
+import { absoluteUrl, siteConfig } from '@/lib/site';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://bigbrosai.com'),
-
-  title: 'BIGBROS AI - WhatsApp campaigns. Supercharged by AI.',
-  description:
-    'Create, automate, and analyze WhatsApp broadcasts in minutes. No code, no hassle.',
-
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: `${siteConfig.name} — ${siteConfig.tagline}`,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
   keywords: [
-    'WhatsApp campaigns',
-    'WhatsApp marketing',
-    'AI WhatsApp',
-    'bulk WhatsApp messages',
+    'WhatsApp Business API provider',
+    'WhatsApp Business API India',
+    'WhatsApp marketing software',
+    'WhatsApp chatbot platform',
+    'WhatsApp automation',
+    'WhatsApp API for developers',
+    'omnichannel business messaging',
   ],
-
-  authors: [{ name: 'BIGBROS AI Pvt. Ltd.' }],
-
-  icons: {
-    icon: '/favicon.png',
-    apple: '/logo.png',
-  },
-
+  authors: [{ name: siteConfig.legalName }],
+  icons: { icon: '/favicon.png', apple: '/logo.png' },
+  alternates: { canonical: '/' },
   openGraph: {
-    title: 'BIGBROS AI - WhatsApp campaigns. Supercharged by AI.',
-    description:
-      'Create, automate, and analyze WhatsApp broadcasts in minutes.',
-    url: 'https://bigbrosai.com',
-    siteName: 'BIGBROS AI',
-    images: [
-      {
-        url: '/favicon.png',
-        width: 1200,
-        height: 630,
-        alt: 'BIGBROS AI',
-      },
-    ],
     type: 'website',
+    siteName: siteConfig.name,
+    url: siteConfig.url,
+    title: `${siteConfig.name} — ${siteConfig.tagline}`,
+    description: siteConfig.description,
+    images: [{ url: '/logo.png', width: 2131, height: 631, alt: siteConfig.name }],
   },
-
   twitter: {
     card: 'summary_large_image',
-    title: 'BIGBROS AI',
-    description:
-      'Create, automate, and analyze WhatsApp broadcasts in minutes.',
-    images: ['/favicon.png'],
+    title: `${siteConfig.name} — ${siteConfig.tagline}`,
+    description: siteConfig.description,
+    images: ['/logo.png'],
   },
-
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export const viewport: Viewport = {
+  themeColor: '#FAF9F5',
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "BIGBROS AI",
-              url: "https://bigbrosai.com",
-              logo: "https://bigbrosai.com/logo.png",
-              sameAs: [],
-            }),
-          }}
+    <html lang="en" suppressHydrationWarning className={`${GeistSans.variable} ${GeistMono.variable}`}>
+      <body className="font-sans antialiased">
+        {/* Hide reveal targets before first paint; RevealObserver un-hides them on scroll. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js-motion')" }} />
+        <JsonLd
+          data={[
+            {
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: siteConfig.name,
+              legalName: siteConfig.legalName,
+              url: siteConfig.url,
+              logo: absoluteUrl('/logo.png'),
+              email: siteConfig.email,
+            },
+            {
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: siteConfig.name,
+              url: siteConfig.url,
+            },
+          ]}
         />
-      </head>
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          <AuthProvider>
-            {children}
-            <Toaster />
-          </AuthProvider>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+          {children}
+          <RevealObserver />
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
