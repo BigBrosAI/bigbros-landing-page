@@ -253,7 +253,7 @@ export function FlowDemo() {
   const stamp = (k: number) => `10:24:${String(2 + Math.floor((k * STEP) / 1000)).padStart(2, '0')}.${(k * 3 + 1) % 10}`;
 
   return (
-    <div ref={ref} className="relative overflow-hidden rounded-3xl border border-border bg-[#FBFAF7] shadow-lift">
+    <div ref={ref} className="relative overflow-hidden rounded-3xl border border-border bg-[#F8FBF9] shadow-lift">
       <div aria-hidden className="bg-grain absolute inset-0 opacity-70" />
       <div className="relative flex items-center justify-between border-b border-border bg-card/70 px-4 py-3 backdrop-blur">
         <p className="text-sm font-semibold">Pricing enquiries · Flow</p>

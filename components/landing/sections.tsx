@@ -21,6 +21,9 @@ import { CampaignDemo } from '@/components/landing/campaign-demo';
 import { FlowDemo } from '@/components/landing/flow-demo';
 import { IntegrationHub } from '@/components/landing/integrations-demo';
 import { siteConfig } from '@/lib/site';
+import { products } from '@/lib/catalog';
+import { ProductCard } from '@/components/landing/product-card';
+import { PlanCards } from '@/components/pricing/plan-cards';
 import { cn } from '@/lib/utils';
 import { Kicker } from '@/components/landing/kicker';
 import { BrandIcon, type BrandSlug } from '@/components/landing/brand-icon';
@@ -31,53 +34,13 @@ function Heading({ children, className, light }: { children: React.ReactNode; cl
   return (
     <h2
       className={cn(
-        'mt-5 text-[2.1rem] font-semibold leading-[1.05] tracking-[-0.035em] sm:text-5xl',
+        'mt-5 text-[2.1rem] font-bold leading-[1.05] tracking-[-0.04em] sm:text-5xl',
         light ? 'text-white' : 'text-foreground',
         className
       )}
     >
       {children}
     </h2>
-  );
-}
-
-/* ---------- capability marquee ---------- */
-
-const capabilities: { label: string; icon?: React.ComponentType<{ className?: string }>; brand?: BrandSlug }[] = [
-  { label: 'WhatsApp Business API', brand: 'whatsapp' },
-  { label: 'Live chat inbox', icon: Inbox },
-  { label: 'Agent assignment', icon: Users },
-  { label: 'Broadcast campaigns', icon: Radio },
-  { label: 'CSV & API sends', icon: KeyRound },
-  { label: 'Template approvals', icon: FileCheck2 },
-  { label: 'AI chatbot flows', icon: Bot },
-  { label: 'WhatsApp Pay', icon: CreditCard },
-  { label: 'Shopify', brand: 'shopify' },
-  { label: 'WooCommerce', brand: 'woocommerce' },
-  { label: 'Google Sheets', brand: 'googlesheets' },
-  { label: 'Meta click-to-WhatsApp ads', brand: 'meta' },
-  { label: 'Email follow-ups', icon: Mail },
-];
-
-export function CapabilityMarquee() {
-  const row = [...capabilities, ...capabilities];
-  return (
-    <section aria-label="Platform capabilities" className="marquee-pause relative border-y border-border bg-card/60 py-4">
-      <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]">
-        <ul className="animate-marquee flex w-max gap-3">
-          {row.map((c, i) => (
-            <li
-              key={i}
-              aria-hidden={i >= capabilities.length}
-              className="flex shrink-0 items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-medium text-ink-600"
-            >
-              {c.brand ? <BrandIcon slug={c.brand} /> : c.icon ? <c.icon className="h-4 w-4 text-brand-700" /> : null}
-              {c.label}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
   );
 }
 
@@ -93,6 +56,7 @@ function Chapter({
   demo,
   flip,
   stacked,
+  href,
 }: {
   id: string;
   index: string;
@@ -104,6 +68,7 @@ function Chapter({
   flip?: boolean;
   /** Copy on top, demo full-width below. */
   stacked?: boolean;
+  href: string;
 }) {
   return (
     <div id={id} className="scroll-mt-24 py-16 sm:py-24">
@@ -139,6 +104,11 @@ function Chapter({
               </Reveal>
             ))}
           </ul>
+          <Reveal delay={0.3} className="mt-8">
+            <SmartLink href={href} className="group inline-flex items-center gap-1.5 text-sm font-semibold text-brand-800">
+              Explore {kicker.toLowerCase()} <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </SmartLink>
+          </Reveal>
         </div>
         <Reveal delay={0.1} y={40} className={cn(stacked && 'lg:col-span-2')}>
           {demo}
@@ -168,6 +138,7 @@ export function ProductChapters() {
 
         <Chapter
           id="inbox"
+          href="/products/live-chat"
           index="01"
           kicker="Live chat"
           title="A shared inbox your whole team can reply from."
@@ -182,6 +153,7 @@ export function ProductChapters() {
 
         <Chapter
           id="campaigns"
+          href="/products/whatsapp-broadcast"
           index="02"
           kicker="Campaigns"
           title="Broadcasts that go out only when they’re ready."
@@ -198,6 +170,7 @@ export function ProductChapters() {
 
         <Chapter
           id="flows"
+          href="/products/chatbot-builder"
           index="03"
           kicker="AI chatbot flows"
           title="Automate the repetitive chats. Keep the human ones."
@@ -319,37 +292,44 @@ export function FeatureBento() {
   );
 }
 
-/* ---------- pricing preview ---------- */
+/* ---------- all products ---------- */
 
-/** Mirrors the monthly plans on /pricing — keep the two in sync. */
-const plans = [
-  {
-    name: 'Starter',
-    price: 'Free',
-    note: 'For trying it out',
-    features: ['100 messages / month', '1 team member', 'Basic templates', 'Campaign analytics'],
-    cta: 'Start free',
-  },
-  {
-    name: 'Growth',
-    price: '₹1,500',
-    note: 'For growing teams',
-    features: ['5,000 messages / month', '5 team members', 'AI template assistant', 'Automations & segmentation'],
-    cta: 'Start free trial',
-    featured: true,
-  },
-  {
-    name: 'Scale',
-    price: '₹3,200',
-    note: 'For high-volume senders',
-    features: ['25,000 messages / month', 'Unlimited team members', 'Advanced flows & integrations', 'API access'],
-    cta: 'Talk to sales',
-  },
-];
+export function ProductShowcase() {
+  return (
+    <section className="border-t border-border bg-card/50 py-24 sm:py-32">
+      <Container>
+        <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+          <div className="max-w-2xl">
+            <Reveal>
+              <Kicker>All products</Kicker>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <Heading>Ten products. One platform. One bill.</Heading>
+            </Reveal>
+          </div>
+          <Reveal delay={0.1}>
+            <ButtonLink href="/products" variant="outline" arrow className="rounded-full">
+              Explore all products
+            </ButtonLink>
+          </Reveal>
+        </div>
+        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {products.map((p, i) => (
+            <Reveal as="li" key={p.slug} delay={(i % 4) * 0.05} className={cn(i < 2 && 'lg:col-span-2')}>
+              <ProductCard p={p} />
+            </Reveal>
+          ))}
+        </ul>
+      </Container>
+    </section>
+  );
+}
+
+/* ---------- pricing preview ---------- */
 
 export function PricingPreview() {
   return (
-    <section className="border-t border-border bg-card/50 py-24 sm:py-32">
+    <section className="py-24 sm:py-32">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
@@ -359,58 +339,12 @@ export function PricingPreview() {
             <Heading>Start free. Upgrade when the chats pile up.</Heading>
           </Reveal>
         </div>
-
-        <ul className="mx-auto mt-14 grid max-w-5xl gap-4 lg:grid-cols-3">
-          {plans.map((p, i) => (
-            <Reveal
-              as="li"
-              key={p.name}
-              delay={i * 0.08}
-              className={cn(
-                'relative flex flex-col rounded-3xl border p-7',
-                p.featured ? 'ring-sweep forest border-transparent shadow-lift' : 'border-border bg-card'
-              )}
-            >
-              <div className="flex items-center justify-between">
-                <h3 className={cn('text-lg font-semibold', p.featured && 'text-white')}>{p.name}</h3>
-                {p.featured && (
-                  <span className="rounded-full bg-brand-400/15 px-2.5 py-1 text-[11px] font-semibold text-brand-300">
-                    Most popular
-                  </span>
-                )}
-              </div>
-              <p className={cn('mt-1 text-sm', p.featured ? 'text-white/60' : 'text-muted-foreground')}>{p.note}</p>
-              <p className={cn('mt-6 flex items-baseline gap-1.5', p.featured && 'text-white')}>
-                <span className="text-4xl font-semibold tracking-tight">{p.price}</span>
-                {p.price !== 'Free' && (
-                  <span className={cn('text-sm', p.featured ? 'text-white/60' : 'text-muted-foreground')}>/ month</span>
-                )}
-              </p>
-              <ul className="mt-6 space-y-3 text-[15px]">
-                {p.features.map((f) => (
-                  <li key={f} className={cn('flex gap-2.5', p.featured ? 'text-white/85' : 'text-ink-600')}>
-                    <Check className={cn('mt-0.5 h-4 w-4 shrink-0', p.featured ? 'text-brand-300' : 'text-brand-700')} />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-auto pt-8">
-                <ButtonLink
-                  href={p.name === 'Scale' ? siteConfig.links.contactSales : siteConfig.links.signup}
-                  variant={p.featured ? 'default' : 'outline'}
-                  className={cn('w-full rounded-full', p.featured && 'bg-brand-500 text-[#0E2A22] hover:bg-brand-400')}
-                  size="lg"
-                >
-                  {p.cta}
-                </ButtonLink>
-              </div>
-            </Reveal>
-          ))}
-        </ul>
-
+        <div className="mt-12">
+          <PlanCards compact />
+        </div>
         <Reveal className="mt-8 text-center">
           <SmartLink href="/pricing" className="inline-flex items-center gap-1 text-sm font-semibold text-brand-800 hover:underline">
-            Compare every feature and yearly pricing <ArrowUpRight className="h-4 w-4" />
+            Compare every feature and country-wise message rates <ArrowUpRight className="h-4 w-4" />
           </SmartLink>
         </Reveal>
       </Container>

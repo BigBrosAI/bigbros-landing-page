@@ -11,6 +11,8 @@ export const brandColors = {
   whatsapp: '#25D366',
   facebook: '#0866FF',
   instagram: '#E4405F',
+  razorpay: '#0C2451',
+  android: '#34A853',
 } as const;
 
 export type BrandSlug = keyof typeof brandColors;

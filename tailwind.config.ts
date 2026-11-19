@@ -20,14 +20,17 @@ const config: Config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       fontFamily: {
-        sans: ['var(--font-geist-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-inter)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'var(--font-inter)', 'ui-sans-serif', 'sans-serif'],
         mono: ['var(--font-geist-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       maxWidth: {
         site: '76rem',
       },
       colors: {
-        ink: { DEFAULT: '#101828', 600: '#475467', 500: '#667085', 400: '#98A2B3' },
+        ink: { DEFAULT: '#0B1F17', 600: '#41524A', 500: '#5E6E66', 400: '#94A39B' },
+        forest: { DEFAULT: '#0B2E23', 800: '#0F3A2C', 700: '#134A38' },
+        lime: { 200: '#D9F99D', 300: '#BEF264' },
         brand: {
           DEFAULT: '#16A34A',
           50: '#F0FDF4',

@@ -1,44 +1,29 @@
-import { MetadataRoute } from 'next';
+import type { MetadataRoute } from 'next';
 import fs from 'fs';
 import path from 'path';
+import { products } from '@/lib/catalog';
+import { siteConfig } from '@/lib/site';
 
-const BASE_URL = 'https://bigbrosai.com';
 const APP_DIR = path.join(process.cwd(), 'app');
 
-function getRoutes(dir: string, basePath = ''): string[] {
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
-
-  let routes: string[] = [];
-
-  for (const entry of entries) {
-    if (entry.name.startsWith('_') || entry.name.startsWith('.')) continue;
-    if (entry.name === 'api') continue;
-
-    const fullPath = path.join(dir, entry.name);
-
-    if (entry.isDirectory()) {
-      const route = `${basePath}/${entry.name}`;
-
-      const hasPage =
-        fs.existsSync(path.join(fullPath, 'page.tsx')) ||
-        fs.existsSync(path.join(fullPath, 'page.jsx'));
-
-      if (hasPage) {
-        routes.push(route);
-      }
-
-      routes.push(...getRoutes(fullPath, route));
-    }
+/** Every static page under /app, plus one entry per product page. */
+function staticRoutes(dir: string, base = ''): string[] {
+  const out: string[] = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (!entry.isDirectory() || /^[_.(\[]/.test(entry.name) || entry.name === 'api') continue;
+    const full = path.join(dir, entry.name);
+    const route = `${base}/${entry.name}`;
+    if (fs.existsSync(path.join(full, 'page.tsx'))) out.push(route);
+    out.push(...staticRoutes(full, route));
   }
-
-  return routes;
+  return out;
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = getRoutes(APP_DIR);
-
+  const routes = ['', ...staticRoutes(APP_DIR), ...products.map((p) => `/products/${p.slug}`)];
   return routes.map((route) => ({
-    url: `${BASE_URL}${route === '' ? '/' : route}`,
+    url: `${siteConfig.url}${route || '/'}`,
     lastModified: new Date(),
+    priority: route === '' ? 1 : route.startsWith('/products') || route === '/pricing' ? 0.8 : 0.5,
   }));
 }

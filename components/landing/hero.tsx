@@ -53,6 +53,7 @@ export function Hero() {
   const affiliation = activeAffiliations[0];
   return (
     <section className="relative -mt-16 overflow-hidden pt-16">
+      <div aria-hidden className="bg-mesh absolute inset-0" />
       <div aria-hidden className="bg-grain absolute inset-0 [mask-image:linear-gradient(to_bottom,#000,transparent_85%)]" />
       <RayBurst />
 
@@ -68,15 +69,15 @@ export function Hero() {
           </Reveal>
 
           <Reveal delay={0.06}>
-            <h1 className="mt-7 text-[2.6rem] font-semibold leading-[1.02] tracking-[-0.04em] text-foreground sm:text-6xl lg:text-[4.6rem]">
+            <h1 className="mt-7 font-display text-[2.7rem] font-extrabold leading-[1.0] tracking-[-0.045em] text-foreground sm:text-6xl lg:text-[4.75rem]">
               Sell, support and grow{' '}
-              <span className="relative whitespace-nowrap text-brand-800">
+              <span className="text-gradient-brand relative whitespace-nowrap">
                 inside WhatsApp.
                 <svg aria-hidden viewBox="0 0 300 18" preserveAspectRatio="none" className="absolute -bottom-2 left-0 h-3 w-full sm:-bottom-3 sm:h-4">
                   <path
                     d="M3 13 C 60 4, 140 3, 297 9"
                     fill="none"
-                    stroke="#4ade80"
+                    stroke="#bef264"
                     strokeWidth="6"
                     strokeLinecap="round"
                     className="draw-in is-in"
@@ -96,7 +97,7 @@ export function Hero() {
 
           <Reveal delay={0.18} className="mt-9 flex flex-col gap-3 sm:flex-row">
             <ButtonLink href={siteConfig.links.signup} size="xl" arrow className="rounded-full">
-              Start free
+              Start for free
             </ButtonLink>
             <ButtonLink href={siteConfig.links.bookDemo} size="xl" variant="outline" className="rounded-full">
               Book a demo
@@ -105,7 +106,7 @@ export function Hero() {
 
           <Reveal delay={0.24}>
             <ul className="mt-9 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-600">
-              {['Free Starter plan', 'Set up from your browser', affiliation ? affiliation.label : null]
+              {['Free WhatsApp API', '₹50 signup bonus', '300 free emails / day', affiliation ? affiliation.label : null]
                 .filter(Boolean)
                 .map((t) => (
                   <li key={t} className="flex items-center gap-1.5">

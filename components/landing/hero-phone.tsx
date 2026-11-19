@@ -116,14 +116,14 @@ export function HeroPhone() {
     >
       <motion.div style={{ rotateX: rx, rotateY: ry, transformStyle: 'preserve-3d' }}>
         {/* phone */}
-        <div className="relative rounded-[2.75rem] bg-[#0E2A22] p-[9px] shadow-[0_50px_90px_-35px_rgba(14,42,34,0.6),0_0_0_1px_rgba(255,255,255,0.08)_inset,0_0_0_2px_#0a1f19]">
+        <div className="relative rounded-[2.75rem] bg-[#0B2E23] p-[9px] shadow-[0_50px_90px_-35px_rgba(14,42,34,0.6),0_0_0_1px_rgba(255,255,255,0.08)_inset,0_0_0_2px_#0a1f19]">
           <span aria-hidden className="absolute -left-[3px] top-28 h-12 w-[3px] rounded-l bg-[#0a1f19]" />
           <span aria-hidden className="absolute -right-[3px] top-36 h-16 w-[3px] rounded-r bg-[#0a1f19]" />
           <div className="relative overflow-hidden rounded-[2.2rem] bg-[#EFEAE2]">
             {/* status bar */}
             <div className="flex items-center justify-between bg-[#0B5D3B] px-6 pb-1 pt-2.5 text-[10.5px] font-semibold text-white">
               <span>10:26</span>
-              <span aria-hidden className="h-[18px] w-[74px] rounded-full bg-[#0E2A22]" />
+              <span aria-hidden className="h-[18px] w-[74px] rounded-full bg-[#0B2E23]" />
               <span className="flex items-center gap-1">
                 <span className="flex items-end gap-px">
                   {[3, 5, 7, 9].map((h) => (

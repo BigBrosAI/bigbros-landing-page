@@ -1,7 +1,45 @@
 "use client";
 
-import { useEffect, useRef, useState } from 'react';
-import { useInView, useReducedMotion } from 'framer-motion';
+import { useEffect, useRef, useState, type RefObject } from 'react';
+import { useReducedMotion } from 'framer-motion';
+
+/**
+ * True while the element overlaps the viewport. IntersectionObserver plus a
+ * throttled scroll/resize position check, so it still works where the observer
+ * is slow or never fires its first callback.
+ */
+function useOnScreen(ref: RefObject<Element | null>) {
+  const [on, setOn] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const measure = () => {
+      const r = el.getBoundingClientRect();
+      setOn(r.bottom > 0 && r.top < window.innerHeight && r.width > 0);
+    };
+    const io = new IntersectionObserver(([e]) => setOn(e.isIntersecting));
+    io.observe(el);
+    let queued = false;
+    const onScroll = () => {
+      if (queued) return;
+      queued = true;
+      setTimeout(() => {
+        queued = false;
+        measure();
+      }, 120);
+    };
+    const first = setTimeout(measure, 0);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      io.disconnect();
+      clearTimeout(first);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, [ref]);
+  return on;
+}
 
 /**
  * A looping timeline clock (ms). Demos derive their whole UI from `t`, which
@@ -10,7 +48,7 @@ import { useInView, useReducedMotion } from 'framer-motion';
  */
 export function useClock<T extends Element = HTMLDivElement>(loopMs: number, finalT = loopMs - 1, stepMs = 50) {
   const ref = useRef<T>(null);
-  const inView = useInView(ref, { margin: '-5% 0px -5% 0px' });
+  const inView = useOnScreen(ref);
   const reduce = useReducedMotion();
   const [t, setT] = useState(0);
   const elapsed = useRef(0);

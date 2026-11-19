@@ -23,7 +23,7 @@ export const integrationList: Integration[] = [
 export function IntegrationGlyph({ it, className, color }: { it: Integration; className?: string; color?: string }) {
   if (it.brand) return <BrandIcon slug={it.brand} className={className} color={color} />;
   const Icon = it.icon!;
-  return <Icon className={cn(className, 'text-[#0E2A22]')} />;
+  return <Icon className={cn(className, 'text-[#0B2E23]')} />;
 }
 
 /* Illustrative event stream; `src` indexes integrationList. */

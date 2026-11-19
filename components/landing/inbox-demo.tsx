@@ -150,7 +150,7 @@ export function InboxDemo() {
         </ul>
 
         {/* open conversation */}
-        <div className="flex h-[18rem] min-w-0 flex-col bg-[#F7F5F0] sm:h-[22rem]">
+        <div className="flex h-[18rem] min-w-0 flex-col bg-[#F4F7F5] sm:h-[22rem]">
           <div className="flex items-center justify-between border-b border-border bg-card px-3 py-2">
             <div className="leading-tight">
               <p className="text-[12.5px] font-semibold">{conv.who}</p>

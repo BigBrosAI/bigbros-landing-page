@@ -1,343 +1,216 @@
-"use client";
-
-import { useState } from 'react';
+import type { Metadata } from 'next';
+import { Check, Mail, MessageSquareText, Minus } from 'lucide-react';
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Switch } from '@/components/ui/switch';
-import { Check, Send, Zap, Crown } from 'lucide-react';
-import Link from 'next/link';
-import { siteConfig } from '@/lib/site';
-import { motion } from 'framer-motion';
+import { PageHero } from '@/components/site/page-hero';
+import { Container, JsonLd } from '@/components/site/primitives';
+import { Reveal } from '@/components/site/reveal';
+import { Kicker } from '@/components/landing/kicker';
+import { ClosingCta } from '@/components/landing/sections';
+import { PlanCards } from '@/components/pricing/plan-cards';
+import { CountryRates } from '@/components/pricing/country-rates';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { comparison, metaRates, plans, pricingFaqs, terminology } from '@/lib/plans';
 
-const plans = {
-  monthly: [
-    {
-      name: "Starter",
-      price: "₹0",
-      originalPrice: null,
-      description: "Perfect for small businesses getting started",
-      icon: Send,
-      features: [
-        "100 messages/month",
-        "1 team member",
-        "Basic templates",
-        "Email support",
-        "Campaign analytics",
-        "Contact management"
-      ],
-      limitations: [
-        "No automation",
-        "No AI assistant",
-        "Basic reporting"
-      ],
-      cta: "Start free",
-      href: siteConfig.links.signup,
-      popular: false
-    },
-    {
-      name: "Growth",
-      price: "₹1500",
-      originalPrice: null,
-      description: "For growing businesses with advanced needs",
-      icon: Zap,
-      features: [
-        "5,000 messages/month",
-        "5 team members",
-        "AI template assistant",
-        "Basic automations",
-        "Priority support",
-        "Advanced analytics",
-        "Custom fields",
-        "Segmentation",
-        "A/B testing"
-      ],
-      limitations: [],
-      cta: "Start free trial",
-      href: siteConfig.links.signup,
-      popular: true
-    },
-    {
-      name: "Scale",
-      price: "₹3200",
-      originalPrice: null,
-      description: "For enterprises with high-volume campaigns",
-      icon: Crown,
-      features: [
-        "25,000 messages/month",
-        "Unlimited team members",
-        "Advanced automations",
-        "White-label options",
-        "Dedicated support",
-        "Custom integrations",
-        "Advanced flows",
-        "Multi-workspace",
-        "SSO & SAML",
-        "API access"
-      ],
-      limitations: [],
-      cta: "Talk to sales",
-      href: "/contact",
-      popular: false
-    }
-  ],
-  yearly: [
-    {
-      name: "Starter",
-      price: "₹0",
-      originalPrice: null,
-      description: "Perfect for small businesses getting started",
-      icon: Send,
-      features: [
-        "100 messages/month",
-        "1 team member",
-        "Basic templates",
-        "Email support",
-        "Campaign analytics",
-        "Contact management"
-      ],
-      limitations: [
-        "No automation",
-        "No AI assistant",
-        "Basic reporting"
-      ],
-      cta: "Start free",
-      href: siteConfig.links.signup,
-      popular: false
-    },
-    {
-      name: "Growth",
-      price: "₹1350",
-      originalPrice: "₹1500",
-      description: "For growing businesses with advanced needs",
-      icon: Zap,
-      features: [
-        "5,000 messages/month",
-        "5 team members",
-        "AI template assistant",
-        "Basic automations",
-        "Priority support",
-        "Advanced analytics",
-        "Custom fields",
-        "Segmentation",
-        "A/B testing"
-      ],
-      limitations: [],
-      cta: "Start free trial",
-      href: siteConfig.links.signup,
-      popular: true
-    },
-    {
-      name: "Scale",
-      price: "₹2880",
-      originalPrice: "₹3200",
-      description: "For enterprises with high-volume campaigns",
-      icon: Crown,
-      features: [
-        "25,000 messages/month",
-        "Unlimited team members",
-        "Advanced automations",
-        "White-label options",
-        "Dedicated support",
-        "Custom integrations",
-        "Advanced flows",
-        "Multi-workspace",
-        "SSO & SAML",
-        "API access"
-      ],
-      limitations: [],
-      cta: "Talk to sales",
-      href: "/contact",
-      popular: false
-    }
-  ]
+export const metadata: Metadata = {
+  title: 'Pricing — Simple, Transparent WhatsApp API Plans',
+  description:
+    'Start free with the WhatsApp Business API, a ₹50 signup bonus and 300 free emails a day. Basic ₹999/month, Pro ₹2,199/month, Enterprise custom. Save 10% yearly.',
+  alternates: { canonical: '/pricing' },
 };
 
 export default function PricingPage() {
-  const [isYearly, setIsYearly] = useState(false);
-  const currentPlans = isYearly ? plans.yearly : plans.monthly;
-
   return (
-    <main className="min-h-screen">
+    <>
       <Navbar />
+      <main className="overflow-x-clip">
+        <JsonLd
+          data={{
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: pricingFaqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+          }}
+        />
+        <PageHero
+          kicker="Transparent pricing"
+          title={
+            <>
+              Simple pricing. <span className="text-gradient-brand">No hidden fees.</span>
+            </>
+          }
+          subtitle="Start free, scale as you grow and cancel anytime. Platform fees are flat — WhatsApp messages are billed at Meta’s rates with no markup."
+          tight
+        />
 
-      <section className="py-24">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Simple, transparent{' '}
-                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  pricing
-                </span>
-              </h1>
-              <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Choose the perfect plan for your business. Upgrade or downgrade at any time.
-              </p>
-              <div className="flex items-center justify-center gap-4 mb-2">
-                <span className={`text-sm ${!isYearly ? 'text-foreground' : 'text-muted-foreground'}`}>
-                  Monthly
-                </span>
-                <Switch
-                  checked={isYearly}
-                  onCheckedChange={setIsYearly}
-                />
-                <span className={`text-sm ${isYearly ? 'text-foreground' : 'text-muted-foreground'}`}>
-                  Yearly
-                </span>
-                <Badge variant="secondary" className="ml-2">
-                  Save 10%
-                </Badge>
+        <section className="pb-20">
+          <Container>
+            <PlanCards />
+            <Reveal className="mt-6 grid gap-3 md:grid-cols-2">
+              <div className="flex items-center gap-3 rounded-2xl border border-border bg-card px-5 py-4">
+                <Mail className="h-5 w-5 shrink-0 text-brand-700" />
+                <p className="text-sm">
+                  <b>Email:</b> 300 free emails / day on every plan · ₹0.125 / email after
+                </p>
               </div>
-            </motion.div>
-          </div>
+              <div className="flex items-center gap-3 rounded-2xl border border-border bg-card px-5 py-4">
+                <MessageSquareText className="h-5 w-5 shrink-0 text-brand-700" />
+                <p className="text-sm">
+                  <b>SMS (coming soon):</b> OTP, alerts & promotions · ₹0.14–0.20 / SMS, volume based
+                </p>
+              </div>
+            </Reveal>
+          </Container>
+        </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {currentPlans.map((plan, index) => (
-              <motion.div
-                key={plan.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card className={`h-full relative ${plan.popular ? 'ring-2 ring-primary shadow-xl scale-105' : ''}`}>
-                  {plan.popular && (
-                    <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#25D366] text-white rounded-full px-4 py-1">
-                      Most Popular
-                    </Badge>
-                  )}
+        {/* Meta rates */}
+        <section className="forest relative overflow-hidden py-16 sm:py-20">
+          <div aria-hidden className="bg-grain-light absolute inset-0" />
+          <Container className="relative">
+            <Reveal>
+              <Kicker light>WhatsApp message rates · India</Kicker>
+            </Reveal>
+            <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {metaRates.map((r, i) => (
+                <Reveal as="li" key={r.label} delay={i * 0.06} className="rounded-2xl border border-white/10 bg-white/[0.05] p-5">
+                  <p className="text-sm font-medium text-white/60">{r.label}</p>
+                  <p className="mt-1 font-display text-3xl font-bold text-white">{r.value}</p>
+                  <p className="mt-1 text-[13px] text-white/55">{r.note}</p>
+                </Reveal>
+              ))}
+            </ul>
+            <p className="mt-4 text-[13px] text-white/50">Per delivered message. Charged by Meta, passed through without markup.</p>
+          </Container>
+        </section>
 
-                  <CardHeader className="text-center pb-8">
-                    <div className={`w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center ${plan.popular ? 'bg-[#25D366]/10' : 'bg-muted/50'}`}>
-                      <plan.icon className={`w-8 h-8 ${plan.popular ? 'text-[#25D366]' : 'text-muted-foreground'}`} />
-                    </div>
-                    <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                    <CardDescription>{plan.description}</CardDescription>
-
-                    <div className="mt-6">
-                      <div className="flex items-baseline justify-center gap-1">
-                        {plan.originalPrice && (
-                          <span className="text-lg text-muted-foreground line-through">
-                            {plan.originalPrice}
-                          </span>
-                        )}
-                        <span className={`text-5xl font-bold ${plan.popular ? 'text-primary' : ''}`}>
-                          {plan.price === '₹0' ? 'Free' : plan.price}
+        {/* comparison */}
+        <section className="py-20 sm:py-28">
+          <Container>
+            <div className="mx-auto max-w-2xl text-center">
+              <Reveal>
+                <Kicker className="justify-center">Compare plans</Kicker>
+              </Reveal>
+              <Reveal delay={0.05}>
+                <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-[2.75rem] sm:leading-[1.08]">Every feature, side by side.</h2>
+              </Reveal>
+            </div>
+            <Reveal className="mt-12 overflow-x-auto rounded-3xl border border-border bg-card shadow-card">
+              <table className="w-full min-w-[46rem] text-left text-sm">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="w-[34%] px-5 py-4 font-display text-base font-bold">Features</th>
+                    {plans.map((p) => (
+                      <th key={p.id} className={`px-4 py-4 text-center font-display text-base font-bold ${p.popular ? 'bg-brand-50 text-brand-900' : ''}`}>
+                        {p.name}
+                        <span className="block font-sans text-[12px] font-medium text-muted-foreground">
+                          {p.monthly === null ? 'Custom' : p.monthly === 0 ? 'Free' : `₹${p.monthly.toLocaleString('en-IN')}/mo`}
                         </span>
-                        {plan.price !== '₹0' && (
-                          <span className="text-muted-foreground">
-                            /{isYearly ? 'year' : 'month'}
-                          </span>
-                        )}
-                      </div>
-                      {plan.originalPrice && (
-                        <p className="text-sm text-[#25D366] mt-1 font-medium">
-                          Save ₹{parseInt(plan.originalPrice.replace('₹', '').replace(',', '')) - parseInt(plan.price.replace('₹', '').replace(',', ''))} per month
-                        </p>
-                      )}
-                    </div>
-                  </CardHeader>
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                {comparison.map((g) => (
+                  <tbody key={g.group}>
+                    <tr>
+                      <td colSpan={5} className="bg-muted/50 px-5 py-2.5 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-800">
+                        {g.group}
+                      </td>
+                    </tr>
+                    {g.rows.map((r) => (
+                      <tr key={r.label} className="border-t border-border">
+                        <td className="px-5 py-3.5">
+                          <span className="font-medium">{r.label}</span>
+                          {r.hint && <span className="block text-[12px] text-muted-foreground">{r.hint}</span>}
+                        </td>
+                        {r.values.map((v, i) => (
+                          <td key={i} className={`px-4 py-3.5 text-center ${plans[i].popular ? 'bg-brand-50/50' : ''}`}>
+                            {v === true ? (
+                              <Check className="mx-auto h-4 w-4 text-brand-600" aria-label="Included" />
+                            ) : v === false ? (
+                              <Minus className="mx-auto h-4 w-4 text-muted-foreground/50" aria-label="Not included" />
+                            ) : (
+                              <span className="text-[13px] text-ink-600">{v}</span>
+                            )}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                ))}
+              </table>
+            </Reveal>
+          </Container>
+        </section>
 
-                  <CardContent className="space-y-6">
-                    <Link href={plan.href}>
-                      <Button
-                        className={`w-full rounded-full ${plan.popular ? 'shadow-lg' : ''}`}
-                        variant={plan.popular ? "default" : "outline"}
-                        size="lg"
-                      >
-                        {plan.cta}
-                      </Button>
-                    </Link>
+        {/* country rates */}
+        <section className="border-t border-border bg-card/50 py-20 sm:py-28">
+          <Container className="grid grid-cols-1 gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16 [&>*]:min-w-0">
+            <div>
+              <Reveal>
+                <Kicker>Country-wise rates</Kicker>
+              </Reveal>
+              <Reveal delay={0.05}>
+                <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-[2.6rem] sm:leading-[1.08]">What a message costs, wherever your customers are.</h2>
+              </Reveal>
+              <Reveal delay={0.1}>
+                <p className="mt-5 text-lg leading-relaxed text-ink-600">
+                  Meta charges per delivered template message based on the recipient’s country. Service conversations are always free.
+                </p>
+              </Reveal>
+            </div>
+            <Reveal delay={0.1}>
+              <CountryRates />
+            </Reveal>
+          </Container>
+        </section>
 
-                    <div className="space-y-3">
-                      {plan.features.map((feature, featureIndex) => (
-                        <div key={featureIndex} className="flex items-center gap-3">
-                          <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                            <Check className="w-3 h-3 text-primary" />
-                          </div>
-                          <span className="text-sm">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+        {/* terminology */}
+        <section className="py-20 sm:py-28">
+          <Container>
+            <div className="max-w-2xl">
+              <Reveal>
+                <Kicker>Pricing terms</Kicker>
+              </Reveal>
+              <Reveal delay={0.05}>
+                <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-[2.6rem] sm:leading-[1.08]">WhatsApp pricing, made easy.</h2>
+              </Reveal>
+            </div>
+            <ul className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {terminology.map((t, i) => (
+                <Reveal as="li" key={t.title} delay={(i % 3) * 0.06} className="rounded-3xl border border-border bg-card p-6">
+                  <h3 className="text-lg font-bold tracking-tight">{t.title}</h3>
+                  <p className="mt-2 text-[15px] leading-relaxed text-ink-600">{t.body}</p>
+                </Reveal>
+              ))}
+            </ul>
+          </Container>
+        </section>
 
-          {/* Feature comparison */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="mt-20"
-          >
-            <Card>
-              <CardHeader className="text-center">
-                <CardTitle className="text-2xl">Compare all features</CardTitle>
-                <CardDescription>
-                  See what's included in each plan
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm">
-                    <thead>
-                      <tr className="border-b">
-                        <th className="text-left py-3 pr-4">Features</th>
-                        <th className="text-center py-3 px-4">Starter</th>
-                        <th className="text-center py-3 px-4">Growth</th>
-                        <th className="text-center py-3 px-4">Scale</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr className="border-b">
-                        <td className="py-3 pr-4">Monthly messages</td>
-                        <td className="text-center py-3 px-4">100</td>
-                        <td className="text-center py-3 px-4">5,000</td>
-                        <td className="text-center py-3 px-4">25,000</td>
-                      </tr>
-                      <tr className="border-b">
-                        <td className="py-3 pr-4">Team members</td>
-                        <td className="text-center py-3 px-4">1</td>
-                        <td className="text-center py-3 px-4">5</td>
-                        <td className="text-center py-3 px-4">Unlimited</td>
-                      </tr>
-                      <tr className="border-b">
-                        <td className="py-3 pr-4">AI template assistant</td>
-                        <td className="text-center py-3 px-4">-</td>
-                        <td className="text-center py-3 px-4"><Check className="w-4 h-4 text-primary mx-auto" /></td>
-                        <td className="text-center py-3 px-4"><Check className="w-4 h-4 text-primary mx-auto" /></td>
-                      </tr>
-                      <tr className="border-b">
-                        <td className="py-3 pr-4">Automation flows</td>
-                        <td className="text-center py-3 px-4">-</td>
-                        <td className="text-center py-3 px-4">Basic</td>
-                        <td className="text-center py-3 px-4">Advanced</td>
-                      </tr>
-                      <tr className="border-b">
-                        <td className="py-3 pr-4">API access</td>
-                        <td className="text-center py-3 px-4">-</td>
-                        <td className="text-center py-3 px-4">-</td>
-                        <td className="text-center py-3 px-4"><Check className="w-4 h-4 text-primary mx-auto" /></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
-
+        {/* FAQ */}
+        <section className="border-t border-border py-20 sm:py-28">
+          <Container className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+            <div>
+              <Reveal>
+                <Kicker>Pricing FAQ</Kicker>
+              </Reveal>
+              <Reveal delay={0.05}>
+                <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-[2.6rem] sm:leading-[1.08]">Questions about billing?</h2>
+              </Reveal>
+            </div>
+            <Reveal delay={0.1}>
+              <Accordion type="single" collapsible className="divide-y divide-border border-y border-border">
+                {pricingFaqs.map((f, i) => (
+                  <AccordionItem key={f.q} value={`q${i}`} className="border-0">
+                    <AccordionTrigger className="py-5 text-left text-[17px] font-semibold hover:no-underline">{f.q}</AccordionTrigger>
+                    <AccordionContent className="pb-5 text-[15px] leading-relaxed text-ink-600">{f.a}</AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </Reveal>
+          </Container>
+        </section>
+        <ClosingCta />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

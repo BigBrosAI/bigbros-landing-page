@@ -1,12 +1,15 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
-import { GeistSans } from 'geist/font/sans';
+import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 import { GeistMono } from 'geist/font/mono';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
 import { JsonLd } from '@/components/site/primitives';
 import { RevealObserver } from '@/components/site/reveal-observer';
 import { absoluteUrl, siteConfig } from '@/lib/site';
+
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
+const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-display', display: 'swap', weight: ['500', '600', '700', '800'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -46,15 +49,20 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#FAF9F5',
+  themeColor: '#F5F8F6',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jakarta.variable} ${GeistMono.variable}`}>
       <body className="font-sans antialiased">
         {/* Hide reveal targets before first paint; RevealObserver un-hides them on scroll. */}
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js-motion')" }} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "document.documentElement.classList.add('js-motion');setTimeout(function(){if(!window.__bbReveal)document.documentElement.classList.remove('js-motion')},2500)",
+          }}
+        />
         <JsonLd
           data={[
             {
