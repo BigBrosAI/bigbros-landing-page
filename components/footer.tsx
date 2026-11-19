@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Logo } from '@/components/logo';
+import { BrandIcon } from '@/components/landing/brand-icon';
 import { Container, SmartLink } from '@/components/site/primitives';
 import { footerNav } from '@/lib/navigation';
 import { activeAffiliations, siteConfig } from '@/lib/site';
@@ -35,7 +36,7 @@ export function Footer() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1 text-xs font-medium text-white/70 transition-colors hover:text-white"
                     >
-                      <span className="h-1.5 w-1.5 rounded-full bg-brand-400" />
+                      <BrandIcon slug="nvidia" className="h-3.5 w-3.5" />
                       {a.label}
                     </a>
                   </li>

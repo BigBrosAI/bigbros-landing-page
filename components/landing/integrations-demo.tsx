@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Code2, Mail, Webhook } from 'lucide-react';
-import { BrandIcon, type BrandSlug } from '@/components/landing/brand-icon';
+import { BrandIcon, BrandTile, type BrandSlug } from '@/components/landing/brand-icon';
 import { progress, useClock } from '@/components/landing/use-clock';
 import { cn } from '@/lib/utils';
 
@@ -20,8 +20,8 @@ export const integrationList: Integration[] = [
   { name: 'REST API', note: 'Send from code', icon: Code2 },
 ];
 
-export function IntegrationGlyph({ it, className, color }: { it: Integration; className?: string; color?: string }) {
-  if (it.brand) return <BrandIcon slug={it.brand} className={className} color={color} />;
+export function IntegrationGlyph({ it, className, color, tile }: { it: Integration; className?: string; color?: string; tile?: number }) {
+  if (it.brand) return tile ? <BrandTile slug={it.brand} size={tile} /> : <BrandIcon slug={it.brand} className={className} color={color} />;
   const Icon = it.icon!;
   return <Icon className={cn(className, 'text-[#0B2E23]')} />;
 }
@@ -120,7 +120,7 @@ export function IntegrationHub() {
                     on ? 'shadow-[0_0_0_3px_rgba(74,222,128,0.8),0_0_36px_rgba(74,222,128,0.45)]' : 'shadow-[0_6px_20px_rgba(0,0,0,0.25)]'
                   )}
                 >
-                  <IntegrationGlyph it={it} className="h-6 w-6" />
+                  <IntegrationGlyph it={it} className="h-6 w-6" tile={48} />
                 </span>
                 <span className={cn('whitespace-nowrap text-[11.5px] font-medium transition-colors', on ? 'text-white' : 'text-white/60')}>
                   {it.name}
@@ -142,7 +142,7 @@ export function IntegrationHub() {
             )}
           >
             <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white">
-              <IntegrationGlyph it={it} className="h-4 w-4" />
+              <IntegrationGlyph it={it} className="h-4 w-4" tile={32} />
             </span>
             <span className="min-w-0 leading-tight">
               <span className="block truncate text-[13px] font-semibold text-white">{it.name}</span>
@@ -183,7 +183,7 @@ export function IntegrationHub() {
                   )}
                 >
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white">
-                    <IntegrationGlyph it={it} className="h-4 w-4" />
+                    <IntegrationGlyph it={it} className="h-4 w-4" tile={32} />
                   </span>
                   <span className="min-w-0 flex-1 leading-tight">
                     <span className="block text-[11px] font-medium text-white/50">{it.name}</span>

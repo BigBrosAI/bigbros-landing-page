@@ -6,12 +6,14 @@ import {
   FeatureBento,
   IntegrationsSection,
   PricingPreview,
+  DashboardSection,
   ProductChapters,
   ProductShowcase,
 } from '@/components/landing/sections';
 import { HowItWorks } from '@/components/landing/how-it-works';
 import { Faq } from '@/components/landing/faq';
 import { PromoMarquee } from '@/components/landing/promo-marquee';
+import { Testimonials } from '@/components/landing/testimonials';
 
 export default function HomePage() {
   return (
@@ -20,11 +22,13 @@ export default function HomePage() {
       <main className="overflow-x-clip">
         <Hero />
         <PromoMarquee />
+        <DashboardSection />
         <ProductChapters />
         <IntegrationsSection />
         <ProductShowcase />
         <FeatureBento />
         <HowItWorks />
+        <Testimonials />
         <PricingPreview />
         <Faq />
         <ClosingCta />

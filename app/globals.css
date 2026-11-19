@@ -262,6 +262,11 @@
 @keyframes bb-track-right { from { transform: translateX(-100%); } to { transform: translateX(0); } }
 .animate-marquee-left { animation: bb-track-left 45s linear infinite; }
 .animate-marquee-right { animation: bb-track-right 60s linear infinite; }
+@keyframes bb-drift-up { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+@keyframes bb-drift-down { from { transform: translateY(-50%); } to { transform: translateY(0); } }
+.animate-drift-up { animation: bb-drift-up 40s linear infinite; }
+.animate-drift-down { animation: bb-drift-down 40s linear infinite; }
+.marquee-pause:hover .animate-drift-up, .marquee-pause:hover .animate-drift-down { animation-play-state: paused; }
 .marquee-pause:hover .animate-marquee,
 .marquee-pause:hover .animate-marquee-left,
 .marquee-pause:hover .animate-marquee-right { animation-play-state: paused; }
@@ -314,6 +319,6 @@
 @media (prefers-reduced-motion: reduce) {
   .js-motion [data-reveal] { opacity: 1; transform: none; filter: none; transition: none; }
   .draw-in { stroke-dashoffset: 0; }
-  .animate-marquee, .animate-marquee-left, .animate-marquee-right, .animate-float, .animate-soft-ping, .animate-dash, .typing-dot, .ring-sweep::before { animation: none !important; }
+  .animate-marquee, .animate-marquee-left, .animate-marquee-right, .animate-drift-up, .animate-drift-down, .animate-float, .animate-soft-ping, .animate-dash, .typing-dot, .ring-sweep::before { animation: none !important; }
   .travel { display: none; }
 }

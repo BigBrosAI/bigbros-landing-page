@@ -4,7 +4,7 @@ import { Footer } from '@/components/footer';
 import { PageHero } from '@/components/site/page-hero';
 import { ButtonLink, Container } from '@/components/site/primitives';
 import { Reveal } from '@/components/site/reveal';
-import { BrandIcon } from '@/components/landing/brand-icon';
+import { BrandTile } from '@/components/landing/brand-icon';
 import { IntegrationsSection, ClosingCta } from '@/components/landing/sections';
 import { integrations } from '@/lib/catalog';
 import { siteConfig } from '@/lib/site';
@@ -46,9 +46,13 @@ export default function IntegrationsPage() {
                   className="group flex flex-col rounded-3xl border border-border bg-card p-6 transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-lift"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-border bg-white shadow-sm">
-                      {it.brand ? <BrandIcon slug={it.brand} className="h-6 w-6" /> : it.icon ? <it.icon className="h-6 w-6 text-forest" /> : null}
-                    </span>
+                    {it.brand ? (
+                      <BrandTile slug={it.brand} size={48} />
+                    ) : it.icon ? (
+                      <span className="flex h-12 w-12 items-center justify-center rounded-[14px] border border-border bg-white shadow-sm">
+                        <it.icon className="h-6 w-6 text-forest" />
+                      </span>
+                    ) : null}
                     <span className="rounded-full bg-muted px-2.5 py-1 font-mono text-[10.5px] uppercase tracking-wider text-muted-foreground">{it.category}</span>
                   </div>
                   <h2 className="mt-5 text-lg font-bold tracking-tight">{it.name}</h2>

@@ -26,6 +26,7 @@ import { ProductCard } from '@/components/landing/product-card';
 import { PlanCards } from '@/components/pricing/plan-cards';
 import { cn } from '@/lib/utils';
 import { Kicker } from '@/components/landing/kicker';
+import { DashboardShowcase } from '@/components/landing/dashboard-showcase';
 import { BrandIcon, type BrandSlug } from '@/components/landing/brand-icon';
 
 /* ---------- shared bits ---------- */
@@ -41,6 +42,36 @@ function Heading({ children, className, light }: { children: React.ReactNode; cl
     >
       {children}
     </h2>
+  );
+}
+
+/* ---------- dashboard showcase ---------- */
+
+export function DashboardSection() {
+  return (
+    <section id="dashboard" className="relative scroll-mt-24 overflow-hidden pb-8 pt-24 sm:pt-32">
+      <div aria-hidden className="bg-mesh absolute inset-x-0 top-0 h-[38rem] opacity-70" />
+      <Container className="relative">
+        <div className="mx-auto max-w-3xl text-center">
+          <Reveal>
+            <Kicker className="justify-center">Inside the dashboard</Kicker>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <Heading>
+              One dashboard for every conversation <span className="text-muted-foreground">— from first hello to paid order.</span>
+            </Heading>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-ink-600">
+              Live chat, campaigns, templates and chatbot flows — the same screens your team uses every day.
+            </p>
+          </Reveal>
+        </div>
+        <Reveal delay={0.12} y={40} className="mt-12">
+          <DashboardShowcase />
+        </Reveal>
+      </Container>
+    </section>
   );
 }
 
@@ -122,16 +153,13 @@ export function ProductChapters() {
   return (
     <section aria-labelledby="platform-heading" className="relative">
       <Container>
-        <div className="mx-auto max-w-3xl pt-24 text-center sm:pt-32">
+        <div className="mx-auto max-w-3xl pt-16 text-center sm:pt-24">
           <Reveal>
             <Kicker className="justify-center">The platform</Kicker>
           </Reveal>
           <Reveal delay={0.05}>
             <Heading>
-              <span id="platform-heading">
-                One dashboard for every conversation{' '}
-                <span className="text-muted-foreground">— from first hello to paid order.</span>
-              </span>
+              <span id="platform-heading">Built for how teams actually sell on WhatsApp.</span>
             </Heading>
           </Reveal>
         </div>

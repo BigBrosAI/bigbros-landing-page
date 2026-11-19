@@ -13,6 +13,7 @@ export const brandColors = {
   instagram: '#E4405F',
   razorpay: '#0C2451',
   android: '#34A853',
+  nvidia: '#76B900',
 } as const;
 
 export type BrandSlug = keyof typeof brandColors;
@@ -46,5 +47,32 @@ export function BrandIcon({
         mask: `${url} center / contain no-repeat`,
       }}
     />
+  );
+}
+
+/** Tile background for app-icon style logos; Meta and Google Sheets read best on white. */
+const tileBg: Partial<Record<BrandSlug, string>> = {
+  shopify: '#5E8E3E',
+  woocommerce: '#7F54B3',
+  whatsapp: '#25D366',
+  razorpay: '#0C2451',
+  instagram: 'linear-gradient(45deg,#F58529,#DD2A7B 55%,#8134AF)',
+  nvidia: '#000000',
+};
+const glyphScale: Partial<Record<BrandSlug, string>> = { woocommerce: 'w-[72%] h-[72%]' };
+
+/**
+ * App-icon style logo: brand-coloured rounded square with a white glyph, or a
+ * white tile with the brand-coloured glyph for marks that need it.
+ */
+export function BrandTile({ slug, className, size = 40 }: { slug: BrandSlug; className?: string; size?: number }) {
+  const bg = tileBg[slug];
+  return (
+    <span
+      className={cn('relative inline-flex shrink-0 items-center justify-center overflow-hidden shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_1px_2px_rgba(0,0,0,0.12)]', !bg && 'bg-white ring-1 ring-black/5', className)}
+      style={{ width: size, height: size, borderRadius: size * 0.28, background: bg }}
+    >
+      <BrandIcon slug={slug} color={bg ? '#fff' : undefined} className={glyphScale[slug] ?? 'h-[52%] w-[52%]'} />
+    </span>
   );
 }

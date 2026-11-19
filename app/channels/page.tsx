@@ -6,7 +6,7 @@ import { Footer } from '@/components/footer';
 import { PageHero } from '@/components/site/page-hero';
 import { Container } from '@/components/site/primitives';
 import { Reveal } from '@/components/site/reveal';
-import { BrandIcon } from '@/components/landing/brand-icon';
+import { BrandIcon, BrandTile } from '@/components/landing/brand-icon';
 import { ClosingCta } from '@/components/landing/sections';
 import { channels } from '@/lib/catalog';
 import { siteConfig } from '@/lib/site';
@@ -64,9 +64,13 @@ export default function ChannelsPage() {
               >
                 <div>
                   <div className="flex items-center gap-3">
-                    <span className="flex h-14 w-14 items-center justify-center rounded-2xl border border-border bg-white shadow-sm">
-                      {c.brand ? <BrandIcon slug={c.brand} className="h-7 w-7" /> : <c.icon className="h-7 w-7 text-brand-700" />}
-                    </span>
+                    {c.brand ? (
+                      <BrandTile slug={c.brand} size={56} />
+                    ) : (
+                      <span className="flex h-14 w-14 items-center justify-center rounded-2xl border border-border bg-white shadow-sm">
+                        <c.icon className="h-7 w-7 text-brand-700" />
+                      </span>
+                    )}
                     <div>
                       <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{c.name}</h2>
                       <span className={cn('mt-1 inline-flex items-center gap-1.5 text-[12px] font-semibold', c.status === 'Live' ? 'text-brand-700' : 'text-muted-foreground')}>

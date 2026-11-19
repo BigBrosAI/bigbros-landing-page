@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
-import { BrandIcon } from '@/components/landing/brand-icon';
+import { BrandIcon, BrandTile } from '@/components/landing/brand-icon';
 import type { Product } from '@/lib/catalog';
 import { cn } from '@/lib/utils';
 
 export function ProductGlyph({ p, className, size = 'md' }: { p: Product; className?: string; size?: 'md' | 'lg' }) {
+  if (p.brand) return <BrandTile slug={p.brand} size={size === 'lg' ? 56 : 44} className={className} />;
   return (
     <span
       className={cn(

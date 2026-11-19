@@ -1,5 +1,5 @@
 import { CheckCircle2 } from 'lucide-react';
-import { BrandIcon } from '@/components/landing/brand-icon';
+import { BrandIcon, BrandTile } from '@/components/landing/brand-icon';
 import { ButtonLink, Container } from '@/components/site/primitives';
 import { Reveal } from '@/components/site/reveal';
 import { HeroPhone } from '@/components/landing/hero-phone';
@@ -57,15 +57,27 @@ export function Hero() {
       <div aria-hidden className="bg-grain absolute inset-0 [mask-image:linear-gradient(to_bottom,#000,transparent_85%)]" />
       <RayBurst />
 
-      <Container className="relative grid items-center gap-14 pb-20 pt-12 sm:pt-16 lg:grid-cols-[1.08fr_0.92fr] lg:gap-8 lg:pb-28 lg:pt-20">
+      <Container className="relative grid items-center gap-14 pb-20 pt-12 sm:pt-16 lg:grid-cols-[0.95fr_1.05fr] lg:gap-6 lg:pb-28 lg:pt-20">
         <div>
-          <Reveal>
+          <Reveal className="flex flex-wrap items-center gap-2">
             <p className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50/80 py-1 pl-1 pr-3 text-[13px] font-medium text-brand-800">
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white shadow-sm">
-                <BrandIcon slug="whatsapp" className="h-3.5 w-3.5" />
-              </span>
-              Official WhatsApp Business Platform
+              <BrandTile slug="whatsapp" size={24} className="rounded-full" />
+              Official WhatsApp Business API
             </p>
+            {affiliation && (
+              <a
+                href={affiliation.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card py-1 pl-1 pr-3 text-[13px] font-medium text-ink-600 shadow-sm transition-colors hover:text-foreground"
+              >
+                <span className="flex h-6 items-center gap-1 rounded-full bg-black px-2">
+                  <BrandIcon slug="nvidia" className="h-3.5 w-3.5" />
+                  <span className="text-[10.5px] font-bold tracking-wide text-white">NVIDIA</span>
+                </span>
+                Backed by NVIDIA Inception
+              </a>
+            )}
           </Reveal>
 
           <Reveal delay={0.06}>
@@ -106,8 +118,7 @@ export function Hero() {
 
           <Reveal delay={0.24}>
             <ul className="mt-9 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-600">
-              {['Free WhatsApp API', '₹50 signup bonus', '300 free emails / day', affiliation ? affiliation.label : null]
-                .filter(Boolean)
+              {['Free WhatsApp API', '₹50 signup bonus', '300 free emails / day', 'No setup fees']
                 .map((t) => (
                   <li key={t} className="flex items-center gap-1.5">
                     <CheckCircle2 className="h-4 w-4 text-brand-600" /> {t}
