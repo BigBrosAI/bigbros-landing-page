@@ -11,7 +11,6 @@ import {
   Megaphone,
   Radio,
   ShieldCheck,
-  ShoppingBag,
   Users,
   Workflow,
 } from 'lucide-react';
@@ -24,6 +23,7 @@ import { IntegrationHub } from '@/components/landing/integrations-demo';
 import { siteConfig } from '@/lib/site';
 import { cn } from '@/lib/utils';
 import { Kicker } from '@/components/landing/kicker';
+import { BrandIcon, type BrandSlug } from '@/components/landing/brand-icon';
 
 /* ---------- shared bits ---------- */
 
@@ -43,7 +43,8 @@ function Heading({ children, className, light }: { children: React.ReactNode; cl
 
 /* ---------- capability marquee ---------- */
 
-const capabilities = [
+const capabilities: { label: string; icon?: React.ComponentType<{ className?: string }>; brand?: BrandSlug }[] = [
+  { label: 'WhatsApp Business API', brand: 'whatsapp' },
   { label: 'Live chat inbox', icon: Inbox },
   { label: 'Agent assignment', icon: Users },
   { label: 'Broadcast campaigns', icon: Radio },
@@ -51,8 +52,10 @@ const capabilities = [
   { label: 'Template approvals', icon: FileCheck2 },
   { label: 'AI chatbot flows', icon: Bot },
   { label: 'WhatsApp Pay', icon: CreditCard },
-  { label: 'Shopify & WooCommerce', icon: ShoppingBag },
-  { label: 'Meta click-to-WhatsApp ads', icon: Megaphone },
+  { label: 'Shopify', brand: 'shopify' },
+  { label: 'WooCommerce', brand: 'woocommerce' },
+  { label: 'Google Sheets', brand: 'googlesheets' },
+  { label: 'Meta click-to-WhatsApp ads', brand: 'meta' },
   { label: 'Email follow-ups', icon: Mail },
 ];
 
@@ -68,7 +71,7 @@ export function CapabilityMarquee() {
               aria-hidden={i >= capabilities.length}
               className="flex shrink-0 items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-medium text-ink-600"
             >
-              <c.icon className="h-4 w-4 text-brand-700" />
+              {c.brand ? <BrandIcon slug={c.brand} /> : c.icon ? <c.icon className="h-4 w-4 text-brand-700" /> : null}
               {c.label}
             </li>
           ))}
@@ -107,7 +110,11 @@ function Chapter({
       <div
         className={cn(
           'grid items-center gap-12',
-          stacked ? 'lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-x-16 lg:gap-y-12' : 'lg:grid-cols-2 lg:gap-20',
+          stacked
+            ? 'lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-x-16 lg:gap-y-12'
+            : flip
+              ? 'lg:grid-cols-[1.18fr_0.82fr] lg:gap-16'
+              : 'lg:grid-cols-[0.82fr_1.18fr] lg:gap-16',
           flip && 'lg:[&>*:first-child]:order-2'
         )}
       >

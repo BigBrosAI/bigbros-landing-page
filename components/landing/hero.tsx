@@ -1,4 +1,5 @@
-import { Bot, CheckCircle2, Megaphone, UserRoundCheck } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
+import { BrandIcon } from '@/components/landing/brand-icon';
 import { ButtonLink, Container } from '@/components/site/primitives';
 import { Reveal } from '@/components/site/reveal';
 import { HeroPhone } from '@/components/landing/hero-phone';
@@ -48,34 +49,6 @@ function RayBurst() {
   );
 }
 
-function FloatChip({
-  icon: Icon,
-  title,
-  detail,
-  className,
-  delay,
-}: {
-  icon: React.ComponentType<{ className?: string }>;
-  title: string;
-  detail: string;
-  className: string;
-  delay: number;
-}) {
-  return (
-    <Reveal delay={delay} y={12} className={className}>
-      <div className="animate-float flex items-center gap-2.5 rounded-2xl border border-border/80 bg-card/95 px-3 py-2.5 shadow-lift backdrop-blur" style={{ animationDelay: `${delay * 2}s` }}>
-        <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
-          <Icon className="h-4 w-4" />
-        </span>
-        <span className="leading-tight">
-          <span className="block text-[12.5px] font-semibold text-foreground">{title}</span>
-          <span className="block text-[11.5px] text-muted-foreground">{detail}</span>
-        </span>
-      </div>
-    </Reveal>
-  );
-}
-
 export function Hero() {
   const affiliation = activeAffiliations[0];
   return (
@@ -87,8 +60,8 @@ export function Hero() {
         <div>
           <Reveal>
             <p className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50/80 py-1 pl-1 pr-3 text-[13px] font-medium text-brand-800">
-              <span className="rounded-full bg-brand-800 px-2 py-0.5 font-mono text-[10.5px] uppercase tracking-wider text-white">
-                API
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white shadow-sm">
+                <BrandIcon slug="whatsapp" className="h-3.5 w-3.5" />
               </span>
               Official WhatsApp Business Platform
             </p>
@@ -143,31 +116,10 @@ export function Hero() {
           </Reveal>
         </div>
 
-        <div className="relative" aria-label="Illustrative product demo of a WhatsApp conversation">
+        <div aria-label="Illustrative product demo of a WhatsApp conversation" className="relative lg:pl-6">
           <Reveal delay={0.2} y={36}>
             <HeroPhone />
           </Reveal>
-          <FloatChip
-            icon={UserRoundCheck}
-            title="Assigned to Priya"
-            detail="Support · round-robin"
-            delay={0.7}
-            className="absolute -left-2 top-16 hidden sm:block lg:-left-10"
-          />
-          <FloatChip
-            icon={Megaphone}
-            title="Festive sale broadcast"
-            detail="Template approved · sending"
-            delay={0.9}
-            className="absolute -right-2 top-1/2 hidden sm:block lg:-right-6"
-          />
-          <FloatChip
-            icon={Bot}
-            title="AI flow resolved 3 chats"
-            detail="Handed 1 to a human"
-            delay={1.1}
-            className="absolute -left-2 bottom-10 hidden sm:block lg:-left-14"
-          />
         </div>
       </Container>
     </section>
