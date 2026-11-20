@@ -8,7 +8,8 @@ const DASHBOARD_URL = (process.env.NEXT_PUBLIC_DASHBOARD_URL || 'https://dashboa
 export const siteConfig = {
   name: 'BigBrosAI',
   legalName: 'BIGBROS AI Pvt. Ltd.',
-  url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://bigbrosai.com').replace(/\/$/, ''),
+  /** Primary host — the live site serves on www. Override with NEXT_PUBLIC_SITE_URL. */
+  url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.bigbrosai.com').replace(/\/$/, ''),
   tagline: 'One Platform. Every Business Conversation.',
   description:
     'Build meaningful customer relationships with powerful WhatsApp Business APIs, intelligent automation, AI-driven conversations, and unified business messaging.',

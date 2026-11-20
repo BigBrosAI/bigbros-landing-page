@@ -1287,3 +1287,68 @@ function FlowsScreen({ t }: { t: number }) {
     </div>
   );
 }
+
+/* ---------- Standalone flow editor (used by the chatbot sections) ---------- */
+
+const FW = W - SIDEBAR; // editor area of the dashboard canvas
+const FH = H - CHROME - HEADER;
+const FLOW_LOOP = SCENE;
+
+/**
+ * The dashboard's flow editor on its own, scaled to fit — same Blocks library,
+ * top bar, nodes and drag-and-drop animation as the Flows screen above.
+ */
+export function FlowEditorDemo() {
+  const { ref, t } = useClock(FLOW_LOOP, FLOW_LOOP - 900, 50);
+  const box = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(1);
+  useEffect(() => {
+    const el = box.current;
+    if (!el) return;
+    const ro = new ResizeObserver(([e]) => setScale(Math.min(1, e.contentRect.width / FW)));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+  const way = paths[4].map((w) => ({ ...w, x: w.x - SIDEBAR, y: w.y - CHROME - HEADER }));
+  const cur = [...way].reverse().find((w) => t >= w.at) ?? way[0];
+  const clicking = way.some((w) => w.click && t >= w.at + 650 && t < w.at + 1050);
+
+  return (
+    <div ref={ref}>
+      <div ref={box} className="frame-shine relative w-full rounded-2xl" style={{ height: FH * scale }}>
+        <div
+          className="absolute left-0 top-0 origin-top-left overflow-hidden rounded-2xl border border-black/10 bg-white text-[13px] text-slate-900 shadow-lift [font-family:var(--font-outfit),sans-serif]"
+          style={{ width: FW, height: FH, transform: `scale(${scale})` }}
+        >
+          <div className="relative h-full">
+            <FlowsScreen t={t} />
+          </div>
+          <motion.div aria-hidden className="pointer-events-none absolute left-0 top-0 z-50" animate={{ x: cur.x, y: cur.y }} transition={{ duration: 0.85, ease: [0.45, 0, 0.2, 1] }}>
+            <AnimatePresence>
+              {clicking && (
+                <motion.span initial={{ scale: 0.3, opacity: 0.6 }} animate={{ scale: 1.6, opacity: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.45 }} className="absolute -left-4 -top-4 h-8 w-8 rounded-full bg-[#16A34A]/50" />
+              )}
+            </AnimatePresence>
+            <svg viewBox="0 0 24 24" className="h-6 w-6 drop-shadow-[0_2px_3px_rgba(0,0,0,0.35)]">
+              <path d="M4 2.5l15 9.2-6.6 1.5 3.9 7.3-2.7 1.4-3.9-7.3L4.9 19z" fill="#101828" stroke="#fff" strokeWidth="1.4" strokeLinejoin="round" />
+            </svg>
+          </motion.div>
+          <div className="pointer-events-none absolute right-5 top-16 z-20">
+            <AnimatePresence>
+              {[
+                { at: 5000, text: 'Flow is live' },
+                { at: 6400, text: 'Changes saved' },
+              ]
+                .filter((x) => t >= x.at && t < x.at + 2400)
+                .map((x) => (
+                  <motion.div key={x.text} initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="flex items-center gap-2 whitespace-nowrap rounded-xl bg-slate-900 px-4 py-2.5 text-[13px] font-medium text-white shadow-lg">
+                    <CircleCheck className="h-4 w-4 text-green-400" /> {x.text}
+                  </motion.div>
+                ))}
+            </AnimatePresence>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

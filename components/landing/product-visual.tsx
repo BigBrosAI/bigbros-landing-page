@@ -2,7 +2,7 @@ import type { ProductVisual as V } from '@/lib/catalog';
 import { HeroPhone } from '@/components/landing/hero-phone';
 import { InboxDemo } from '@/components/landing/inbox-demo';
 import { CampaignDemo } from '@/components/landing/campaign-demo';
-import { FlowDemo } from '@/components/landing/flow-demo';
+import { FlowEditorDemo } from '@/components/landing/dashboard-showcase';
 import { AdsVisual, AnalyticsVisual, ApiVisual, EmailVisual, FormsVisual, JourneyVisual } from '@/components/landing/product-visuals';
 
 export function ProductVisual({ visual }: { visual: V }) {
@@ -14,7 +14,7 @@ export function ProductVisual({ visual }: { visual: V }) {
     case 'campaign':
       return <CampaignDemo />;
     case 'flow':
-      return <FlowDemo />;
+      return <FlowEditorDemo />;
     case 'api':
       return <ApiVisual />;
     case 'ads':

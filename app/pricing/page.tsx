@@ -10,20 +10,23 @@ import { ClosingCta } from '@/components/landing/sections';
 import { PlanCards } from '@/components/pricing/plan-cards';
 import { CountryRates } from '@/components/pricing/country-rates';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { pageMetadata } from '@/lib/seo';
+import { softwareApplicationLd } from '@/lib/structured-data';
 import { comparison, metaRates, plans, pricingFaqs, terminology } from '@/lib/plans';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Pricing — Simple, Transparent WhatsApp API Plans',
   description:
     'Start free with the WhatsApp Business API, a ₹50 signup bonus and 300 free emails a day. Basic ₹999/month, Pro ₹2,199/month, Enterprise custom. Save 10% yearly.',
-  alternates: { canonical: '/pricing' },
-};
+  path: '/pricing',
+});
 
 export default function PricingPage() {
   return (
     <>
       <Navbar />
       <main className="overflow-x-clip">
+        <JsonLd data={softwareApplicationLd()} />
         <JsonLd
           data={{
             '@context': 'https://schema.org',

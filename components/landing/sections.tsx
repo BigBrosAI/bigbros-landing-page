@@ -18,7 +18,6 @@ import { ButtonLink, Container, SmartLink } from '@/components/site/primitives';
 import { Reveal } from '@/components/site/reveal';
 import { InboxDemo } from '@/components/landing/inbox-demo';
 import { CampaignDemo } from '@/components/landing/campaign-demo';
-import { FlowDemo } from '@/components/landing/flow-demo';
 import { IntegrationHub } from '@/components/landing/integrations-demo';
 import { siteConfig } from '@/lib/site';
 import { products } from '@/lib/catalog';
@@ -26,7 +25,7 @@ import { ProductCard } from '@/components/landing/product-card';
 import { PlanCards } from '@/components/pricing/plan-cards';
 import { cn } from '@/lib/utils';
 import { Kicker } from '@/components/landing/kicker';
-import { DashboardShowcase } from '@/components/landing/dashboard-showcase';
+import { DashboardShowcase, FlowEditorDemo } from '@/components/landing/dashboard-showcase';
 import { BrandIcon, BrandTile, type BrandSlug } from '@/components/landing/brand-icon';
 
 /* ---------- shared bits ---------- */
@@ -208,7 +207,7 @@ export function ProductChapters() {
             'AI replies grounded in your own content',
             'Save answers to contacts or Google Sheets',
           ]}
-          demo={<FlowDemo />}
+          demo={<FlowEditorDemo />}
           stacked
         />
       </Container>

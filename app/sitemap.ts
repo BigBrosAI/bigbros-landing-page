@@ -6,7 +6,7 @@ import { siteConfig } from '@/lib/site';
 
 const APP_DIR = path.join(process.cwd(), 'app');
 
-/** Every static page under /app, plus one entry per product page. */
+/** Every static page under /app (skipping dynamic and private folders). */
 function staticRoutes(dir: string, base = ''): string[] {
   const out: string[] = [];
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -19,11 +19,21 @@ function staticRoutes(dir: string, base = ''): string[] {
   return out;
 }
 
+function meta(route: string): Pick<MetadataRoute.Sitemap[number], 'priority' | 'changeFrequency'> {
+  if (route === '') return { priority: 1, changeFrequency: 'weekly' };
+  if (route === '/pricing' || route === '/products') return { priority: 0.9, changeFrequency: 'weekly' };
+  if (route.startsWith('/products/')) return { priority: 0.8, changeFrequency: 'monthly' };
+  if (route.startsWith('/legal/')) return { priority: 0.3, changeFrequency: 'yearly' };
+  if (route === '/blog' || route === '/changelog') return { priority: 0.6, changeFrequency: 'weekly' };
+  return { priority: 0.6, changeFrequency: 'monthly' };
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date();
   const routes = ['', ...staticRoutes(APP_DIR), ...products.map((p) => `/products/${p.slug}`)];
-  return routes.map((route) => ({
+  return Array.from(new Set(routes)).map((route) => ({
     url: `${siteConfig.url}${route || '/'}`,
-    lastModified: new Date(),
-    priority: route === '' ? 1 : route.startsWith('/products') || route === '/pricing' ? 0.8 : 0.5,
+    lastModified,
+    ...meta(route),
   }));
 }

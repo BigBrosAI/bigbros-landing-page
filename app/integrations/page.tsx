@@ -8,13 +8,14 @@ import { BrandTile } from '@/components/landing/brand-icon';
 import { IntegrationsSection, ClosingCta } from '@/components/landing/sections';
 import { integrations } from '@/lib/catalog';
 import { siteConfig } from '@/lib/site';
+import { pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Integrations — Shopify, WooCommerce, Google Sheets, Meta & more',
   description:
     'Connect BigBrosAI to Shopify, WooCommerce, Google Sheets, Meta ads, WhatsApp Pay and Razorpay — or build your own with the REST API and webhooks.',
-  alternates: { canonical: '/integrations' },
-};
+  path: '/integrations',
+});
 
 export default function IntegrationsPage() {
   return (

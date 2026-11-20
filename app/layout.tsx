@@ -31,23 +31,32 @@ export const metadata: Metadata = {
     'omnichannel business messaging',
   ],
   authors: [{ name: siteConfig.legalName }],
-  icons: { icon: '/favicon.png', apple: '/logo.png' },
-  alternates: { canonical: '/' },
+  creator: siteConfig.legalName,
+  publisher: siteConfig.legalName,
+  category: 'technology',
+  icons: { icon: [{ url: '/favicon.png', type: 'image/png' }], shortcut: '/favicon.ico', apple: '/favicon.png' },
   openGraph: {
     type: 'website',
     siteName: siteConfig.name,
-    url: siteConfig.url,
+    locale: 'en_IN',
+    url: '/',
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
-    images: [{ url: '/logo.png', width: 2131, height: 631, alt: siteConfig.name }],
   },
   twitter: {
     card: 'summary_large_image',
+    site: '@bigbrosai',
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
-    images: ['/logo.png'],
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 },
+  },
+  // Google Search Console: set NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION to the HTML-tag token.
+  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } : undefined,
+  formatDetection: { telephone: false, email: false, address: false },
 };
 
 export const viewport: Viewport = {
@@ -70,17 +79,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {
               '@context': 'https://schema.org',
               '@type': 'Organization',
+              '@id': `${siteConfig.url}/#organization`,
               name: siteConfig.name,
               legalName: siteConfig.legalName,
               url: siteConfig.url,
-              logo: absoluteUrl('/logo.png'),
+              logo: { '@type': 'ImageObject', url: absoluteUrl('/favicon.png'), width: 800, height: 800 },
+              image: absoluteUrl('/logo.png'),
               email: siteConfig.email,
+              sameAs: siteConfig.social.filter((s) => s.slug !== 'whatsapp').map((s) => s.href),
+              contactPoint: [{ '@type': 'ContactPoint', contactType: 'customer support', email: siteConfig.email, availableLanguage: ['English', 'Hindi'] }],
             },
             {
               '@context': 'https://schema.org',
               '@type': 'WebSite',
+              '@id': `${siteConfig.url}/#website`,
               name: siteConfig.name,
               url: siteConfig.url,
+              inLanguage: 'en-IN',
+              publisher: { '@id': `${siteConfig.url}/#organization` },
             },
           ]}
         />

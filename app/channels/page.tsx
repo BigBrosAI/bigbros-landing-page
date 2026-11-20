@@ -10,14 +10,15 @@ import { BrandIcon, BrandTile } from '@/components/landing/brand-icon';
 import { ClosingCta } from '@/components/landing/sections';
 import { channels } from '@/lib/catalog';
 import { siteConfig } from '@/lib/site';
+import { pageMetadata } from '@/lib/seo';
 import { cn } from '@/lib/utils';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Channels — WhatsApp, Email, SMS, RCS & Instagram',
   description:
     'BigBrosAI brings WhatsApp and Email together in one dashboard today, with SMS, RCS and Instagram DM on the way.',
-  alternates: { canonical: '/channels' },
-};
+  path: '/channels',
+});
 
 export default function ChannelsPage() {
   return (

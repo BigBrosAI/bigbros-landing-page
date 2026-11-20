@@ -9,13 +9,14 @@ import { ClosingCta } from '@/components/landing/sections';
 import { PromoMarquee } from '@/components/landing/promo-marquee';
 import { productGroups, products } from '@/lib/catalog';
 import { siteConfig } from '@/lib/site';
+import { pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Products — WhatsApp API, Inbox, Chatbots, Ads, Payments & Email',
   description:
     'Every BigBrosAI product in one place: free WhatsApp Business API, broadcasts, shared inbox, AI chatbot builder, automation, WhatsApp Forms, payments, click-to-WhatsApp ads, Email API and analytics.',
-  alternates: { canonical: '/products' },
-};
+  path: '/products',
+});
 
 export default function ProductsPage() {
   return (
