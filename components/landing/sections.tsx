@@ -27,7 +27,7 @@ import { PlanCards } from '@/components/pricing/plan-cards';
 import { cn } from '@/lib/utils';
 import { Kicker } from '@/components/landing/kicker';
 import { DashboardShowcase } from '@/components/landing/dashboard-showcase';
-import { BrandIcon, type BrandSlug } from '@/components/landing/brand-icon';
+import { BrandIcon, BrandTile, type BrandSlug } from '@/components/landing/brand-icon';
 
 /* ---------- shared bits ---------- */
 
@@ -221,10 +221,11 @@ export function ProductChapters() {
 export function IntegrationsSection() {
   return (
     <section id="integrations" className="forest relative scroll-mt-16 overflow-hidden py-24 sm:py-32">
+      <div aria-hidden className="rule-shine absolute inset-x-0 top-0" />
       <div aria-hidden className="bg-grain-light absolute inset-0" />
       <div
         aria-hidden
-        className="absolute -left-40 top-0 h-[40rem] w-[40rem] rounded-full bg-[radial-gradient(closest-side,rgba(34,197,94,0.18),transparent)]"
+        className="absolute -left-40 top-0 h-[40rem] w-[40rem] rounded-full bg-brand-500/10 blur-3xl"
       />
       <Container className="relative">
         <div className="max-w-2xl">
@@ -253,19 +254,21 @@ export function IntegrationsSection() {
 
 /* ---------- bento of supporting features ---------- */
 
-const extras = [
+const extras: { icon: React.ComponentType<{ className?: string }>; title: string; body: string; span: string; brands?: BrandSlug[] }[] = [
   {
     icon: LayoutTemplate,
     title: 'Template studio',
+    brands: ['whatsapp', 'meta'],
     body: 'Create marketing, utility and authentication templates with media and buttons, then track their review status.',
     span: 'lg:col-span-2',
   },
   { icon: ShieldCheck, title: 'Roles & approvals', body: 'Decide who can create, approve and send — per workspace.', span: '' },
-  { icon: Megaphone, title: 'Meta ads', body: 'Run click-to-WhatsApp ads and route every lead straight into the inbox.', span: '' },
-  { icon: Mail, title: 'Email', body: 'Follow a WhatsApp message with a detailed email from the same contact list.', span: '' },
+  { icon: Megaphone, title: 'Meta ads', body: 'Run click-to-WhatsApp ads and route every lead straight into the inbox.', span: '', brands: ['meta', 'facebook', 'instagram'] },
+  { icon: Mail, title: 'Email', body: 'Follow a WhatsApp message with a detailed email from the same contact list.', span: '', brands: ['gmail'] },
   {
     icon: BarChart3,
     title: 'Analytics',
+    brands: ['googlesheets'],
     body: 'Delivery, read and reply rates for every campaign, plus response times for every agent.',
     span: 'lg:col-span-2',
   },
@@ -299,7 +302,7 @@ export function FeatureBento() {
               key={f.title}
               delay={(i % 4) * 0.06}
               className={cn(
-                'group relative overflow-hidden rounded-3xl border border-border bg-card p-6 transition-[transform,box-shadow,border-color] duration-500 ease-out-expo hover:-translate-y-1 hover:border-brand-200 hover:shadow-lift',
+                'shine shine-soft shine-hover group relative overflow-hidden rounded-3xl border border-border bg-card p-6 transition-[transform,box-shadow,border-color] duration-500 ease-out-expo hover:-translate-y-1 hover:border-brand-200 hover:shadow-lift',
                 f.span
               )}
             >
@@ -310,6 +313,13 @@ export function FeatureBento() {
               <span className="relative flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-100 transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110">
                 <f.icon className="h-5 w-5" />
               </span>
+              {f.brands && (
+                <span className="absolute right-6 top-6 flex -space-x-1.5">
+                  {f.brands.map((b) => (
+                    <BrandTile key={b} slug={b} size={30} className="ring-2 ring-card" />
+                  ))}
+                </span>
+              )}
               <h3 className="relative mt-6 text-lg font-semibold tracking-tight">{f.title}</h3>
               <p className="relative mt-2 text-[15px] leading-relaxed text-ink-600">{f.body}</p>
             </Reveal>
@@ -387,7 +397,7 @@ export function ClosingCta() {
     <section className="py-24 sm:py-32">
       <Container>
         <Reveal y={30}>
-          <div className="relative overflow-hidden rounded-[2rem] bg-brand-800 px-6 py-16 text-center text-white sm:px-12 sm:py-24">
+          <div className="shine shine-soft relative overflow-hidden rounded-[2rem] bg-brand-800 px-6 py-16 text-center text-white sm:px-12 sm:py-24">
             <div aria-hidden className="bg-grain-light absolute inset-0" />
             <svg aria-hidden viewBox="0 0 400 400" className="absolute -bottom-40 -right-24 h-[30rem] w-[30rem] opacity-30">
               {[0, 1, 2, 3, 4].map((i) => (

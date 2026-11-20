@@ -38,6 +38,7 @@ export function PromoMarquee() {
   return (
     <section aria-label="Integrations and perks" className="marquee-pause forest relative overflow-hidden">
       <div aria-hidden className="bg-grain-light absolute inset-0 opacity-40" />
+      <div aria-hidden className="rule-shine" />
       <div className="relative border-b border-white/10 [mask-image:linear-gradient(to_right,transparent,#000_6%,#000_94%,transparent)]">
         <Track direction="right" duration={70}>
           {lane.map((c) => (

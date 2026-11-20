@@ -14,6 +14,10 @@ export const brandColors = {
   razorpay: '#0C2451',
   android: '#34A853',
   nvidia: '#76B900',
+  x: '#000000',
+  linkedin: '#0A66C2',
+  youtube: '#FF0000',
+  gmail: '#EA4335',
 } as const;
 
 export type BrandSlug = keyof typeof brandColors;
@@ -56,7 +60,7 @@ const tileBg: Partial<Record<BrandSlug, string>> = {
   woocommerce: '#7F54B3',
   whatsapp: '#25D366',
   razorpay: '#0C2451',
-  instagram: 'linear-gradient(45deg,#F58529,#DD2A7B 55%,#8134AF)',
+  instagram: '#E4405F',
   nvidia: '#000000',
 };
 const glyphScale: Partial<Record<BrandSlug, string>> = { woocommerce: 'w-[72%] h-[72%]' };

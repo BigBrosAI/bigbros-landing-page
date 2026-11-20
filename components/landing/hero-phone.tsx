@@ -94,7 +94,7 @@ export function HeroPhone({ showEvents = true }: { showEvents?: boolean }) {
                   12
                 </span>
               </span>
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(140deg,#C8B68E,#7A6A45)] text-[10px] font-bold text-white">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#8C7A52] text-[10px] font-bold text-white">
                 H&amp;L
               </span>
               <div className="min-w-0 flex-1 leading-tight">
@@ -249,7 +249,7 @@ export function HeroPhone({ showEvents = true }: { showEvents?: boolean }) {
 
 function IPhone({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative w-[19rem] max-w-[calc(100vw-2.5rem)] rounded-[3.1rem] bg-[linear-gradient(145deg,#5B5F66,#2B2E33_35%,#1B1D21_60%,#4A4E55)] p-[3px] shadow-[0_60px_100px_-40px_rgba(11,46,35,0.55),0_25px_40px_-20px_rgba(0,0,0,0.35)]">
+    <div className="relative w-[19rem] max-w-[calc(100vw-2.5rem)] rounded-[3.1rem] bg-[#2B2E33] p-[3px] shadow-[0_60px_100px_-40px_rgba(11,46,35,0.55),0_25px_40px_-20px_rgba(0,0,0,0.35)]">
       <span aria-hidden className="absolute -left-[3px] top-[6.5rem] h-7 w-[3px] rounded-l bg-[#3B3F45]" />
       <span aria-hidden className="absolute -left-[3px] top-[9rem] h-12 w-[3px] rounded-l bg-[#3B3F45]" />
       <span aria-hidden className="absolute -left-[3px] top-[12.6rem] h-12 w-[3px] rounded-l bg-[#3B3F45]" />
@@ -257,7 +257,6 @@ function IPhone({ children }: { children: React.ReactNode }) {
       <div className="rounded-[2.95rem] bg-black p-[9px]">
         <div className="relative overflow-hidden rounded-[2.4rem] bg-white">
           {children}
-          <span aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,rgba(255,255,255,0.16),transparent_32%)]" />
           <span aria-hidden className="absolute bottom-2 left-1/2 h-[5px] w-[7.5rem] -translate-x-1/2 rounded-full bg-black/85" />
         </div>
       </div>
@@ -366,18 +365,8 @@ function Text({ text, me, time, tick }: { text: string; me?: boolean; time: stri
 function Kurta() {
   return (
     <svg aria-hidden viewBox="0 0 120 100" preserveAspectRatio="xMidYMid slice" className="h-full w-full">
-      <defs>
-        <linearGradient id="kurta-bg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#ECE7DA" />
-          <stop offset="1" stopColor="#D6CDB5" />
-        </linearGradient>
-        <linearGradient id="kurta-fill" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#7E8B57" />
-          <stop offset="1" stopColor="#5F6B3F" />
-        </linearGradient>
-      </defs>
-      <rect width="120" height="100" fill="url(#kurta-bg)" />
-      <path d="M44 10 L60 17 L76 10 L98 24 L91 44 L83 40 L84 99 L36 99 L37 40 L29 44 L22 24 Z" fill="url(#kurta-fill)" />
+      <rect width="120" height="100" fill="#E4DDCB" />
+      <path d="M44 10 L60 17 L76 10 L98 24 L91 44 L83 40 L84 99 L36 99 L37 40 L29 44 L22 24 Z" fill="#6F7B4A" />
       <path d="M60 17 L60 58" stroke="#4E5833" strokeWidth="1.4" />
       {[27, 37, 47].map((y) => (
         <circle key={y} cx="60" cy={y} r="1.7" fill="#ECE7DA" />

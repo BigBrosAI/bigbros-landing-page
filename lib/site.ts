@@ -42,11 +42,14 @@ export const siteConfig = {
     },
   ],
 
-  social: {
-    linkedin: '',
-    x: '',
-    github: '',
-  },
+  /** Official profiles, as linked from the previous bigbrosai.com. */
+  social: [
+    { slug: 'linkedin', label: 'LinkedIn', href: 'https://linkedin.com/company/bigbrosai/' },
+    { slug: 'x', label: 'X', href: 'https://x.com/bigbrosai' },
+    { slug: 'youtube', label: 'YouTube', href: 'https://youtube.com/@bigbrosai' },
+    { slug: 'instagram', label: 'Instagram', href: 'https://instagram.com/bigbrosai_official/' },
+    { slug: 'whatsapp', label: 'WhatsApp', href: 'https://wa.me/918279305027' },
+  ] as const,
 } as const;
 
 export type Affiliation = (typeof siteConfig.affiliations)[number];

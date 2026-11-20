@@ -9,7 +9,7 @@ export function ProductGlyph({ p, className, size = 'md' }: { p: Product; classN
   return (
     <span
       className={cn(
-        'flex shrink-0 items-center justify-center rounded-2xl border border-brand-100 bg-gradient-to-br from-white to-brand-50 text-brand-700 shadow-sm',
+        'flex shrink-0 items-center justify-center rounded-2xl border border-brand-100 bg-brand-50 text-brand-700 shadow-sm',
         size === 'lg' ? 'h-14 w-14' : 'h-11 w-11',
         className
       )}
@@ -24,7 +24,7 @@ export function ProductCard({ p, className }: { p: Product; className?: string }
     <Link
       href={`/products/${p.slug}`}
       className={cn(
-        'group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card p-6 transition-[transform,box-shadow,border-color] duration-500 ease-out-expo hover:-translate-y-1 hover:border-brand-200 hover:shadow-lift',
+        'shine shine-soft shine-hover group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card p-6 transition-[transform,box-shadow,border-color] duration-500 ease-out-expo hover:-translate-y-1 hover:border-brand-200 hover:shadow-lift',
         className
       )}
     >

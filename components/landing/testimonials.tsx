@@ -6,7 +6,7 @@ import { testimonials } from '@/lib/testimonials';
 import { cn } from '@/lib/utils';
 
 type T = (typeof testimonials)[number];
-const tones = ['from-emerald-400 to-teal-600', 'from-lime-400 to-green-600', 'from-sky-400 to-emerald-600', 'from-amber-300 to-lime-600', 'from-teal-300 to-cyan-600', 'from-green-300 to-emerald-700'];
+const tones = ['bg-emerald-600', 'bg-green-700', 'bg-sky-600', 'bg-amber-500', 'bg-teal-600', 'bg-forest'];
 
 function Card({ t, i }: { t: T; i: number }) {
   return (
@@ -14,7 +14,7 @@ function Card({ t, i }: { t: T; i: number }) {
       <span className="inline-flex items-center rounded-full bg-lime-200/70 px-2.5 py-1 text-[11.5px] font-semibold text-forest">{t.highlight}</span>
       <blockquote className="mt-4 text-[15.5px] leading-relaxed text-foreground">“{t.quote}”</blockquote>
       <figcaption className="mt-5 flex items-center gap-3">
-        <span className={cn('flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br font-display text-sm font-bold text-white', tones[i % tones.length])}>
+        <span className={cn('flex h-10 w-10 items-center justify-center rounded-full font-display text-sm font-bold text-white', tones[i % tones.length])}>
           {t.name
             .split(' ')
             .map((w) => w[0])

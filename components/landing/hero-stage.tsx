@@ -85,7 +85,7 @@ function InboxCard() {
               transition={{ type: 'spring', stiffness: 340, damping: 30 }}
               className={cn('flex items-center gap-2.5 rounded-2xl px-2.5 py-2', i === 0 ? 'bg-brand-50/70' : 'bg-muted/50')}
             >
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-emerald-300 to-teal-600 text-[11px] font-semibold text-white">{c.name[0]}</span>
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-[11px] font-semibold text-white">{c.name[0]}</span>
               <span className="min-w-0 flex-1 leading-tight">
                 <span className="block truncate text-[12.5px] font-semibold">{c.name}</span>
                 <span className="block truncate text-[11.5px] text-muted-foreground">{c.text}</span>

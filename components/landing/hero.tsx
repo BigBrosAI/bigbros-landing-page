@@ -13,11 +13,10 @@ export function Hero() {
         aria-hidden
         className="bg-lines absolute inset-0 [mask-image:radial-gradient(ellipse_70%_55%_at_50%_30%,#000_30%,transparent_75%)]"
       />
-      <div aria-hidden className="absolute left-1/2 top-[38rem] h-[36rem] w-[70rem] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(34,197,94,0.18),transparent)]" />
 
       <Container className="relative pb-16 pt-16 text-center sm:pt-24 lg:pb-24">
         <Reveal className="flex flex-wrap items-center justify-center gap-2">
-          <span className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white/80 py-1 pl-1 pr-3 text-[13px] font-medium text-brand-800 shadow-sm">
+          <span className="frame-shine inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white/80 py-1 pl-1 pr-3 text-[13px] font-medium text-brand-800 shadow-sm">
             <BrandTile slug="whatsapp" size={24} className="rounded-full" />
             Official WhatsApp Business API
           </span>
@@ -26,7 +25,7 @@ export function Hero() {
               href={affiliation.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 py-1 pl-1 pr-3 text-[13px] font-medium text-ink-600 shadow-sm transition-colors hover:text-foreground"
+              className="frame-shine inline-flex items-center gap-2 rounded-full border border-border bg-white/80 py-1 pl-1 pr-3 text-[13px] font-medium text-ink-600 shadow-sm transition-colors hover:text-foreground"
             >
               <span className="flex h-6 items-center gap-1 rounded-full bg-black px-2">
                 <BrandIcon slug="nvidia" className="h-3.5 w-3.5" />

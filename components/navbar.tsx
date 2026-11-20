@@ -131,7 +131,7 @@ export function Navbar() {
         </Container>
       </div>
 
-      <div aria-hidden className="scroll-progress absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-brand-700 via-brand-500 to-lime-300" />
+      <div aria-hidden className="scroll-progress absolute inset-x-0 bottom-0 h-[2px] bg-brand-600" />
 
       {/* desktop mega menus */}
       <AnimatePresence>

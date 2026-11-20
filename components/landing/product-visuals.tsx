@@ -103,7 +103,7 @@ export function AdsVisual() {
     <div ref={ref} className="relative mx-auto grid max-w-lg items-center gap-4 sm:grid-cols-2">
       <motion.div animate={{ scale: tapped ? 0.96 : 1, opacity: tapped ? 0.75 : 1 }} className="overflow-hidden rounded-3xl border border-border bg-card shadow-lift">
         <div className="flex items-center gap-2 px-3 py-2.5">
-          <span className="h-7 w-7 rounded-full bg-[linear-gradient(45deg,#F58529,#DD2A7B,#8134AF)] p-[2px]">
+          <span className="h-7 w-7 rounded-full bg-[#E4405F] p-[2px]">
             <span className="block h-full w-full rounded-full bg-card" />
           </span>
           <div className="leading-tight">
@@ -112,7 +112,7 @@ export function AdsVisual() {
           </div>
           <MoreHorizontal className="ml-auto h-4 w-4 text-muted-foreground" />
         </div>
-        <div className="relative h-40 bg-[linear-gradient(160deg,#8A9A66,#4E5D37)]">
+        <div className="relative h-40 bg-[#5F6B3F]">
           <p className="absolute bottom-3 left-3 font-display text-xl font-bold leading-tight text-white">
             Festive edit
             <br />
@@ -276,7 +276,7 @@ export function EmailVisual() {
               <span className="text-base font-semibold text-muted-foreground"> / 300</span>
             </p>
             <div className="mt-3 h-2 overflow-hidden rounded-full bg-muted">
-              <div className="h-full rounded-full bg-gradient-to-r from-brand-600 to-lime-300" style={{ width: `${(sent / 300) * 100}%` }} />
+              <div className="h-full rounded-full bg-brand-600" style={{ width: `${(sent / 300) * 100}%` }} />
             </div>
             <p className="mt-2 text-[11px] text-muted-foreground">Then ₹0.125 per email</p>
             <div className="mt-4 flex flex-wrap gap-1.5">
@@ -403,7 +403,7 @@ export function AnalyticsVisual() {
               {bars.map((b, i) => (
                 <div key={i} className="flex flex-1 flex-col items-center gap-1">
                   <div
-                    className="w-full rounded-t-md bg-gradient-to-t from-brand-600 to-brand-300"
+                    className="w-full rounded-t-md bg-brand-500"
                     style={{ height: `${b * progress(t, 200 + i * 120, 1200 + i * 120)}%` }}
                   />
                 </div>

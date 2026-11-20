@@ -6,20 +6,24 @@ import { Link2, PenLine, Rocket } from 'lucide-react';
 import { Container } from '@/components/site/primitives';
 import { Reveal } from '@/components/site/reveal';
 import { Kicker } from '@/components/landing/kicker';
+import { BrandTile, type BrandSlug } from '@/components/landing/brand-icon';
 
 const steps = [
   {
     icon: Link2,
+    brands: ['meta', 'whatsapp'] as BrandSlug[],
     title: 'Connect your number',
     body: 'Sign up, link your Meta business account and register a WhatsApp number on the official Business API — guided, from your browser.',
   },
   {
     icon: PenLine,
+    brands: ['whatsapp'] as BrandSlug[],
     title: 'Set up templates & flows',
     body: 'Write message templates and submit them for approval, invite your team, and build chatbot flows for the questions you get every day.',
   },
   {
     icon: Rocket,
+    brands: ['shopify', 'woocommerce', 'googlesheets'] as BrandSlug[],
     title: 'Launch and reply',
     body: 'Send your first broadcast, connect your store, and answer every chat from the shared inbox — with AI covering the routine ones.',
   },
@@ -63,7 +67,14 @@ export function HowItWorks() {
                 <s.icon className="h-4 w-4 sm:h-5 sm:w-5" />
               </span>
               <div className="rounded-3xl border border-border bg-card p-6 transition-shadow duration-500 hover:shadow-lift sm:p-7">
-                <p className="font-mono text-xs text-muted-foreground">Step {String(i + 1).padStart(2, '0')}</p>
+                <div className="flex items-center justify-between">
+                  <p className="font-mono text-xs text-muted-foreground">Step {String(i + 1).padStart(2, '0')}</p>
+                  <span className="flex -space-x-1.5">
+                    {s.brands.map((b) => (
+                      <BrandTile key={b} slug={b} size={26} className="ring-2 ring-card" />
+                    ))}
+                  </span>
+                </div>
                 <h3 className="mt-2 text-xl font-semibold tracking-tight">{s.title}</h3>
                 <p className="mt-2 text-[15px] leading-relaxed text-ink-600">{s.body}</p>
               </div>

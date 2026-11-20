@@ -9,11 +9,12 @@ export function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="forest relative overflow-hidden">
+      <div aria-hidden className="rule-shine absolute inset-x-0 top-0" />
       <div aria-hidden className="bg-grain-light absolute inset-0 opacity-60" />
       <Container className="relative py-16 sm:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.5fr_repeat(4,1fr)]">
           <div className="max-w-xs">
-            <Link href="/" aria-label="BigBrosAI home">
+            <Link href="/" aria-label="BigBrosAI home" className="shine inline-block rounded-md">
               <Logo width={150} tone="light" />
             </Link>
             <p className="mt-5 text-sm leading-relaxed text-white/65">
@@ -26,6 +27,21 @@ export function Footer() {
             >
               {siteConfig.email}
             </a>
+            <ul className="mt-5 flex gap-2">
+              {siteConfig.social.map((sc) => (
+                <li key={sc.slug}>
+                  <a
+                    href={sc.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={sc.label}
+                    className="shine shine-soft shine-hover flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/[0.06] transition-colors hover:bg-white/[0.14]"
+                  >
+                    <BrandIcon slug={sc.slug} color="#fff" className="h-4 w-4" />
+                  </a>
+                </li>
+              ))}
+            </ul>
             {activeAffiliations.length > 0 && (
               <ul className="mt-6 space-y-2">
                 {activeAffiliations.map((a) => (
@@ -67,7 +83,7 @@ export function Footer() {
 
         <p
           aria-hidden
-          className="pointer-events-none mt-16 select-none text-center text-[19vw] font-semibold leading-[0.8] tracking-[-0.06em] text-white/[0.04] sm:text-[15vw] lg:text-[12.5rem]"
+          className="text-shine pointer-events-none mt-16 select-none text-center font-display text-[19vw] font-bold leading-[0.9] tracking-[-0.06em] sm:text-[15vw] lg:text-[12.5rem]"
         >
           bigbrosai
         </p>
