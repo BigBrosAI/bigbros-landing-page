@@ -7,6 +7,7 @@ import { Toaster } from '@/components/ui/sonner';
 import { JsonLd } from '@/components/site/primitives';
 import { RevealObserver } from '@/components/site/reveal-observer';
 import { absoluteUrl, siteConfig } from '@/lib/site';
+import { ogImage } from '@/lib/seo';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 // Outfit matches the BigBrosAI dashboard; used by the dashboard replica only.
@@ -42,12 +43,14 @@ export const metadata: Metadata = {
     url: '/',
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
+    images: [ogImage],
   },
   twitter: {
     card: 'summary_large_image',
     site: '@bigbrosai',
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
+    images: [ogImage.url],
   },
   robots: {
     index: true,

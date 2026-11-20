@@ -10,7 +10,7 @@ export function softwareApplicationLd() {
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Web',
     url: siteConfig.url,
-    image: absoluteUrl('/opengraph-image'),
+    image: absoluteUrl('/og-image.png'),
     description: siteConfig.description,
     publisher: { '@id': `${siteConfig.url}/#organization` },
     offers: plans

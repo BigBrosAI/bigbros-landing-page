@@ -22,6 +22,7 @@ import { Testimonials } from '@/components/landing/testimonials';
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'BigBrosAI',
+    shareTitle: 'BigBrosAI — Free WhatsApp Business API & AI Chatbot Platform',
     description:
       'Official WhatsApp Business API platform for campaigns, shared live chat, AI chatbots, WhatsApp Pay and email. Free WhatsApp API, ₹50 signup bonus and 300 free emails a day.',
     path: '/',
