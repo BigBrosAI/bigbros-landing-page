@@ -8,6 +8,8 @@ const nextConfig = {
       { source: '/features', destination: '/products', permanent: true },
       { source: '/product/email', destination: '/products/email-api', permanent: true },
       { source: '/contact-us', destination: '/contact', permanent: true },
+      // Documentation lives on its own site.
+      { source: '/docs/:path*', destination: 'https://docs.bigbrosai.com/:path*', permanent: true },
     ];
   },
 };

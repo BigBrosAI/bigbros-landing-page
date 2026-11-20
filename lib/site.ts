@@ -22,7 +22,7 @@ export const siteConfig = {
     /** Lead-capture destination for "Talk to Sales" / "Book a Demo". Switch to /book-demo once that page ships. */
     bookDemo: '/contact',
     contactSales: '/contact',
-    docs: '/docs',
+    docs: 'https://docs.bigbrosai.com',
   },
 
   /**

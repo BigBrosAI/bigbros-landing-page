@@ -11,7 +11,7 @@ export const mainNav: NavEntry[] = [
   { label: 'Channels', href: '/channels' },
   { label: 'Integrations', href: '/integrations' },
   { label: 'Pricing', href: '/pricing' },
-  { label: 'Resources', href: siteConfig.links.docs, menu: 'resources' },
+  { label: 'Resources', href: '/blog', menu: 'resources' },
 ];
 
 export const resourceItems: NavItem[] = [
