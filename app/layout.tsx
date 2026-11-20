@@ -1,6 +1,6 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
-import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
+import { Inter, Outfit, Plus_Jakarta_Sans } from 'next/font/google';
 import { GeistMono } from 'geist/font/mono';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
@@ -9,6 +9,8 @@ import { RevealObserver } from '@/components/site/reveal-observer';
 import { absoluteUrl, siteConfig } from '@/lib/site';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
+// Outfit matches the BigBrosAI dashboard; used by the dashboard replica only.
+const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit', display: 'swap', weight: ['400', '500', '600', '700', '800'] });
 const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-display', display: 'swap', weight: ['500', '600', '700', '800'] });
 
 export const metadata: Metadata = {
@@ -54,7 +56,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jakarta.variable} ${GeistMono.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jakarta.variable} ${outfit.variable} ${GeistMono.variable}`}>
       <body className="font-sans antialiased">
         {/* Hide reveal targets before first paint; RevealObserver un-hides them on scroll. */}
         <script

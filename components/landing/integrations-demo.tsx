@@ -44,7 +44,7 @@ const R = 41; // ring radius in % of the square
 
 const polar = (i: number) => {
   const a = (i / integrationList.length) * Math.PI * 2 - Math.PI / 2;
-  return { x: 50 + Math.cos(a) * R, y: 50 + Math.sin(a) * R };
+  return { x: Math.round((50 + Math.cos(a) * R) * 1000) / 1000, y: Math.round((50 + Math.sin(a) * R) * 1000) / 1000 };
 };
 
 export function IntegrationHub() {

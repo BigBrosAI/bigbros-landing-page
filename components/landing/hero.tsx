@@ -25,15 +25,15 @@ function RayBurst() {
       <g data-reveal="" className="is-in" style={{ transformOrigin: '600px 200px' }}>
         {rays.map((r, i) => {
           const rad = (r.a * Math.PI) / 180;
-          const x = 600 + Math.cos(rad) * r.l;
-          const y = 200 - Math.sin(rad) * r.l;
+          const x = Math.round((600 + Math.cos(rad) * r.l) * 100) / 100;
+          const y = Math.round((200 - Math.sin(rad) * r.l) * 100) / 100;
           return (
             <line
               key={i}
               x1={x}
               y1={y}
-              x2={600 + Math.cos(rad) * 70}
-              y2={200 - Math.sin(rad) * 70}
+              x2={Math.round((600 + Math.cos(rad) * 70) * 100) / 100}
+              y2={Math.round((200 - Math.sin(rad) * 70) * 100) / 100}
               stroke="url(#ray)"
               strokeWidth={34}
               strokeLinecap="round"
