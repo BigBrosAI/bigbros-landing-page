@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Check, Clock, Info, Mail, MapPin } from 'lucide-react';
+import { ArrowLeft, Check, Clock, Mail, MapPin } from 'lucide-react';
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
 import { Container, JsonLd } from '@/components/site/primitives';
 import { Reveal } from '@/components/site/reveal';
 import { Kicker } from '@/components/landing/kicker';
-import { getJob, jobAbout, jobs } from '@/lib/jobs';
+import { applyHref, getJob, jobAbout, jobs } from '@/lib/jobs';
 import { absoluteUrl, siteConfig } from '@/lib/site';
 import { pageMetadata } from '@/lib/seo';
 
@@ -28,21 +28,32 @@ export default async function JobPage({ params }: { params: Promise<{ slug: stri
   const { slug } = await params;
   const j = getJob(slug);
   if (!j) notFound();
-  const resumeHref = `mailto:${siteConfig.helloEmail}?subject=${encodeURIComponent(`Future openings — ${j.title}`)}`;
+  const apply = applyHref(j);
 
   return (
     <>
       <Navbar />
       <main className="overflow-x-clip">
         <JsonLd
-          data={{
+          data={[{
+            '@context': 'https://schema.org',
+            '@type': 'JobPosting',
+            title: j.title,
+            description: `${jobAbout} ${j.summary} ${j.responsibilities.map((r) => `${r.title}: ${r.body}`).join(' ')}`,
+            datePosted: j.datePosted,
+            employmentType: j.type === 'Internship' ? 'INTERN' : 'FULL_TIME',
+            jobLocationType: 'TELECOMMUTE',
+            applicantLocationRequirements: { '@type': 'Country', name: 'India' },
+            hiringOrganization: { '@type': 'Organization', name: siteConfig.name, sameAs: siteConfig.url, logo: absoluteUrl('/favicon.png') },
+            url: absoluteUrl(`/careers/${j.slug}`),
+          }, {
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
               { '@type': 'ListItem', position: 1, name: 'Careers', item: absoluteUrl('/careers') },
               { '@type': 'ListItem', position: 2, name: j.title, item: absoluteUrl(`/careers/${j.slug}`) },
             ],
-          }}
+          }]}
         />
         <section className="relative -mt-16 overflow-hidden pt-16">
           <div aria-hidden className="bg-mesh absolute inset-0" />
@@ -54,16 +65,21 @@ export default async function JobPage({ params }: { params: Promise<{ slug: stri
             </Reveal>
             <Reveal delay={0.04} className="mt-6 flex flex-wrap items-center gap-2">
               <span className="rounded-full bg-brand-50 px-2.5 py-0.5 text-[12px] font-semibold text-brand-800 ring-1 ring-inset ring-brand-100">{j.team}</span>
-              <span className="rounded-full bg-muted px-2.5 py-0.5 text-[12px] font-semibold text-ink-600">Applications closed</span>
+              <span className="rounded-full bg-lime-100 px-2.5 py-0.5 text-[12px] font-semibold text-forest">Hiring now</span>
             </Reveal>
             <Reveal delay={0.08}>
               <h1 className="mt-5 font-display text-[2.2rem] font-bold leading-[1.06] tracking-[-0.035em] sm:text-[3rem]">{j.title}</h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-[15px] text-ink-600">
+              <div className="mt-4 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+              <p className="flex flex-wrap gap-x-5 gap-y-1 text-[15px] text-ink-600">
                 <span className="inline-flex items-center gap-1.5"><MapPin className="h-4 w-4" /> {j.location}</span>
                 <span className="inline-flex items-center gap-1.5"><Clock className="h-4 w-4" /> {j.type}</span>
               </p>
+              <a href={apply} className="shine inline-flex h-12 w-fit items-center gap-2 rounded-full bg-primary px-7 font-semibold text-primary-foreground">
+                <Mail className="h-4 w-4" /> Apply now
+              </a>
+              </div>
             </Reveal>
           </Container>
         </section>
@@ -71,11 +87,6 @@ export default async function JobPage({ params }: { params: Promise<{ slug: stri
         <section className="pb-24">
           <Container className="grid max-w-4xl gap-10 lg:max-w-6xl lg:grid-cols-[1fr_320px]">
             <article className="space-y-10">
-              <Reveal className="flex gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-[15px] text-amber-900">
-                <Info className="mt-0.5 h-5 w-5 shrink-0" />
-                <p>This role is no longer accepting applications. We’ve kept the description here for reference — send us your resume and we’ll reach out when it opens again.</p>
-              </Reveal>
-
               <Reveal>
                 <Kicker>About BigBrosAI</Kicker>
                 <p className="mt-4 text-[16px] leading-relaxed text-ink-600">{jobAbout}</p>
@@ -138,10 +149,10 @@ export default async function JobPage({ params }: { params: Promise<{ slug: stri
                     </div>
                   ))}
                 </dl>
-                <a href={resumeHref} className="shine mt-6 inline-flex h-11 w-full items-center justify-center gap-2 rounded-full bg-primary px-5 font-semibold text-primary-foreground">
-                  <Mail className="h-4 w-4" /> Send resume for future roles
+                <a href={apply} className="shine mt-6 inline-flex h-11 w-full items-center justify-center gap-2 rounded-full bg-primary px-5 font-semibold text-primary-foreground">
+                  <Mail className="h-4 w-4" /> Apply for this role
                 </a>
-                <p className="mt-3 text-center text-[13px] text-muted-foreground">Hiring process: phone screen, then a short mock sales call.</p>
+                <p className="mt-3 text-center text-[13px] text-muted-foreground">Email your resume with the role in the subject. Next: a 10-minute phone screen and a short mock sales call.</p>
               </Reveal>
             </aside>
           </Container>

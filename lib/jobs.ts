@@ -4,6 +4,7 @@ export type Job = {
   team: string;
   type: 'Internship' | 'Full-time';
   location: string;
+  datePosted: string;
   summary: string;
   facts: { label: string; value: string }[];
   responsibilities: { title: string; body: string }[];
@@ -45,6 +46,7 @@ export const jobs: Job[] = [
     team: 'Sales & Marketing',
     type: 'Full-time',
     location: 'Remote (India)',
+    datePosted: '2026-11-01',
     summary: 'Turn BigBrosAI leads into paying, active customers — call, demo, close and onboard. Fixed pay plus uncapped incentives.',
     facts: [
       { label: 'Type', value: 'Full-time, permanent' },
@@ -74,6 +76,7 @@ export const jobs: Job[] = [
     team: 'Sales & Marketing',
     type: 'Internship',
     location: 'Remote (India)',
+    datePosted: '2026-11-01',
     summary: 'A 3-month, work-from-home internship selling an AI SaaS product to real businesses, with a pre-placement offer for top performers.',
     facts: [
       { label: 'Type', value: 'Internship, 3 months' },
@@ -96,4 +99,7 @@ export const jobs: Job[] = [
 ];
 
 export const jobAbout = about;
+export const applyHref = (j: Job) =>
+  `mailto:hello@bigbrosai.com?subject=${encodeURIComponent(`Application — ${j.title}`)}&body=${encodeURIComponent(`Hi BigBrosAI team,\n\nI’d like to apply for the ${j.title} role. My resume is attached.\n\nName:\nCity:\nPhone:\n`)}`;
+
 export const getJob = (slug: string) => jobs.find((j) => j.slug === slug);

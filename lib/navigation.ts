@@ -21,7 +21,7 @@ export const resourceItems: NavItem[] = [
   { label: 'Changelog', href: '/changelog', description: 'What’s new in the platform', icon: History },
   { label: 'Security', href: '/security', description: 'How we protect your data', icon: ShieldCheck },
   { label: 'About us', href: '/about', description: 'Our mission and team', icon: Building2 },
-  { label: 'Careers', href: '/careers', description: 'Work with us', icon: Briefcase },
+  { label: 'Careers', href: '/careers', description: 'We’re hiring', icon: Briefcase },
   { label: 'Contact', href: '/contact', description: 'Talk to our team', icon: Mail },
   { label: 'Help & support', href: `mailto:${siteConfig.email}`, description: siteConfig.email, icon: LifeBuoy },
 ];
