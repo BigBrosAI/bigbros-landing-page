@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowUpRight, BellRing, Briefcase, GraduationCap, Home, Mail, Rocket, Users } from 'lucide-react';
+import { ArrowUpRight, BellRing, Briefcase, Clock, GraduationCap, Home, Mail, MapPin, Rocket, Users } from 'lucide-react';
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
 import { PageHero } from '@/components/site/page-hero';
@@ -8,6 +8,7 @@ import { Reveal } from '@/components/site/reveal';
 import { Kicker } from '@/components/landing/kicker';
 import { BrandIcon } from '@/components/landing/brand-icon';
 import { siteConfig } from '@/lib/site';
+import { jobs } from '@/lib/jobs';
 
 const why = [
   { icon: Home, title: 'Remote-first', body: 'Work from wherever you do your best work, with flexible hours.' },
@@ -50,6 +51,41 @@ export default function CareersPage() {
                 <BellRing className="h-4 w-4" /> We keep resumes on file and reach out when a matching role opens.
               </p>
             </Reveal>
+          </Container>
+        </section>
+
+        <section className="pb-20">
+          <Container className="max-w-4xl">
+            <Reveal className="flex items-end justify-between gap-4">
+              <div>
+                <Kicker>Previous openings</Kicker>
+                <h2 className="mt-4 text-2xl font-bold tracking-tight sm:text-3xl">Roles we’ve hired for</h2>
+              </div>
+              <span className="hidden text-sm text-muted-foreground sm:block">Applications closed</span>
+            </Reveal>
+            <ul className="mt-8 space-y-3">
+              {jobs.map((j, i) => (
+                <Reveal as="li" key={j.slug} delay={i * 0.06}>
+                  <Link href={`/careers/${j.slug}`} className="shine shine-soft shine-hover group flex flex-col gap-4 rounded-3xl border border-border bg-card p-6 transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-lift sm:flex-row sm:items-center sm:justify-between">
+                    <div className="min-w-0">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="rounded-full bg-brand-50 px-2.5 py-0.5 text-[12px] font-semibold text-brand-800 ring-1 ring-inset ring-brand-100">{j.team}</span>
+                        <span className="rounded-full bg-muted px-2.5 py-0.5 text-[12px] font-semibold text-ink-600">Closed</span>
+                      </div>
+                      <h3 className="mt-3 text-lg font-bold tracking-tight">{j.title}</h3>
+                      <p className="mt-1 text-[15px] leading-relaxed text-ink-600">{j.summary}</p>
+                      <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[13px] text-muted-foreground">
+                        <span className="inline-flex items-center gap-1"><MapPin className="h-3.5 w-3.5" /> {j.location}</span>
+                        <span className="inline-flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {j.type}</span>
+                      </p>
+                    </div>
+                    <span className="inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-brand-800">
+                      Read the JD <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </span>
+                  </Link>
+                </Reveal>
+              ))}
+            </ul>
           </Container>
         </section>
 

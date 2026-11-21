@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { products } from '@/lib/catalog';
 import { tools } from '@/lib/tools';
+import { jobs } from '@/lib/jobs';
 import { siteConfig } from '@/lib/site';
 
 const APP_DIR = path.join(process.cwd(), 'app');
@@ -32,7 +33,7 @@ function meta(route: string): Pick<MetadataRoute.Sitemap[number], 'priority' | '
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
-  const routes = ['', ...staticRoutes(APP_DIR), ...products.map((p) => `/products/${p.slug}`), ...tools.map((t) => `/tools/${t.slug}`)];
+  const routes = ['', ...staticRoutes(APP_DIR), ...products.map((p) => `/products/${p.slug}`), ...tools.map((t) => `/tools/${t.slug}`), ...jobs.map((j) => `/careers/${j.slug}`)];
   return Array.from(new Set(routes)).map((route) => ({
     url: `${siteConfig.url}${route || '/'}`,
     lastModified,
