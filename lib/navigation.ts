@@ -11,16 +11,17 @@ export const mainNav: NavEntry[] = [
   { label: 'Channels', href: '/channels' },
   { label: 'Integrations', href: '/integrations' },
   { label: 'Pricing', href: '/pricing' },
-  { label: 'Resources', href: '/blog', menu: 'resources' },
+  { label: 'Tools', href: '/tools' },
+  { label: 'Resources', href: '/changelog', menu: 'resources' },
 ];
 
 export const resourceItems: NavItem[] = [
   { label: 'Documentation', href: siteConfig.links.docs, description: 'Guides and API reference', icon: BookOpen },
-  { label: 'Guides & resources', href: '/blog', description: 'Docs, videos and how-tos', icon: Newspaper },
+  { label: 'Free WhatsApp tools', href: '/tools', description: 'Link, QR, formatter & calculators', icon: Newspaper },
   { label: 'Changelog', href: '/changelog', description: 'What’s new in the platform', icon: History },
   { label: 'Security', href: '/security', description: 'How we protect your data', icon: ShieldCheck },
   { label: 'About us', href: '/about', description: 'Our mission and team', icon: Building2 },
-  { label: 'Careers', href: '/careers', description: 'We’re hiring — remote sales roles', icon: Briefcase },
+  { label: 'Careers', href: '/careers', description: 'Work with us', icon: Briefcase },
   { label: 'Contact', href: '/contact', description: 'Talk to our team', icon: Mail },
   { label: 'Help & support', href: `mailto:${siteConfig.email}`, description: siteConfig.email, icon: LifeBuoy },
 ];
@@ -41,7 +42,7 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
     items: [
       { label: 'About', href: '/about' },
       { label: 'Careers', href: '/careers' },
-      { label: 'Guides & resources', href: '/blog' },
+      { label: 'Free WhatsApp tools', href: '/tools' },
       { label: 'Documentation', href: siteConfig.links.docs },
       { label: 'Security', href: '/security' },
       { label: 'Contact', href: '/contact' },

@@ -302,7 +302,7 @@ function Toasts({ scene, t }: { scene: string; t: number }) {
   const all: Record<string, { at: number; text: string }[]> = {
     dashboard: [{ at: 4600, text: 'Campaign “Diwali sale” completed' }],
     chat: [
-      { at: 2500, text: 'Conversation assigned to Priya Sharma' },
+      { at: 2500, text: 'Conversation assigned to Priya Nair' },
       { at: 5800, text: 'Message delivered' },
     ],
     campaigns: [{ at: 2000, text: 'Campaign started — sending now' }],
@@ -631,8 +631,8 @@ function ChatScreen({ t }: { t: number }) {
             className="flex items-center gap-1.5 whitespace-nowrap rounded-full border bg-white px-2.5 py-1.5 text-[12px] font-medium"
             style={{ borderColor: assigned ? '#ABEFC6' : WA.divider, color: assigned ? GREEN : WA.sec }}
           >
-            {assigned ? <Avatar name="Priya Sharma" className="h-5 w-5 text-[8px]" /> : <Users className="h-3.5 w-3.5" />}
-            {assigned ? 'Priya Sharma' : 'Unassigned'}
+            {assigned ? <Avatar name="Priya Nair" className="h-5 w-5 text-[8px]" /> : <Users className="h-3.5 w-3.5" />}
+            {assigned ? 'Priya Nair' : 'Unassigned'}
             <ChevronDown className="h-3.5 w-3.5" />
           </motion.span>
           <MoreVertical className="h-5 w-5" style={{ color: WA.sec }} />
@@ -645,7 +645,7 @@ function ChatScreen({ t }: { t: number }) {
           <Bubble>Hi, where is my order #2231? It was supposed to arrive yesterday.</Bubble>
           {assigned && (
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="relative mx-auto my-1 rounded-lg bg-[#FFF3C4] px-3 py-1 text-[12px]" style={{ color: '#54656F' }}>
-              Conversation assigned to Priya Sharma
+              Conversation assigned to Priya Nair
             </motion.p>
           )}
           {sent && (

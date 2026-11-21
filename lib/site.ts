@@ -16,7 +16,7 @@ export const siteConfig = {
   email: 'support@bigbrosai.com',
   /** General / sales and careers inbox (used in the hiring JD). */
   helloEmail: 'hello@bigbrosai.com',
-  phones: ['+91 70177 53527', '+91 82795 10767'],
+  phones: ['+91 80066 66197', '+91 80066 66198', '+91 70177 53527', '+91 82795 10767'],
   /** WhatsApp chat number, as linked from the previous site. */
   whatsapp: { number: '918279305027', display: '+91 82793 05027' },
   offices: [

@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next';
 import fs from 'fs';
 import path from 'path';
 import { products } from '@/lib/catalog';
+import { tools } from '@/lib/tools';
 import { siteConfig } from '@/lib/site';
 
 const APP_DIR = path.join(process.cwd(), 'app');
@@ -23,14 +24,15 @@ function meta(route: string): Pick<MetadataRoute.Sitemap[number], 'priority' | '
   if (route === '') return { priority: 1, changeFrequency: 'weekly' };
   if (route === '/pricing' || route === '/products') return { priority: 0.9, changeFrequency: 'weekly' };
   if (route.startsWith('/products/')) return { priority: 0.8, changeFrequency: 'monthly' };
+  if (route.startsWith('/tools/')) return { priority: 0.7, changeFrequency: 'monthly' };
   if (route.startsWith('/legal/')) return { priority: 0.3, changeFrequency: 'yearly' };
-  if (route === '/blog' || route === '/changelog') return { priority: 0.6, changeFrequency: 'weekly' };
+  if (route === '/tools' || route === '/changelog') return { priority: 0.6, changeFrequency: 'weekly' };
   return { priority: 0.6, changeFrequency: 'monthly' };
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
-  const routes = ['', ...staticRoutes(APP_DIR), ...products.map((p) => `/products/${p.slug}`)];
+  const routes = ['', ...staticRoutes(APP_DIR), ...products.map((p) => `/products/${p.slug}`), ...tools.map((t) => `/tools/${t.slug}`)];
   return Array.from(new Set(routes)).map((route) => ({
     url: `${siteConfig.url}${route || '/'}`,
     lastModified,
