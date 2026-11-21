@@ -4,16 +4,17 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "opennextjs-cloudflare build && opennextjs-cloudflare populateCache local",
     "start": "next start",
     "lint": "eslint .",
     "docker:build": "docker build -t bigbros-landing-page .",
     "docker:run": "docker run -p 3001:3000 bigbros-landing-page",
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down",
-    "cf:build": "opennextjs-cloudflare build && opennextjs-cloudflare populateCache local",
+    "cf:build": "npm run build",
     "cf:preview": "npm run cf:build && opennextjs-cloudflare preview",
-    "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy"
+    "cf:deploy": "npm run build && opennextjs-cloudflare deploy",
+    "build:next": "next build"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.2",
