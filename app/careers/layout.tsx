@@ -1,8 +1,8 @@
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata = pageMetadata({
-  title: 'Careers at BigBrosAI',
-  description: 'Join BigBrosAI and help businesses grow on WhatsApp. See open roles across engineering, product, sales and support.',
+  title: 'Careers — Sales, Marketing & Onboarding (Remote)',
+  description: 'BigBrosAI is hiring Sales, Marketing & Onboarding interns and associates. Work from home, leads provided, ₹12,000/month fixed + uncapped incentives for full-time.',
   path: '/careers',
 });
 

@@ -6,6 +6,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
 import { JsonLd } from '@/components/site/primitives';
 import { RevealObserver } from '@/components/site/reveal-observer';
+import { WhatsAppFab } from '@/components/site/whatsapp-fab';
 import { absoluteUrl, siteConfig } from '@/lib/site';
 import { ogImage } from '@/lib/seo';
 
@@ -106,6 +107,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           {children}
           <RevealObserver />
+          <WhatsAppFab />
           <Toaster />
         </ThemeProvider>
       </body>

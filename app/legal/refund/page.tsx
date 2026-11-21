@@ -1,31 +1,9 @@
-import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/footer';
+import { LegalShell } from '@/components/site/legal-shell';
 
-export default function RefundCancellationPage() {
-  const today = new Date().toLocaleDateString('en-IN', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  });
-
+export default function RefundPage() {
   return (
-    <main className="min-h-screen bg-white">
-      <Navbar />
+    <LegalShell title="Refund Policy" path="/legal/refund" updated="2025-12-19">
 
-      <section className="container mx-auto px-4 py-20 max-w-4xl">
-        {/* Page Title */}
-        <div className="text-center mb-14">
-          <h1 className="text-4xl font-semibold text-gray-900">
-            Refund & Cancellation Policy
-          </h1>
-          <div className="w-14 h-1 bg-green-600 mx-auto mt-4" />
-          <p className="mt-6 text-sm text-gray-500">
-            Last updated on {today}
-          </p>
-        </div>
-
-        {/* Content */}
-        <div className="space-y-10 text-gray-700 leading-relaxed text-base">
           <section>
             <p>
               This Refund and Cancellation Policy outlines the terms under which
@@ -36,7 +14,7 @@ export default function RefundCancellationPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               1. Cancellation Policy
             </h2>
             <p>
@@ -52,7 +30,7 @@ export default function RefundCancellationPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               2. Refund Policy
             </h2>
             <p>
@@ -68,7 +46,7 @@ export default function RefundCancellationPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               3. Non-Refundable Items
             </h2>
             <ul className="list-disc pl-6 space-y-2">
@@ -80,7 +58,7 @@ export default function RefundCancellationPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               4. Refund Processing
             </h2>
             <p>
@@ -91,7 +69,7 @@ export default function RefundCancellationPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               5. Chargebacks & Disputes
             </h2>
             <p>
@@ -103,7 +81,7 @@ export default function RefundCancellationPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               6. Changes to this Policy
             </h2>
             <p>
@@ -114,7 +92,7 @@ export default function RefundCancellationPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               7. Contact Information
             </h2>
             <p>
@@ -122,10 +100,6 @@ export default function RefundCancellationPage() {
               contact us using the contact details available on the Platform.
             </p>
           </section>
-        </div>
-      </section>
-
-      <Footer />
-    </main>
+    </LegalShell>
   );
 }

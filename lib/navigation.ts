@@ -16,11 +16,11 @@ export const mainNav: NavEntry[] = [
 
 export const resourceItems: NavItem[] = [
   { label: 'Documentation', href: siteConfig.links.docs, description: 'Guides and API reference', icon: BookOpen },
-  { label: 'Blog', href: '/blog', description: 'Playbooks for WhatsApp growth', icon: Newspaper },
+  { label: 'Guides & resources', href: '/blog', description: 'Docs, videos and how-tos', icon: Newspaper },
   { label: 'Changelog', href: '/changelog', description: 'What’s new in the platform', icon: History },
   { label: 'Security', href: '/security', description: 'How we protect your data', icon: ShieldCheck },
   { label: 'About us', href: '/about', description: 'Our mission and team', icon: Building2 },
-  { label: 'Careers', href: '/careers', description: 'Build with us', icon: Briefcase },
+  { label: 'Careers', href: '/careers', description: 'We’re hiring — remote sales roles', icon: Briefcase },
   { label: 'Contact', href: '/contact', description: 'Talk to our team', icon: Mail },
   { label: 'Help & support', href: `mailto:${siteConfig.email}`, description: siteConfig.email, icon: LifeBuoy },
 ];
@@ -41,7 +41,7 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
     items: [
       { label: 'About', href: '/about' },
       { label: 'Careers', href: '/careers' },
-      { label: 'Blog', href: '/blog' },
+      { label: 'Guides & resources', href: '/blog' },
       { label: 'Documentation', href: siteConfig.links.docs },
       { label: 'Security', href: '/security' },
       { label: 'Contact', href: '/contact' },

@@ -1,8 +1,8 @@
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata = pageMetadata({
-  title: 'Blog — WhatsApp Marketing & Automation Guides',
-  description: 'Guides and playbooks on WhatsApp marketing, broadcasts, chatbots, automation and customer support from the BigBrosAI team.',
+  title: 'Guides & Resources — WhatsApp Marketing, Chatbots & API',
+  description: 'Docs, video tutorials and plain-English guides to WhatsApp marketing, chatbots, pricing and the WhatsApp Business API from BigBrosAI.',
   path: '/blog',
 });
 

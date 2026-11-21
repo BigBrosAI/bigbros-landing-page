@@ -1,252 +1,142 @@
+import Link from 'next/link';
+import { ArrowUpRight, HeartHandshake, Lightbulb, MapPin, Rocket, ShieldCheck, Sparkles, Users } from 'lucide-react';
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Button } from '@/components/ui/button';
-import { 
-  Users2, 
-  Target, 
-  Lightbulb, 
-  Award,
-  MapPin,
-  Calendar,
-  Linkedin,
-  Twitter,
-  Github
-} from 'lucide-react';
-import Link from 'next/link';
+import { PageHero } from '@/components/site/page-hero';
+import { ButtonLink, Container } from '@/components/site/primitives';
+import { Reveal } from '@/components/site/reveal';
+import { Kicker } from '@/components/landing/kicker';
+import { BrandIcon, BrandTile } from '@/components/landing/brand-icon';
+import { ProductCard } from '@/components/landing/product-card';
+import { ClosingCta } from '@/components/landing/sections';
+import { products } from '@/lib/catalog';
+import { activeAffiliations, siteConfig } from '@/lib/site';
 
-const team = [
-  {
-    name: "Manju Sharma",
-    role: "Director & Co-founder",
-    // image: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop",
-    // bio: "Former WhatsApp engineer with 10+ years in messaging platforms",
-    linkedin: "#",
-    twitter: "#"
-  },
-  {
-    name: "Ranu Sharma",
-    role: "Director & Co-founder", 
-    // image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop",
-    // bio: "AI/ML expert, previously at Google and Microsoft",
-    linkedin: "#",
-    twitter: "#"
-  },
-  {
-    name: "Rumi Devi",
-    role: "Director & Co-founder",
-    // image: "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop",
-    // bio: "Product leader with experience scaling B2B SaaS platforms",
-    linkedin: "#",
-    twitter: "#"
-  }
-];
-
-const milestones = [
-  {
-    year: "2023",
-    title: "Company Founded",
-    description: "Started with a vision to democratize WhatsApp marketing for Indian businesses"
-  },
-  {
-    year: "2024",
-    title: "AI Integration",
-    description: "Launched AI-powered template generation and campaign optimization"
-  },
-  {
-    year: "2024",
-    title: "10M+ Messages",
-    description: "Crossed 10 million messages delivered across 1000+ businesses"
-  },
-  {
-    year: "2025",
-    title: "Global Expansion",
-    description: "Expanding to serve businesses across Southeast Asia and beyond"
-  }
+const customers = ['Clinics & hospitals', 'Retailers', 'D2C brands', 'Coaching centres', 'Real-estate firms', 'Growing small businesses'];
+const values = [
+  { icon: Lightbulb, title: 'Simple beats clever', body: 'If a shop owner can’t set it up in an afternoon, we haven’t finished building it.' },
+  { icon: HeartHandshake, title: 'Customers first', body: 'Every feature starts with a conversation a real business needed to have with its customers.' },
+  { icon: ShieldCheck, title: 'Built on trust', body: 'Official WhatsApp Business API, opt-in respected, and your data used only to serve you.' },
+  { icon: Rocket, title: 'Ship fast', body: 'We release improvements every week — see the changelog for what landed recently.' },
 ];
 
 export default function AboutPage() {
+  const nvidia = activeAffiliations[0];
   return (
-    <main className="min-h-screen">
+    <>
       <Navbar />
-      
-      {/* Hero Section */}
-      <section className="py-24 hero-bg">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge variant="secondary" className="mb-6">
-              <Users2 className="w-4 h-4 mr-2" />
-              About BIGBROS AI
-            </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Building the future of{' '}
-              <span className="text-primary">business messaging</span>
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              We're on a mission to help businesses connect with their customers through 
-              intelligent, automated WhatsApp campaigns that drive real results.
-            </p>
+      <main className="overflow-x-clip">
+        <PageHero
+          kicker="About us"
+          title="We help businesses grow on the app their customers already use."
+          subtitle="BigBrosAI is a WhatsApp marketing and automation platform built for Indian businesses — one place for every business conversation, from campaigns to customer support."
+        >
+          <div className="flex flex-wrap justify-center gap-2">
+            <span className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white/80 py-1 pl-1 pr-3 text-[13px] font-medium text-brand-800">
+              <BrandTile slug="whatsapp" size={24} className="rounded-full" /> Official WhatsApp Business API
+            </span>
+            {nvidia && (
+              <a href={nvidia.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 py-1 pl-1 pr-3 text-[13px] font-medium text-ink-600">
+                <span className="flex h-6 items-center gap-1 rounded-full bg-black px-2">
+                  <BrandIcon slug="nvidia" className="h-3.5 w-3.5" />
+                  <span className="text-[10.5px] font-bold text-white">NVIDIA</span>
+                </span>
+                {nvidia.label}
+              </a>
+            )}
           </div>
-        </div>
-      </section>
+        </PageHero>
 
-      {/* Mission & Vision */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <Card className="text-center">
-              <CardHeader>
-                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                  <Target className="w-8 h-8 text-primary" />
-                </div>
-                <CardTitle>Our Mission</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  To democratize WhatsApp marketing by making it accessible, 
-                  intelligent, and effective for businesses of all sizes.
+        <section className="py-20 sm:py-24">
+          <Container className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20 [&>*]:min-w-0">
+            <div>
+              <Reveal>
+                <Kicker>Our mission</Kicker>
+              </Reveal>
+              <Reveal delay={0.05}>
+                <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-[2.6rem] sm:leading-[1.08]">Make WhatsApp the easiest way to sell and support.</h2>
+              </Reveal>
+              <Reveal delay={0.1} className="mt-6 space-y-4 text-lg leading-relaxed text-ink-600">
+                <p>Most customers in India already talk to businesses on WhatsApp — but most businesses still run those chats from one phone, a spreadsheet and a lot of copy-paste.</p>
+                <p>
+                  BigBrosAI turns that into a system: approved broadcasts with segmentation, an AI assistant for templates, no-code chatbot flows, a shared team inbox and dashboards
+                  that show what each campaign earned — all on the official WhatsApp Business API.
                 </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center">
-              <CardHeader>
-                <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
-                  <Lightbulb className="w-8 h-8 text-accent" />
-                </div>
-                <CardTitle>Our Vision</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  To become the leading AI-powered messaging platform that 
-                  transforms how businesses communicate with their customers.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center">
-              <CardHeader>
-                <div className="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center mx-auto mb-4">
-                  <Award className="w-8 h-8 text-blue-500" />
-                </div>
-                <CardTitle>Our Values</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Innovation, transparency, customer success, and building 
-                  technology that makes a meaningful impact.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="py-16 section-bg">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet our team</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              We're a passionate team of engineers, designers, and marketers 
-              building the future of business messaging.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {team.map((member) => (
-              <Card key={member.name} className="text-center hover:shadow-lg transition-shadow">
-                <CardContent className="pt-8">
-                  <Avatar className="h-24 w-24 mx-auto mb-4 border-4 border-primary/20">
-                    {/* <AvatarImage src={member?.image || ''} alt={member.name} /> */}
-                    <AvatarFallback>{member.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                  </Avatar>
-                  <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
-                  <p className="text-primary font-medium mb-3">{member.role}</p>
-                  {/* <p className="text-muted-foreground text-sm mb-4">{member?.bio}</p> */}
-                  <div className="flex justify-center gap-2">
-                    <Button variant="ghost" size="sm" className="w-9 px-0">
-                      <Linkedin className="h-4 w-4" />
-                    </Button>
-                    <Button variant="ghost" size="sm" className="w-9 px-0">
-                      <Twitter className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Company Timeline */}
-      {/* <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Our journey</h2>
-              <p className="text-xl text-muted-foreground">
-                From startup to scale - here's how we've grown
-              </p>
+              </Reveal>
             </div>
+            <Reveal delay={0.1} className="rounded-[2rem] border border-border bg-card p-7 shadow-card sm:p-9">
+              <p className="font-mono text-[11.5px] uppercase tracking-[0.2em] text-brand-700">Who we build for</p>
+              <ul className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {customers.map((c) => (
+                  <li key={c} className="flex items-center gap-2.5 rounded-2xl bg-muted/60 px-4 py-3 text-[15px] font-medium">
+                    <Users className="h-4 w-4 text-brand-700" /> {c}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6 space-y-3 border-t border-border pt-6 text-[15px] text-ink-600">
+                <p className="flex items-start gap-2.5">
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-700" />
+                  {siteConfig.legalName} · Registered in Mathura, Uttar Pradesh, with an office in Agra
+                </p>
+                <p className="flex items-start gap-2.5">
+                  <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-brand-700" />
+                  Ten products on one platform — WhatsApp, email and payments
+                </p>
+              </div>
+            </Reveal>
+          </Container>
+        </section>
 
-            <div className="space-y-8">
-              {milestones.map((milestone, index) => (
-                <div key={milestone.year} className="flex gap-6">
-                  <div className="flex flex-col items-center">
-                    <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold">
-                      {milestone.year.slice(-2)}
-                    </div>
-                    {index < milestones.length - 1 && (
-                      <div className="w-px h-16 bg-border mt-4"></div>
-                    )}
-                  </div>
-                  <div className="flex-1 pb-8">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Calendar className="w-4 h-4 text-muted-foreground" />
-                      <span className="text-sm text-muted-foreground">{milestone.year}</span>
-                    </div>
-                    <h3 className="text-xl font-semibold mb-2">{milestone.title}</h3>
-                    <p className="text-muted-foreground">{milestone.description}</p>
-                  </div>
-                </div>
+        <section className="forest relative overflow-hidden py-20 sm:py-24">
+          <div aria-hidden className="rule-shine absolute inset-x-0 top-0" />
+          <Container className="relative">
+            <Reveal>
+              <Kicker light>What we value</Kicker>
+            </Reveal>
+            <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {values.map((v, i) => (
+                <Reveal as="li" key={v.title} delay={i * 0.06} className="rounded-3xl border border-white/10 bg-white/[0.05] p-6">
+                  <v.icon className="h-6 w-6 text-lime-300" />
+                  <h3 className="mt-4 text-lg font-bold text-white">{v.title}</h3>
+                  <p className="mt-2 text-[15px] leading-relaxed text-white/65">{v.body}</p>
+                </Reveal>
               ))}
-            </div>
-          </div>
-        </div>
-      </section> */}
+            </ul>
+          </Container>
+        </section>
 
-      {/* Location */}
-      <section className="py-16 section-bg">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <Card>
-              <CardContent className="pt-8">
-                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
-                  <MapPin className="w-8 h-8 text-primary" />
-                </div>
-                <h2 className="text-2xl font-bold mb-4">Proudly based in India</h2>
-                <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                  Headquartered in Bangalore, we're building world-class technology 
-                  with a deep understanding of the Indian market and global ambitions.
-                </p>
-                <div className="flex justify-center gap-4">
-                  <Link href="/contact">
-                    <Button>Get in touch</Button>
-                  </Link>
-                  <Link href="/careers">
-                    <Button variant="outline">Join our team</Button>
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-      
+        <section className="py-20 sm:py-24">
+          <Container>
+            <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+              <Reveal>
+                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">What we’ve built</h2>
+              </Reveal>
+              <Reveal className="flex gap-4 text-sm font-semibold">
+                <Link href="/changelog" className="inline-flex items-center gap-1 text-brand-800 hover:underline">
+                  Changelog <ArrowUpRight className="h-4 w-4" />
+                </Link>
+                <Link href="/careers" className="inline-flex items-center gap-1 text-brand-800 hover:underline">
+                  We’re hiring <ArrowUpRight className="h-4 w-4" />
+                </Link>
+              </Reveal>
+            </div>
+            <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {products.slice(0, 6).map((p, i) => (
+                <Reveal as="li" key={p.slug} delay={(i % 3) * 0.06}>
+                  <ProductCard p={p} />
+                </Reveal>
+              ))}
+            </ul>
+            <Reveal className="mt-8 text-center">
+              <ButtonLink href="/products" variant="outline" arrow className="rounded-full">
+                See all products
+              </ButtonLink>
+            </Reveal>
+          </Container>
+        </section>
+        <ClosingCta />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

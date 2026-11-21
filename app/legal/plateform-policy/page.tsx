@@ -1,31 +1,9 @@
-import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/footer';
+import { LegalShell } from '@/components/site/legal-shell';
 
 export default function PlatformPolicyPage() {
-  const today = new Date().toLocaleDateString('en-IN', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  });
-
   return (
-    <main className="min-h-screen bg-white">
-      <Navbar />
+    <LegalShell title="Platform Usage Policy" path="/legal/plateform-policy" updated="2025-12-19">
 
-      <section className="container mx-auto px-4 py-20 max-w-4xl">
-        {/* Page Title */}
-        <div className="text-center mb-14">
-          <h1 className="text-4xl font-semibold text-gray-900">
-            Platform Usage Policy
-          </h1>
-          <div className="w-14 h-1 bg-green-600 mx-auto mt-4" />
-          <p className="mt-6 text-sm text-gray-500">
-            Last updated on {today}
-          </p>
-        </div>
-
-        {/* Content */}
-        <div className="space-y-10 text-gray-700 leading-relaxed text-base">
           <section>
             <p>
               This Platform Usage Policy ("Policy") governs the access and use of
@@ -37,7 +15,7 @@ export default function PlatformPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               1. Permitted Use
             </h2>
             <p>
@@ -49,7 +27,7 @@ export default function PlatformPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               2. Prohibited Activities
             </h2>
             <ul className="list-disc pl-6 space-y-2">
@@ -62,7 +40,7 @@ export default function PlatformPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               3. User Content Responsibility
             </h2>
             <p>
@@ -74,7 +52,7 @@ export default function PlatformPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               4. Compliance Requirements
             </h2>
             <p>
@@ -85,7 +63,7 @@ export default function PlatformPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               5. Monitoring and Enforcement
             </h2>
             <p>
@@ -97,7 +75,7 @@ export default function PlatformPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               6. Suspension and Termination
             </h2>
             <p>
@@ -108,7 +86,7 @@ export default function PlatformPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               7. Limitation of Liability
             </h2>
             <p>
@@ -119,7 +97,7 @@ export default function PlatformPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               8. Policy Updates
             </h2>
             <p>
@@ -130,7 +108,7 @@ export default function PlatformPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               9. Contact Information
             </h2>
             <p>
@@ -138,10 +116,6 @@ export default function PlatformPolicyPage() {
               us using the contact information provided on the Platform.
             </p>
           </section>
-        </div>
-      </section>
-
-      <Footer />
-    </main>
+    </LegalShell>
   );
 }

@@ -1,33 +1,11 @@
-import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/footer';
+import { LegalShell } from '@/components/site/legal-shell';
 
 export default function PrivacyPage() {
-  const today = new Date().toLocaleDateString('en-IN', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  });
-
   return (
-    <main className="min-h-screen bg-white">
-      <Navbar />
+    <LegalShell title="Privacy Policy" path="/legal/privacy" updated="2025-12-19">
 
-      <section className="container mx-auto px-4 py-20 max-w-4xl">
-        {/* Page Title */}
-        <div className="text-center mb-14">
-          <h1 className="text-4xl font-semibold text-gray-900">
-            Privacy Policy
-          </h1>
-          <div className="w-14 h-1 bg-green-600 mx-auto mt-4" />
-          <p className="mt-6 text-sm text-gray-500">
-            Last updated on {today}
-          </p>
-        </div>
-
-        {/* Content */}
-        <div className="space-y-10 text-gray-700 leading-relaxed text-base">
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               1. Introduction
             </h2>
             <p>
@@ -44,7 +22,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               2. Collection of Information
             </h2>
             <p>
@@ -61,7 +39,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               3. Use of Information
             </h2>
             <p>
@@ -72,7 +50,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               4. Sharing of Information
             </h2>
             <p>
@@ -83,7 +61,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               5. Security Practices
             </h2>
             <p>
@@ -94,7 +72,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               6. Data Retention and Deletion
             </h2>
             <p>
@@ -105,7 +83,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               7. Your Rights
             </h2>
             <p>
@@ -116,7 +94,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               8. Changes to this Policy
             </h2>
             <p>
@@ -124,10 +102,6 @@ export default function PrivacyPage() {
               changes will be communicated as required under applicable laws.
             </p>
           </section>
-        </div>
-      </section>
-
-      <Footer />
-    </main>
+    </LegalShell>
   );
 }

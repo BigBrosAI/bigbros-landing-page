@@ -14,6 +14,16 @@ export const siteConfig = {
   description:
     'Build meaningful customer relationships with powerful WhatsApp Business APIs, intelligent automation, AI-driven conversations, and unified business messaging.',
   email: 'support@bigbrosai.com',
+  /** General / sales and careers inbox (used in the hiring JD). */
+  helloEmail: 'hello@bigbrosai.com',
+  phones: ['+91 70177 53527', '+91 82795 10767'],
+  /** WhatsApp chat number, as linked from the previous site. */
+  whatsapp: { number: '918279305027', display: '+91 82793 05027' },
+  offices: [
+    { label: 'Registered office', lines: ['E-93, Govind Nagar, Near Shiv Park', 'Mathura, Uttar Pradesh 281001, India'] },
+    { label: 'Agra office', lines: ['48-A Kalakunj, Subhash Nagar', 'Agra, Uttar Pradesh 282010, India'] },
+  ],
+  hours: ['Monday – Friday · 9:00 AM – 6:00 PM IST', 'Saturday · 10:00 AM – 2:00 PM IST'],
 
   links: {
     /** Existing SaaS application. The marketing site never handles auth itself. */
@@ -21,8 +31,8 @@ export const siteConfig = {
     login: process.env.NEXT_PUBLIC_DASHBOARD_LOGIN_URL || DASHBOARD_URL,
     signup: process.env.NEXT_PUBLIC_DASHBOARD_SIGNUP_URL || DASHBOARD_URL,
     /** Lead-capture destination for "Talk to Sales" / "Book a Demo". Switch to /book-demo once that page ships. */
-    bookDemo: '/contact',
-    contactSales: '/contact',
+    bookDemo: '/contact?topic=demo',
+    contactSales: '/contact?topic=sales',
     docs: 'https://docs.bigbrosai.com',
   },
 

@@ -1,31 +1,9 @@
-import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/footer';
+import { LegalShell } from '@/components/site/legal-shell';
 
 export default function TermsPage() {
-  const today = new Date().toLocaleDateString('en-IN', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  });
-
   return (
-    <main className="min-h-screen bg-white">
-      <Navbar />
+    <LegalShell title="Terms of Service" path="/legal/terms" updated="2025-12-19">
 
-      <section className="container mx-auto px-4 py-20 max-w-4xl">
-        {/* Page Title */}
-        <div className="text-center mb-14">
-          <h1 className="text-4xl font-semibold text-gray-900">
-            Terms & Conditions
-          </h1>
-          <div className="w-14 h-1 bg-green-600 mx-auto mt-4" />
-          <p className="mt-6 text-sm text-gray-500">
-            Last updated on {today}
-          </p>
-        </div>
-
-        {/* Content */}
-        <div className="space-y-10 text-gray-700 leading-relaxed text-base">
           <section>
             <p>
               This document is an electronic record in terms of the Information
@@ -42,7 +20,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               1. Platform Ownership
             </h2>
             <p>
@@ -54,7 +32,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               2. Acceptance of Terms
             </h2>
             <p>
@@ -69,7 +47,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               3. User Definition
             </h2>
             <p>
@@ -80,7 +58,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               4. User Obligations
             </h2>
             <ul className="list-disc pl-6 space-y-2">
@@ -103,7 +81,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               5. No Warranties
             </h2>
             <p>
@@ -117,7 +95,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               6. Intellectual Property
             </h2>
             <p>
@@ -128,7 +106,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               7. Third-Party Links
             </h2>
             <p>
@@ -140,7 +118,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               8. Payments
             </h2>
             <p>
@@ -150,7 +128,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               9. Indemnification
             </h2>
             <p>
@@ -161,7 +139,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               10. Force Majeure
             </h2>
             <p>
@@ -171,7 +149,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               11. Governing Law & Jurisdiction
             </h2>
             <p>
@@ -182,7 +160,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2>
               12. Contact
             </h2>
             <p>
@@ -190,10 +168,6 @@ export default function TermsPage() {
               using the contact information provided on this Platform.
             </p>
           </section>
-        </div>
-      </section>
-
-      <Footer />
-    </main>
+    </LegalShell>
   );
 }
