@@ -25,7 +25,7 @@ export default function ChannelsPage() {
     <>
       <Navbar />
       <main className="overflow-x-clip">
-        <PageHero
+        <PageHero scene="channels"
           kicker="Channels"
           title={
             <>

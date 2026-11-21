@@ -2,6 +2,7 @@ import { Container } from '@/components/site/primitives';
 import { Reveal } from '@/components/site/reveal';
 import { Kicker } from '@/components/landing/kicker';
 import { cn } from '@/lib/utils';
+import { HeroGraphicRow, HeroGraphicSides, type HeroScene } from '@/components/site/hero-graphic';
 
 /** Shared hero for inner pages: mesh background, kicker, title, subtitle, optional actions. */
 export function PageHero({
@@ -11,6 +12,7 @@ export function PageHero({
   children,
   className,
   tight,
+  scene,
 }: {
   kicker: React.ReactNode;
   title: React.ReactNode;
@@ -19,11 +21,14 @@ export function PageHero({
   className?: string;
   /** Less bottom padding, for pages where content follows immediately. */
   tight?: boolean;
+  /** Floating on-brand graphic cards around the title. */
+  scene?: HeroScene;
 }) {
   return (
     <section className={cn('relative -mt-16 overflow-hidden pt-16', className)}>
       <div aria-hidden className="bg-mesh absolute inset-0" />
       <div aria-hidden className="bg-grain absolute inset-0 [mask-image:linear-gradient(to_bottom,#000,transparent_80%)]" />
+      {scene && <HeroGraphicSides scene={scene} />}
       <Container className={cn('relative pt-14 text-center sm:pt-20', tight ? 'pb-8 sm:pb-10' : 'pb-16 sm:pb-20')}>
         <Reveal>
           <Kicker className="justify-center">{kicker}</Kicker>
@@ -39,6 +44,11 @@ export function PageHero({
         {children && (
           <Reveal delay={0.15} className="mt-9">
             {children}
+          </Reveal>
+        )}
+        {scene && (
+          <Reveal delay={0.2}>
+            <HeroGraphicRow scene={scene} />
           </Reveal>
         )}
       </Container>

@@ -20,7 +20,7 @@ export default function ToolsPage() {
     <>
       <Navbar />
       <main className="overflow-x-clip">
-        <PageHero kicker="Free tools" title="Free WhatsApp tools for your business." subtitle="No signup, no cost. Create chat links and QR codes, build and check templates, clean contact lists, estimate costs and ROI, and add WhatsApp to your website." tight />
+        <PageHero scene="tools" kicker="Free tools" title="Free WhatsApp tools for your business." subtitle="No signup, no cost. Create chat links and QR codes, build and check templates, clean contact lists, estimate costs and ROI, and add WhatsApp to your website." tight />
         <section className="pb-24">
           <Container>
             <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">

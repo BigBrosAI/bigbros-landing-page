@@ -23,7 +23,7 @@ export default function ProductsPage() {
     <>
       <Navbar />
       <main className="overflow-x-clip">
-        <PageHero
+        <PageHero scene="products"
           kicker="Products"
           title={
             <>

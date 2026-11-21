@@ -28,7 +28,7 @@ export default function ContactPage() {
             },
           }}
         />
-        <PageHero
+        <PageHero scene="contact"
           kicker="Contact"
           title="Talk to the BigBrosAI team."
           subtitle="Book a demo, ask about pricing or get help with your account. A real person replies — usually within one business day."

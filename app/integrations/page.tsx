@@ -22,7 +22,7 @@ export default function IntegrationsPage() {
     <>
       <Navbar />
       <main className="overflow-x-clip">
-        <PageHero
+        <PageHero scene="integrations"
           kicker="Integrations"
           title={
             <>

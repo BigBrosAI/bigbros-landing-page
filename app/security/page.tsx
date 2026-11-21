@@ -22,7 +22,7 @@ export default function SecurityPage() {
     <>
       <Navbar />
       <main className="overflow-x-clip">
-        <PageHero
+        <PageHero scene="security"
           kicker="Security"
           title="Your conversations, handled with care."
           subtitle="How BigBrosAI protects your account, your data and your customers’ trust on the official WhatsApp Business Platform."

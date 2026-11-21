@@ -37,6 +37,27 @@ export function ToolShell({ tool, children }: { tool: Tool; children: React.Reac
         />
         <section className="relative -mt-16 overflow-hidden pt-16">
           <div aria-hidden className="bg-mesh absolute inset-0" />
+          <div aria-hidden className="bg-grain absolute inset-0 [mask-image:linear-gradient(to_bottom,#000,transparent_85%)]" />
+          {/* graphic: the tool's icon on a forest tile inside orbit rings */}
+          <div aria-hidden className="pointer-events-none absolute right-[6%] top-1/2 hidden h-72 w-72 -translate-y-[40%] lg:block">
+            <svg className="absolute inset-0 h-full w-full text-brand-600/20" viewBox="0 0 200 200" fill="none">
+              <circle cx="100" cy="100" r="58" stroke="currentColor" strokeDasharray="2 5" />
+              <circle cx="100" cy="100" r="92" stroke="currentColor" strokeDasharray="2 7" />
+            </svg>
+            <div className="absolute left-1/2 top-1/2 flex h-28 w-28 -translate-x-1/2 -translate-y-1/2 rotate-[-6deg] items-center justify-center rounded-[2rem] bg-forest text-lime-300 shadow-lift">
+              <tool.icon className="h-12 w-12" />
+            </div>
+            <div className="animate-float absolute left-0 top-10">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1.5 text-[12px] font-semibold shadow-float">
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-600" /> 100% free
+              </span>
+            </div>
+            <div className="animate-float absolute bottom-10 right-0" style={{ animationDelay: '-2.5s' }}>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1.5 text-[12px] font-semibold shadow-float">
+                <span className="h-1.5 w-1.5 rounded-full bg-lime-300 ring-1 ring-forest/20" /> No signup
+              </span>
+            </div>
+          </div>
           <Container className="relative pb-10 pt-12 sm:pt-16">
             <Reveal>
               <Link href="/tools" className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-600 hover:text-foreground">
@@ -50,10 +71,10 @@ export function ToolShell({ tool, children }: { tool: Tool; children: React.Reac
               <Kicker>Free tool</Kicker>
             </Reveal>
             <Reveal delay={0.08}>
-              <h1 className="mt-5 font-display text-[2.3rem] font-bold leading-[1.06] tracking-[-0.035em] sm:text-5xl">{tool.name}</h1>
+              <h1 className="mt-5 font-display text-[2.3rem] font-bold leading-[1.06] tracking-[-0.035em] sm:text-5xl lg:max-w-2xl">{tool.name}</h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600">{tool.intro}</p>
+              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600 lg:max-w-xl">{tool.intro}</p>
             </Reveal>
           </Container>
         </section>

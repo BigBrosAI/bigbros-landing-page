@@ -70,7 +70,7 @@ export default function ChangelogPage() {
     <>
       <Navbar />
       <main className="overflow-x-clip">
-        <PageHero kicker="Changelog" title="What’s new in BigBrosAI." subtitle="The features and improvements we’ve shipped, month by month." tight />
+        <PageHero scene="changelog" kicker="Changelog" title="What’s new in BigBrosAI." subtitle="The features and improvements we’ve shipped, month by month." tight />
         <section className="pb-24">
           <Container className="max-w-4xl">
             <ol className="relative border-l border-border pl-8 sm:pl-10">

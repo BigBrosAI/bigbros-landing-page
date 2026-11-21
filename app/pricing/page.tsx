@@ -34,7 +34,7 @@ export default function PricingPage() {
             mainEntity: pricingFaqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
           }}
         />
-        <PageHero
+        <PageHero scene="pricing"
           kicker="Transparent pricing"
           title={
             <>

@@ -45,7 +45,7 @@ export default function CareersPage() {
             url: absoluteUrl(`/careers/${j.slug}`),
           }))}
         />
-        <PageHero kicker="We’re hiring" title="Build the future of business conversations." subtitle="We’re a small, remote-first team helping Indian businesses grow on WhatsApp — and we’re growing. Come sell, market and onboard with us." tight />
+        <PageHero scene="careers" kicker="We’re hiring" title="Build the future of business conversations." subtitle="We’re a small, remote-first team helping Indian businesses grow on WhatsApp — and we’re growing. Come sell, market and onboard with us." tight />
 
         <section className="pb-20">
           <Container className="max-w-4xl">
