@@ -18,13 +18,14 @@ import { HowItWorks } from '@/components/landing/how-it-works';
 import { Faq } from '@/components/landing/faq';
 import { PromoMarquee } from '@/components/landing/promo-marquee';
 import { Testimonials } from '@/components/landing/testimonials';
+import { EmailSection } from '@/components/landing/email-section';
 
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'BigBrosAI',
     shareTitle: 'BigBrosAI — Free WhatsApp Business API & AI Chatbot Platform',
     description:
-      'Official WhatsApp Business API platform for campaigns, shared live chat, AI chatbots, WhatsApp Pay and email. Free WhatsApp API, ₹50 signup bonus and 300 free emails a day.',
+      'Official WhatsApp Business API platform for campaigns, shared live chat, AI chatbots, WhatsApp Pay, plus an email API and email marketing. Free WhatsApp API, ₹50 signup bonus and 300 free emails a day.',
     path: '/',
   }),
   title: { absolute: 'BigBrosAI — Free WhatsApp Business API & AI Chatbot Platform' },
@@ -41,6 +42,7 @@ export default function HomePage() {
         <DashboardSection />
         <ProductChapters />
         <IntegrationsSection />
+        <EmailSection />
         <ProductShowcase />
         <FeatureBento />
         <HowItWorks />

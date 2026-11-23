@@ -13,6 +13,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { pageMetadata } from '@/lib/seo';
 import { softwareApplicationLd } from '@/lib/structured-data';
 import { comparison, metaRates, plans, pricingFaqs, terminology } from '@/lib/plans';
+import { PlanHeadPrice } from '@/components/pricing/plan-head-price';
+import { ByCurrency } from '@/components/site/price';
 
 export const metadata: Metadata = pageMetadata({
   title: 'Pricing — Simple, Transparent WhatsApp API Plans',
@@ -105,7 +107,7 @@ export default function PricingPage() {
                       <th key={p.id} className={`px-4 py-4 text-center font-display text-base font-bold ${p.popular ? 'bg-brand-50 text-brand-900' : ''}`}>
                         {p.name}
                         <span className="block font-sans text-[12px] font-medium text-muted-foreground">
-                          {p.monthly === null ? 'Custom' : p.monthly === 0 ? 'Free' : `₹${p.monthly.toLocaleString('en-IN')}/mo`}
+                          <PlanHeadPrice id={p.id} />
                         </span>
                       </th>
                     ))}
@@ -131,7 +133,7 @@ export default function PricingPage() {
                             ) : v === false ? (
                               <Minus className="mx-auto h-4 w-4 text-muted-foreground/50" aria-label="Not included" />
                             ) : (
-                              <span className="text-[13px] text-ink-600">{v}</span>
+                              <span className="text-[13px] text-ink-600">{typeof v === 'string' ? v : <ByCurrency inr={v.inr} usd={v.usd} />}</span>
                             )}
                           </td>
                         ))}

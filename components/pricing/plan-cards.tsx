@@ -5,15 +5,18 @@ import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import { ButtonLink } from '@/components/site/primitives';
 import { Reveal } from '@/components/site/reveal';
-import { inr, planPrice, plans } from '@/lib/plans';
+import { featureKey, planPriceIn, plans } from '@/lib/plans';
+import { money, useCurrency } from '@/lib/currency';
+import { CurrencyToggle } from '@/components/site/price';
 import { siteConfig } from '@/lib/site';
 import { cn } from '@/lib/utils';
 
 export function PlanCards({ compact }: { compact?: boolean }) {
   const [annual, setAnnual] = useState(false);
+  const c = useCurrency();
   return (
     <div>
-      <div className="flex justify-center">
+      <div className="flex flex-wrap items-center justify-center gap-3">
         <div role="radiogroup" aria-label="Billing period" className="relative inline-flex rounded-full border border-border bg-card p-1 shadow-sm">
           {[false, true].map((a) => (
             <button
@@ -30,11 +33,13 @@ export function PlanCards({ compact }: { compact?: boolean }) {
             </button>
           ))}
         </div>
+        <CurrencyToggle />
       </div>
 
       <ul className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {plans.map((p, i) => {
-          const price = planPrice(p, annual);
+          const pr = planPriceIn(p, annual, c);
+          const price = pr ? pr.perMonth : null;
           const featured = p.popular;
           const features = compact ? p.features.slice(0, 5) : p.features;
           return (
@@ -56,15 +61,15 @@ export function PlanCards({ compact }: { compact?: boolean }) {
                   <span className="font-display text-4xl font-bold tracking-tight">Free</span>
                 ) : (
                   <>
-                    <motion.span key={price} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="font-display text-4xl font-bold tracking-tight">
-                      {inr(price)}
+                    <motion.span key={`${c}-${price}`} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="font-display text-4xl font-bold tracking-tight">
+                      {money(price, c)}
                     </motion.span>
                     <span className={cn('text-sm', featured ? 'text-white/60' : 'text-muted-foreground')}>/ month</span>
                   </>
                 )}
               </div>
               <p className={cn('mt-1 h-4 text-[12px]', featured ? 'text-white/50' : 'text-muted-foreground')}>
-                {price && annual ? `Billed yearly · ${inr(price * 12)}` : price === 0 ? 'Free forever' : ''}
+                {pr && price && annual ? `Billed yearly · ${money(pr.billed, c)}` : price === 0 ? 'Free forever' : ''}
               </p>
               <ButtonLink
                 href={p.href === 'sales' ? siteConfig.links.contactSales : siteConfig.links.signup}
@@ -77,9 +82,9 @@ export function PlanCards({ compact }: { compact?: boolean }) {
               {p.inherits && <p className={cn('mt-6 text-[12.5px] font-semibold', featured ? 'text-lime-300' : 'text-brand-800')}>{p.inherits}</p>}
               <ul className={cn('space-y-2.5 text-[14px]', p.inherits ? 'mt-3' : 'mt-6')}>
                 {features.map((f) => (
-                  <li key={f} className={cn('flex gap-2.5', featured ? 'text-white/85' : 'text-ink-600')}>
+                  <li key={featureKey(f)} className={cn('flex gap-2.5', featured ? 'text-white/85' : 'text-ink-600')}>
                     <Check className={cn('mt-0.5 h-4 w-4 shrink-0', featured ? 'text-lime-300' : 'text-brand-600')} />
-                    {f}
+                    {typeof f === 'string' ? f : c === 'USD' ? f.usd : f.inr}
                   </li>
                 ))}
               </ul>

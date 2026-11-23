@@ -15,6 +15,8 @@ export const contactSchema = z.object({
   company: z.string().trim().max(120).optional().or(z.literal('')),
   topic: z.enum(['demo', 'sales', 'support', 'partnership', 'other']),
   message: z.string().trim().min(10, 'Tell us a little more (10+ characters)').max(3000),
+  /** Campaign attribution (UTMs, click IDs) captured on the site. */
+  attribution: z.record(z.string().max(60), z.string().max(300)).optional(),
   /** Honeypot — must stay empty. */
   website: z.string().max(0).optional().or(z.literal('')),
 });

@@ -22,6 +22,18 @@ export function softwareApplicationLd() {
         priceCurrency: 'INR',
         url: absoluteUrl('/pricing'),
         category: p.monthly === 0 ? 'Free' : 'Subscription',
-      })),
+      }))
+      .concat(
+        plans
+          .filter((p) => p.usd)
+          .map((p) => ({
+            '@type': 'Offer',
+            name: p.name,
+            price: String(p.usd!.monthly),
+            priceCurrency: 'USD',
+            url: absoluteUrl('/pricing'),
+            category: p.monthly === 0 ? 'Free' : 'Subscription',
+          })),
+      ),
   };
 }

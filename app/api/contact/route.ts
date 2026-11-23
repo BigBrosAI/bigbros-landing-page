@@ -46,6 +46,8 @@ export async function POST(request: Request) {
     ['Phone / WhatsApp', d.phone || '—'],
     ['Company', d.company || '—'],
   ];
+  const attr = Object.entries(d.attribution ?? {}).slice(0, 30);
+  if (attr.length) rows.push(['Attribution', attr.map(([k, v]) => `${k}=${v}`).join(' · ')]);
   const text = `${rows.map(([k, v]) => `${k}: ${v}`).join('\n')}\n\n${d.message}\n\n— Sent from ${siteConfig.url}/contact`;
   const html = `<table cellpadding="6" style="font-family:Arial,sans-serif;font-size:14px;border-collapse:collapse">${rows
     .map(([k, v]) => `<tr><td style="color:#667085">${k}</td><td><b>${escape(v)}</b></td></tr>`)

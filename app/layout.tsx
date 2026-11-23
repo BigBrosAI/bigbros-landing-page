@@ -7,6 +7,7 @@ import { Toaster } from '@/components/ui/sonner';
 import { JsonLd } from '@/components/site/primitives';
 import { RevealObserver } from '@/components/site/reveal-observer';
 import { WhatsAppFab } from '@/components/site/whatsapp-fab';
+import { UtmTracker } from '@/components/site/utm-tracker';
 import { absoluteUrl, siteConfig } from '@/lib/site';
 import { ogImage } from '@/lib/seo';
 
@@ -108,6 +109,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
           <RevealObserver />
           <WhatsAppFab />
+          <UtmTracker />
           <Toaster />
         </ThemeProvider>
       </body>

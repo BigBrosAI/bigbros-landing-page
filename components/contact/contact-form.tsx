@@ -9,6 +9,7 @@ import { contactSchema, contactTopics, topicLabel, type ContactInput } from '@/l
 import { siteConfig } from '@/lib/site';
 import { cn } from '@/lib/utils';
 
+import { attributionFields } from '@/lib/utm';
 type Status = { kind: 'idle' } | { kind: 'sending' } | { kind: 'sent' } | { kind: 'fallback'; mailto: string } | { kind: 'error'; message: string };
 
 const field =
@@ -39,7 +40,7 @@ export function ContactForm() {
     setErrors({});
     setStatus({ kind: 'sending' });
     try {
-      const res = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(parsed.data) });
+      const res = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...parsed.data, attribution: attributionFields() }) });
       const json = (await res.json().catch(() => ({}))) as { ok?: boolean; fallback?: boolean; error?: string };
       if (res.ok && json.ok) return setStatus({ kind: 'sent' });
       if (json.fallback) return setStatus({ kind: 'fallback', mailto: mailtoFor(parsed.data) });

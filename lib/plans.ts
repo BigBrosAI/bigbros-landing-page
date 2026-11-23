@@ -8,26 +8,34 @@ export const ANNUAL_DISCOUNT = 0.1;
 export type Plan = {
   id: 'starter' | 'basic' | 'pro' | 'enterprise';
   name: string;
-  monthly: number | null; // null = custom
+  monthly: number | null; // INR per month; null = custom
+  /** Exact INR price when billed yearly (from the billing system). */
+  annualInr?: number;
+  /** USD prices for international customers (from the billing system). */
+  usd?: { monthly: number; annual: number } | null;
   blurb: string;
   cta: string;
   href: 'signup' | 'sales';
   popular?: boolean;
   inherits?: string;
-  features: string[];
+  /** A feature line, or { inr, usd } when the wording depends on currency. */
+  features: Feature[];
 };
+export type Feature = string | { inr: string; usd: string };
+export const featureKey = (f: Feature) => (typeof f === 'string' ? f : f.inr);
 
 export const plans: Plan[] = [
   {
     id: 'starter',
     name: 'Starter',
     monthly: 0,
+    usd: { monthly: 0, annual: 0 },
     blurb: 'For small businesses starting with WhatsApp marketing.',
     cta: 'Start for free',
     href: 'signup',
     features: [
       'Free WhatsApp Business API',
-      '₹50 free signup bonus',
+      { inr: '₹50 free signup bonus', usd: 'Free signup bonus credit' },
       'Unlimited free service conversations',
       '300 free emails / day (forever)',
       'Upload & manage contacts',
@@ -41,6 +49,8 @@ export const plans: Plan[] = [
     id: 'basic',
     name: 'Basic',
     monthly: 999,
+    annualInr: 10789,
+    usd: { monthly: 18, annual: 194.4 },
     blurb: 'For scaling teams who need automation and analytics.',
     cta: 'Get started',
     href: 'signup',
@@ -48,7 +58,7 @@ export const plans: Plan[] = [
     features: [
       'Up to 2 campaigns / day',
       '1 owner + 4 free agents',
-      'Extra agents at ₹99 / user / month',
+      { inr: 'Extra agents at ₹99 / user / month', usd: 'Add extra agents any time' },
       'Click-to-WhatsApp ads',
       'Smart audience segregation',
       'Broadcasting & retargeting',
@@ -62,6 +72,8 @@ export const plans: Plan[] = [
     id: 'pro',
     name: 'Pro',
     monthly: 2199,
+    annualInr: 23749,
+    usd: { monthly: 39, annual: 421.2 },
     blurb: 'For high-volume businesses with advanced needs.',
     cta: 'Get started',
     href: 'signup',
@@ -75,7 +87,7 @@ export const plans: Plan[] = [
       '5,000 messages / minute',
       'User access control',
       'AI template builder',
-      'Extra flow slots at ₹250 / slot',
+      { inr: 'Extra flow slots at ₹250 / slot', usd: 'Add extra flow slots any time' },
       'Dedicated account manager',
       '99.9% SLA guarantee',
       '5 GB cloud storage',
@@ -100,7 +112,7 @@ export const metaRates = [
   { label: 'Service', value: 'Free', note: 'Replies within the 24-hour window' },
 ];
 
-type Cell = boolean | string;
+type Cell = boolean | string | { inr: string; usd: string };
 export type CompareRow = { label: string; hint?: string; values: [Cell, Cell, Cell, Cell] };
 export const comparison: { group: string; rows: CompareRow[] }[] = [
   {
@@ -137,7 +149,7 @@ export const comparison: { group: string; rows: CompareRow[] }[] = [
   {
     group: 'Chatbot & automation',
     rows: [
-      { label: 'Chatbot flows', hint: 'Extra slots ₹250 each', values: ['—', '5 for ₹2,199', '5 for ₹2,199', 'Custom'] },
+      { label: 'Chatbot flows', hint: 'Extra slots available as a paid add-on', values: ['—', { inr: '5 for ₹2,199', usd: 'Paid add-on' }, { inr: '5 for ₹2,199', usd: 'Paid add-on' }, 'Custom'] },
       { label: 'AI template builder', values: [false, false, true, true] },
       { label: 'Click-to-WhatsApp ads', values: [false, true, true, true] },
     ],
@@ -146,10 +158,10 @@ export const comparison: { group: string; rows: CompareRow[] }[] = [
     group: 'Team & platform',
     rows: [
       { label: 'Included seats', values: ['1 owner', '1 owner + 4 agents', '1 owner + 4 agents', 'Custom'] },
-      { label: 'Extra agents', values: ['—', '₹99 / user / mo', '₹99 / user / mo', 'Custom'] },
+      { label: 'Extra agents', values: ['—', { inr: '₹99 / user / mo', usd: 'Paid add-on' }, { inr: '₹99 / user / mo', usd: 'Paid add-on' }, 'Custom'] },
       { label: 'User access control', values: [false, false, true, true] },
-      { label: 'Blue tick verification', values: ['—', '₹999 one-time', '₹999 one-time', 'Included'] },
-      { label: 'Webhooks', values: ['—', '₹999 / month', '₹999 / month', 'Custom'] },
+      { label: 'Blue tick verification', values: ['—', { inr: '₹999 one-time', usd: 'Paid add-on' }, { inr: '₹999 one-time', usd: 'Paid add-on' }, 'Included'] },
+      { label: 'Webhooks', values: ['—', { inr: '₹999 / month', usd: 'Paid add-on' }, { inr: '₹999 / month', usd: 'Paid add-on' }, 'Custom'] },
       { label: 'Cloud storage', values: ['—', '1 GB', '5 GB', 'Unlimited'] },
       { label: 'Dedicated account manager', values: [false, false, true, true] },
       { label: '99.9% SLA', values: [false, false, true, true] },
@@ -159,7 +171,7 @@ export const comparison: { group: string; rows: CompareRow[] }[] = [
     group: 'Email',
     rows: [
       { label: 'Free transactional emails', values: ['300 / day', '300 / day', '300 / day', '300 / day'] },
-      { label: 'Beyond the free tier', values: ['₹0.125 / email', '₹0.125 / email', '₹0.125 / email', 'Custom'] },
+      { label: 'Beyond the free tier', values: [{ inr: '₹0.125 / email', usd: 'Pay as you go' }, { inr: '₹0.125 / email', usd: 'Pay as you go' }, { inr: '₹0.125 / email', usd: 'Pay as you go' }, 'Custom'] },
     ],
   },
 ];
@@ -223,6 +235,18 @@ export const pricingFaqs = [
   { q: 'Do you offer refunds?', a: 'Refunds may be issued after a review of the request. See the refund policy for details.' },
 ];
 
+/** Per-month price and the amount billed, in the chosen currency. null = custom pricing. */
+export function planPriceIn(p: Plan, annual: boolean, c: 'INR' | 'USD'): { perMonth: number; billed: number } | null {
+  if (p.monthly === null) return null;
+  if (c === 'USD') {
+    if (!p.usd) return null;
+    return annual ? { perMonth: Math.round((p.usd.annual / 12) * 100) / 100, billed: p.usd.annual } : { perMonth: p.usd.monthly, billed: p.usd.monthly };
+  }
+  if (p.monthly === 0) return { perMonth: 0, billed: 0 };
+  const yearly = p.annualInr ?? Math.round(p.monthly * 12 * (1 - ANNUAL_DISCOUNT));
+  return annual ? { perMonth: Math.round(yearly / 12), billed: yearly } : { perMonth: p.monthly, billed: p.monthly };
+}
+
 export function planPrice(p: Plan, annual: boolean) {
   if (p.monthly === null) return null;
   if (p.monthly === 0) return 0;
@@ -230,3 +254,10 @@ export function planPrice(p: Plan, annual: boolean) {
 }
 
 export const inr = (n: number) => `₹${n.toLocaleString('en-IN')}`;
+
+/** Email plans (from the billing system). Starter is free; marketing campaigns need Scale or Volume. */
+export const emailPlans = [
+  { id: 'starter', name: 'Starter', inr: 0, usd: 0, volume: '300 emails / day', blurb: 'For developers and side projects.', features: ['REST API', '3 days log retention', 'Standard deliverability', 'Community support'] },
+  { id: 'scale', name: 'Scale', inr: 2499, usd: 32.99, volume: 'Up to 100,000 emails / month', blurb: 'Transactional email delivery at scale.', popular: true, features: ['Real-time webhooks', 'Inbound parsing', '30 days log retention', '1 dedicated IP', 'Priority API support'] },
+  { id: 'volume', name: 'Volume', inr: 8299, usd: 109.55, volume: 'Up to 1,000,000 emails / month', blurb: 'High-volume sending on dedicated infrastructure.', features: ['Multiple dedicated IPs', 'Custom reverse DNS', '99.99% SLA guarantee', 'Deliverability expert', '24/7 phone support'] },
+];

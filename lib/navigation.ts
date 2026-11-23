@@ -9,6 +9,7 @@ export type NavEntry = { label: string; href: string; menu?: 'products' | 'resou
 export const mainNav: NavEntry[] = [
   { label: 'Products', href: '/products', menu: 'products' },
   { label: 'Channels', href: '/channels' },
+  { label: 'Email', href: '/email' },
   { label: 'Integrations', href: '/integrations' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'Tools', href: '/tools' },
@@ -32,6 +33,7 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
     title: 'Platform',
     items: [
       { label: 'All products', href: '/products' },
+      { label: 'Email API & marketing', href: '/email' },
       ...channels.map((c) => ({ label: c.status === 'Soon' ? `${c.name} (soon)` : c.name, href: `/channels#${c.id}` })),
       { label: 'Integrations', href: '/integrations' },
       { label: 'Pricing', href: '/pricing' },
