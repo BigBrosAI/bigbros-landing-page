@@ -2,6 +2,7 @@ import { ButtonLink, Container } from '@/components/site/primitives';
 import { Reveal } from '@/components/site/reveal';
 import { BrandIcon, BrandTile } from '@/components/landing/brand-icon';
 import { HeroStage } from '@/components/landing/hero-stage';
+import { ClientLogos } from '@/components/landing/client-logos';
 import { activeAffiliations, siteConfig } from '@/lib/site';
 
 export function Hero() {
@@ -57,6 +58,8 @@ export function Hero() {
             Book a demo
           </ButtonLink>
         </Reveal>
+
+        <ClientLogos />
 
         <Reveal delay={0.24} y={40} className="mt-16 sm:mt-20">
           <HeroStage />

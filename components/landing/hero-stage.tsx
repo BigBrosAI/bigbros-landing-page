@@ -119,7 +119,7 @@ function Chip({ children, className }: { children: React.ReactNode; className?: 
 
 export function HeroStage() {
   return (
-    <div className="relative mx-auto max-w-6xl" aria-label="Illustrative product demo">
+    <div className="relative mx-auto max-w-6xl text-left" aria-label="Illustrative product demo">
       {/* rings behind the phone */}
       <svg aria-hidden viewBox="0 0 800 800" className="absolute left-1/2 top-1/2 h-[54rem] w-[54rem] -translate-x-1/2 -translate-y-1/2">
         {[140, 220, 300, 380].map((r, i) => (
