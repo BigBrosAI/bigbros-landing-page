@@ -11,7 +11,6 @@ import {
   Link2,
   Lock,
   MapPin,
-  MessageSquare,
   Phone,
   QrCode,
   Rocket,
@@ -72,7 +71,7 @@ export const heroScenes = {
   pricing: [
     { title: 'Meta rates', sub: 'Passed through, no markup', icon: BadgeIndianRupee, dark: true },
     { title: 'Wallet', sub: 'Top up as you go', icon: Wallet },
-    { title: 'Free replies', sub: 'Inside the 24-hour window', icon: MessageSquare },
+    { title: 'Free replies', sub: 'Inside the 24-hour window', brand: 'whatsapp' },
     { title: 'Billed in INR', sub: 'Monthly plans', icon: Check },
   ],
   products: [

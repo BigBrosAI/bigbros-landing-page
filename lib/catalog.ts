@@ -598,15 +598,15 @@ export const channels: Channel[] = [
 
 /* ---------- integrations ---------- */
 
-export type IntegrationEntry = { name: string; category: string; body: string; brand?: BrandSlug; icon?: LucideIcon };
+export type IntegrationEntry = { name: string; category: string; body: string; brand?: BrandSlug; icon?: LucideIcon; /** Detail page under /integrations, or an external docs link. */ href?: string };
 
 export const integrations: IntegrationEntry[] = [
-  { name: 'Shopify', category: 'E-commerce', brand: 'shopify', body: 'Order confirmations, cart recovery and COD verification from store events.' },
-  { name: 'WooCommerce', category: 'E-commerce', brand: 'woocommerce', body: 'Trigger WhatsApp messages from WooCommerce orders and carts.' },
-  { name: 'Google Sheets', category: 'Data', brand: 'googlesheets', body: 'Push leads, form answers and contacts into a sheet automatically.' },
-  { name: 'Meta Ads', category: 'Advertising', brand: 'meta', body: 'Click-to-WhatsApp ads on Facebook and Instagram, with Conversions API.' },
-  { name: 'WhatsApp Pay', category: 'Payments', brand: 'whatsapp', body: 'Collect UPI payments inside the chat.' },
-  { name: 'Razorpay', category: 'Payments', brand: 'razorpay', body: 'Send payment links and confirm orders automatically.' },
-  { name: 'REST API', category: 'Developers', icon: Braces, body: 'Send templates, manage contacts and campaigns from your code.' },
-  { name: 'Webhooks', category: 'Developers', icon: Webhook, body: 'Real-time message, status and event notifications to your endpoint.' },
+  { name: 'Shopify', href: '/integrations/shopify', category: 'E-commerce', brand: 'shopify', body: 'Order confirmations, cart recovery and COD verification from store events.' },
+  { name: 'WooCommerce', href: '/integrations/woocommerce', category: 'E-commerce', brand: 'woocommerce', body: 'Trigger WhatsApp messages from WooCommerce orders and carts.' },
+  { name: 'Google Sheets', href: '/integrations/google-sheets', category: 'Data', brand: 'googlesheets', body: 'Push leads, form answers and contacts into a sheet automatically.' },
+  { name: 'Meta Ads', href: '/integrations/meta-ads', category: 'Advertising', brand: 'meta', body: 'Click-to-WhatsApp ads on Facebook and Instagram, with Conversions API.' },
+  { name: 'WhatsApp Pay', href: '/integrations/whatsapp-pay', category: 'Payments', brand: 'whatsapp', body: 'Collect UPI payments inside the chat.' },
+  { name: 'Razorpay', href: '/integrations/razorpay', category: 'Payments', brand: 'razorpay', body: 'Send payment links and confirm orders automatically.' },
+  { name: 'REST API', href: 'https://docs.bigbrosai.com', category: 'Developers', icon: Braces, body: 'Send templates, manage contacts and campaigns from your code.' },
+  { name: 'Webhooks', href: 'https://docs.bigbrosai.com', category: 'Developers', icon: Webhook, body: 'Real-time message, status and event notifications to your endpoint.' },
 ];

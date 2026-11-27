@@ -317,9 +317,9 @@ export function EmailVisual() {
 /* ---------- Journey: contacts moving through a sequence ---------- */
 
 const journey = [
-  { icon: ShoppingCart, title: 'Cart abandoned', detail: 'Shopify event', tone: 'bg-amber-50 text-amber-700' },
+  { icon: ShoppingCart, brand: 'shopify' as const, title: 'Cart abandoned', detail: 'Shopify event', tone: 'bg-amber-50 text-amber-700' },
   { icon: Clock3, title: 'Wait 30 minutes', detail: 'Delay', tone: 'bg-slate-100 text-slate-600' },
-  { icon: MessageCircle, title: 'WhatsApp reminder', detail: 'Template · cart_reminder', tone: 'bg-brand-50 text-brand-700' },
+  { icon: MessageCircle, brand: 'whatsapp' as const, title: 'WhatsApp reminder', detail: 'Template · cart_reminder', tone: 'bg-brand-50 text-brand-700' },
   { icon: Clock3, title: 'Not purchased in 1 day?', detail: 'Condition', tone: 'bg-sky-50 text-sky-700' },
   { icon: Mail, title: 'Email with 10% code', detail: 'Email API', tone: 'bg-violet-50 text-violet-700' },
 ];
@@ -342,7 +342,7 @@ export function JourneyVisual() {
           {journey.map((s, i) => (
             <li key={s.title} className="relative flex items-center gap-3">
               <span className={cn('relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ring-4 ring-card transition-transform duration-300', s.tone, i === active && 'scale-110')}>
-                <s.icon className="h-4 w-4" />
+                {'brand' in s && s.brand ? <BrandIcon slug={s.brand} className="h-4 w-4" /> : <s.icon className="h-4 w-4" />}
               </span>
               <div
                 className={cn(

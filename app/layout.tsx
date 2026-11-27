@@ -8,8 +8,8 @@ import { JsonLd } from '@/components/site/primitives';
 import { RevealObserver } from '@/components/site/reveal-observer';
 import { WhatsAppFab } from '@/components/site/whatsapp-fab';
 import { UtmTracker } from '@/components/site/utm-tracker';
-import { absoluteUrl, siteConfig } from '@/lib/site';
-import { ogImage } from '@/lib/seo';
+import { absoluteUrl, activeAffiliations, siteConfig } from '@/lib/site';
+import { ogImage, organizationDescription } from '@/lib/seo';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 // Outfit matches the BigBrosAI dashboard; used by the dashboard replica only.
@@ -91,8 +91,42 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               logo: { '@type': 'ImageObject', url: absoluteUrl('/favicon.png'), width: 800, height: 800 },
               image: absoluteUrl('/logo.png'),
               email: siteConfig.email,
+              telephone: siteConfig.phones[0],
+              description: organizationDescription,
+              slogan: siteConfig.tagline,
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: 'E-93, Govind Nagar, Near Shiv Park',
+                addressLocality: 'Mathura',
+                addressRegion: 'Uttar Pradesh',
+                postalCode: '281001',
+                addressCountry: 'IN',
+              },
+              areaServed: { '@type': 'Country', name: 'India' },
+              knowsAbout: [
+                'WhatsApp Business API',
+                'WhatsApp marketing',
+                'WhatsApp chatbots',
+                'Conversational AI',
+                'Business messaging',
+                'Transactional email',
+                'Click-to-WhatsApp ads',
+                'WhatsApp Pay',
+              ],
+              memberOf: activeAffiliations.map((a) => ({ '@type': 'Organization', name: a.name, url: a.href })),
               sameAs: siteConfig.social.filter((s) => s.slug !== 'whatsapp').map((s) => s.href),
-              contactPoint: [{ '@type': 'ContactPoint', contactType: 'customer support', email: siteConfig.email, availableLanguage: ['English', 'Hindi'] }],
+              contactPoint: [
+                {
+                  '@type': 'ContactPoint',
+                  contactType: 'customer support',
+                  email: siteConfig.email,
+                  telephone: siteConfig.phones[0],
+                  areaServed: 'IN',
+                  availableLanguage: ['English', 'Hindi'],
+                },
+                { '@type': 'ContactPoint', contactType: 'sales', email: siteConfig.helloEmail, telephone: siteConfig.phones[1], areaServed: 'IN', availableLanguage: ['English', 'Hindi'] },
+                { '@type': 'ContactPoint', contactType: 'customer support', url: `https://wa.me/${siteConfig.whatsapp.number}`, name: 'WhatsApp support' },
+              ],
             },
             {
               '@context': 'https://schema.org',

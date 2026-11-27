@@ -223,9 +223,9 @@ export function DashboardShowcase() {
               <header className="flex h-12 shrink-0 items-center border-b border-gray-200 bg-white pl-5">
                 <div className="min-w-0 flex-1 leading-tight">
                   <div className="flex items-center gap-2.5">
-                    <h1 className="truncate text-base" style={{ color: GREEN }}>
+                    <p className="truncate text-base font-bold" style={{ color: GREEN }}>
                       Hearth &amp; Loom
-                    </h1>
+                    </p>
                     <span className="flex items-center gap-1 rounded-full px-2 py-0.5 shadow-sm" style={{ background: BRAND }}>
                       <span className="text-[12px] font-semibold tracking-wide text-white">Pro</span>
                       <ArrowUpRight className="h-3 w-3 text-white/80" />

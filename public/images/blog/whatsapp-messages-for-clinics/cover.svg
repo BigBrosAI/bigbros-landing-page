@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 800" width="1600" height="800"><defs>
+<filter id="sh" x="-10%" y="-10%" width="120%" height="140%"><feDropShadow dx="0" dy="1" stdDeviation="0.8" flood-opacity="0.18"/></filter>
+<filter id="lift" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#0B2E23" flood-opacity="0.35"/></filter>
+<radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#BEF264" stop-opacity="0.35"/><stop offset="1" stop-color="#BEF264" stop-opacity="0"/></radialGradient>
+<pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.3" fill="#ffffff" fill-opacity="0.08"/></pattern>
+<pattern id="dotsd" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.3" fill="#0B2E23" fill-opacity="0.08"/></pattern>
+</defs><rect width="1600" height="800" fill="#0B2E23"/><rect width="1600" height="800" fill="url(#dots)"/><circle cx="1120" cy="420" r="520" fill="url(#glow)"/><g fill="none" stroke="#BEF264" stroke-opacity="0.25" stroke-dasharray="3 9"><circle cx="1120" cy="420" r="190"/><circle cx="1120" cy="420" r="290"/></g><text x="110" y="300" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="76" font-weight="800" fill="#fff">8 messages</text><text x="110" y="390" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="76" font-weight="800" fill="#BEF264">every clinic</text><text x="110" y="480" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="76" font-weight="800" fill="#fff">should send</text><text x="112" y="550" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="24" fill="#ffffff" fill-opacity="0.7">Reminders · follow-ups · recalls · reviews</text><g filter="url(#lift)"><g transform="translate(930 60)">
+<rect width="380" height="760" rx="44" fill="#1F2328"/>
+<rect x="10" y="10" width="360" height="740" rx="36" fill="#EFE7DD"/>
+<rect x="10" y="10" width="360" height="78" rx="36" fill="#F7F7F7"/>
+<rect x="10" y="60" width="360" height="28" fill="#F7F7F7"/>
+<rect x="145.0" y="20" width="90" height="22" rx="11" fill="#1F2328"/>
+<circle cx="46" cy="66" r="15" fill="#BE123C"/>
+<text x="46" y="71" text-anchor="middle" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="14" font-weight="700" fill="#fff">C</text>
+<text x="70" y="64" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="14" font-weight="700" fill="#111">City Care Clinic</text>
+<text x="70" y="80" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="11" fill="#1DAA61">online</text>
+<rect x="22" y="104" width="280" height="75" rx="14" fill="#FFFFFF" filter="url(#sh)"/>
+<text x="36" y="130" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="14" font-weight="500" fill="#111B21">Reminder 🩺 Hi Priya, your appointment</text>
+<text x="36" y="149" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="14" font-weight="500" fill="#111B21">with Dr. Mehta is *tomorrow at 11:30</text>
+<text x="36" y="168" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="14" font-weight="500" fill="#111B21">AM*.</text>
+<rect x="22" y="185" width="280" height="34" rx="10" fill="#fff" filter="url(#sh)"/>
+<text x="162.0" y="207" text-anchor="middle" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="14" font-weight="600" fill="#00A5F4">↩ Confirm</text>
+<rect x="22" y="225" width="280" height="34" rx="10" fill="#fff" filter="url(#sh)"/>
+<text x="162.0" y="247" text-anchor="middle" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="14" font-weight="600" fill="#00A5F4">↩ Reschedule</text>
+<rect x="258" y="273" width="100" height="37" rx="14" fill="#D9FDD3" filter="url(#sh)"/>
+<text x="272" y="299" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="14" font-weight="500" fill="#111B21">Confirm</text>
+<rect x="22" y="324" width="280" height="56" rx="14" fill="#FFFFFF" filter="url(#sh)"/>
+<text x="36" y="350" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="14" font-weight="500" fill="#111B21">Thank you! See you tomorrow. Reply MAP</text>
+<text x="36" y="369" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="14" font-weight="500" fill="#111B21">for directions 📍</text>
+</g></g><g transform="translate(1260 600)" filter="url(#lift)"><rect width="300" height="64" rx="18" fill="#FFFFFF"/>
+<rect x="12" y="12" width="40" height="40" rx="12" fill="#DCFCE7"/><circle cx="32" cy="32" r="8" fill="#16A34A"/>
+<text x="64" y="29" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#0B1F17">No-show risk down</text>
+<text x="64" y="48" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="12.5" fill="#41524A">Confirmed by patient</text></g></svg>

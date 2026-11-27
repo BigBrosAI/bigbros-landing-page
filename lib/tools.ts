@@ -10,6 +10,8 @@ export type Tool = {
   intro: string;
   how: string[];
   faqs: { q: string; a: string }[];
+  /** Shown right under the tool: how BigBrosAI does this job automatically. */
+  upsell: { title: string; body: string; product: string };
 };
 
 export const tools: Tool[] = [
@@ -29,6 +31,7 @@ export const tools: Tool[] = [
       { q: 'Does the number need to be on WhatsApp?', a: 'Yes. The link works for any number registered on WhatsApp, WhatsApp Business or the WhatsApp Business API.' },
       { q: 'Where can I use the link?', a: 'On your website, Instagram bio, Google Business Profile, ads, emails, invoices and printed QR codes.' },
     ],
+    upsell: { title: 'Know who taps your link.', body: 'On BigBrosAI, every chat from your link can start a chatbot that greets the customer, asks what they need and tags them, even at 2 AM.', product: 'chatbot-builder' },
   },
   {
     slug: 'whatsapp-qr-code-generator',
@@ -46,6 +49,7 @@ export const tools: Tool[] = [
       { q: 'Can I track scans?', a: 'Plain QR codes can’t be tracked. BigBrosAI QR campaigns can start a chatbot flow and tag every contact who scans.' },
       { q: 'PNG or SVG?', a: 'PNG works everywhere. SVG stays sharp at any size, which is best for large prints and design tools.' },
     ],
+    upsell: { title: 'Turn scans into tracked leads.', body: 'BigBrosAI QR campaigns start a chatbot flow and tag every contact who scans, so you know which poster or table brought them in.', product: 'chatbot-builder' },
   },
   {
     slug: 'whatsapp-text-formatter',
@@ -63,6 +67,7 @@ export const tools: Tool[] = [
       { q: 'Does it work in templates?', a: 'Yes. WhatsApp Business API templates support the same bold, italic, strikethrough and monospace formatting.' },
       { q: 'Can I add lists and quotes?', a: 'Yes. Start a line with “- ” or “* ” for a bullet, “1. ” for a numbered list and “> ” for a quote.' },
     ],
+    upsell: { title: 'Send it to thousands, not one by one.', body: 'Use your formatted message in a broadcast on the official WhatsApp API, with names filled in and delivery and read reports.', product: 'whatsapp-broadcast' },
   },
   {
     slug: 'whatsapp-pricing-calculator',
@@ -80,6 +85,7 @@ export const tools: Tool[] = [
       { q: 'Which rates does this use?', a: 'The same per-message rates shown on our pricing page. Final charges follow Meta’s rates at the time of sending.' },
       { q: 'Is there a markup?', a: 'No. BigBrosAI passes Meta’s message charges through without markup; you pay your plan separately.' },
     ],
+    upsell: { title: 'Start on the free plan.', body: 'BigBrosAI\'s Starter plan is free, with unlimited free service conversations and a ₹50 signup bonus. Pay Meta\'s message rates only when you send campaigns.', product: 'whatsapp-business-api' },
   },
   {
     slug: 'whatsapp-chat-button',
@@ -97,6 +103,7 @@ export const tools: Tool[] = [
       { q: 'Where do I paste it on Shopify or WordPress?', a: 'Shopify: Online Store → Themes → Edit code → theme.liquid, before </body>. WordPress: use a header/footer code plugin or your theme’s footer.' },
       { q: 'Can chats go to my whole team?', a: 'With the BigBrosAI shared inbox, chats from the button reach every agent on one number.' },
     ],
+    upsell: { title: 'Answer every chat from the button, instantly.', body: 'Connect the button to a BigBrosAI chatbot that replies in seconds and hands over to your team in a shared inbox.', product: 'live-chat' },
   },
   {
     slug: 'whatsapp-template-builder',
@@ -114,6 +121,7 @@ export const tools: Tool[] = [
       { q: 'Why do templates get rejected?', a: 'Common reasons are variables at the start or end of the body, variables out of order or side by side, too many variables for the text, and the wrong category.' },
       { q: 'Can I submit it from here?', a: 'This tool helps you get it right. In BigBrosAI you can submit templates for approval directly — with an AI assistant that writes them for you.' },
     ],
+    upsell: { title: 'Submit it for approval in one click.', body: 'Create templates in BigBrosAI, submit them to Meta and send them in campaigns, without copying anything between tools.', product: 'whatsapp-broadcast' },
   },
   {
     slug: 'bulk-whatsapp-link-generator',
@@ -131,6 +139,7 @@ export const tools: Tool[] = [
       { q: 'Which formats can I paste?', a: 'Comma, tab or semicolon separated — straight from Excel or Google Sheets. Numbers can have spaces, dashes, brackets or a leading 0.' },
       { q: 'Is my contact list uploaded anywhere?', a: 'No. Everything runs in your browser; your contacts never leave your device.' },
     ],
+    upsell: { title: 'Skip the links. Message everyone at once.', body: 'Import your list into BigBrosAI and send a personalised broadcast to every contact on the official WhatsApp API.', product: 'whatsapp-broadcast' },
   },
   {
     slug: 'whatsapp-number-formatter',
@@ -148,6 +157,7 @@ export const tools: Tool[] = [
       { q: 'Why are some numbers marked invalid?', a: 'They are too short or too long, or (for India) don’t start with 6, 7, 8 or 9 like a mobile number. Landlines can’t receive WhatsApp messages unless they’re on WhatsApp Business.' },
       { q: 'Is my list stored?', a: 'No. Cleaning happens entirely in your browser.' },
     ],
+    upsell: { title: 'Your clean list is ready for a broadcast.', body: 'Upload it to BigBrosAI, tag your audience and send a campaign with delivery and read reports.', product: 'whatsapp-broadcast' },
   },
   {
     slug: 'whatsapp-broadcast-roi-calculator',
@@ -165,6 +175,7 @@ export const tools: Tool[] = [
       { q: 'Is the message cost accurate?', a: 'It uses Meta’s marketing message rate for the selected country, charged per delivered message. Your BigBrosAI plan is separate.' },
       { q: 'How can I improve ROI?', a: 'Segment your audience, personalise with variables, add a clear button and follow up with a chatbot. BigBrosAI tracks conversions per campaign.' },
     ],
+    upsell: { title: 'See your real numbers, not estimates.', body: 'BigBrosAI campaign reports show delivered, read and clicked for every broadcast, with budget analytics on Pro.', product: 'analytics' },
   },
   {
     slug: 'whatsapp-business-message-templates',
@@ -182,6 +193,7 @@ export const tools: Tool[] = [
       { q: 'When is an away message sent?', a: 'Outside the hours you set. Customers get it automatically so they know when to expect a reply.' },
       { q: 'Can these be automated further?', a: 'Yes. With BigBrosAI, a chatbot flow or AI agent can answer the question, not just acknowledge it.' },
     ],
+    upsell: { title: 'Send these automatically.', body: 'Set greeting and away messages to go out on their own, or build them into a chatbot that answers the next question too.', product: 'automation' },
   },
 ];
 

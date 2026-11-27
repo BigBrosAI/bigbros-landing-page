@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 800" width="1600" height="800"><defs>
+<filter id="sh" x="-10%" y="-10%" width="120%" height="140%"><feDropShadow dx="0" dy="1" stdDeviation="0.8" flood-opacity="0.18"/></filter>
+<filter id="lift" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#0B2E23" flood-opacity="0.35"/></filter>
+<radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#BEF264" stop-opacity="0.35"/><stop offset="1" stop-color="#BEF264" stop-opacity="0"/></radialGradient>
+<pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.3" fill="#ffffff" fill-opacity="0.08"/></pattern>
+<pattern id="dotsd" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.3" fill="#0B2E23" fill-opacity="0.08"/></pattern>
+</defs><rect width="1600" height="800" fill="#0B2E23"/><rect width="1600" height="800" fill="url(#dots)"/><circle cx="1150" cy="420" r="520" fill="url(#glow)"/><g fill="none" stroke="#BEF264" stroke-opacity="0.25" stroke-dasharray="3 9"><circle cx="1150" cy="420" r="190"/><circle cx="1150" cy="420" r="290"/></g><text x="110" y="270" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="72" font-weight="800" fill="#fff">Wedding season</text><text x="110" y="352" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="72" font-weight="800" fill="#BEF264">rush, handled</text><text x="110" y="434" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="72" font-weight="800" fill="#fff">on WhatsApp</text><text x="112" y="506" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="24" fill="#ffffff" fill-opacity="0.7">For home businesses and Instagram sellers</text><g filter="url(#lift)"><g transform="translate(930 60)">
+<rect width="370" height="720" rx="44" fill="#1F2328"/>
+<rect x="10" y="10" width="350" height="700" rx="36" fill="#EFE7DD"/>
+<rect x="10" y="10" width="350" height="78" rx="36" fill="#F7F7F7"/>
+<rect x="10" y="60" width="350" height="28" fill="#F7F7F7"/>
+<rect x="140.0" y="20" width="90" height="22" rx="11" fill="#1F2328"/>
+<circle cx="46" cy="66" r="15" fill="#9D174D"/>
+<text x="46" y="71" text-anchor="middle" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="14" font-weight="700" fill="#fff">Z</text>
+<text x="70" y="64" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="14" font-weight="700" fill="#111">Zari by Noor</text>
+<text x="70" y="80" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="11" fill="#1DAA61">online</text>
+<rect x="88" y="104" width="260" height="56" rx="14" fill="#D9FDD3" filter="url(#sh)"/>
+<text x="102" y="130" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="14" font-weight="500" fill="#111B21">Hi! Is the maroon lehenga available</text>
+<text x="102" y="149" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="14" font-weight="500" fill="#111B21">for 14 Dec delivery?</text>
+<rect x="22" y="174" width="270" height="56" rx="14" fill="#FFFFFF" filter="url(#sh)"/>
+<text x="36" y="200" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="14" font-weight="500" fill="#111B21">Yes! 💃 It’s in stock. Choose your</text>
+<text x="36" y="219" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="14" font-weight="500" fill="#111B21">size:</text>
+<rect x="22" y="236" width="270" height="34" rx="10" fill="#fff" filter="url(#sh)"/>
+<text x="157.0" y="258" text-anchor="middle" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="14" font-weight="600" fill="#00A5F4">↩ S</text>
+<rect x="22" y="276" width="270" height="34" rx="10" fill="#fff" filter="url(#sh)"/>
+<text x="157.0" y="298" text-anchor="middle" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="14" font-weight="600" fill="#00A5F4">↩ M</text>
+<rect x="22" y="316" width="270" height="34" rx="10" fill="#fff" filter="url(#sh)"/>
+<text x="157.0" y="338" text-anchor="middle" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="14" font-weight="600" fill="#00A5F4">↩ L</text>
+<rect x="288" y="364" width="60" height="37" rx="14" fill="#D9FDD3" filter="url(#sh)"/>
+<text x="302" y="390" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="14" font-weight="500" fill="#111B21">M</text>
+<rect x="22" y="415" width="270" height="56" rx="14" fill="#FFFFFF" filter="url(#sh)"/>
+<text x="36" y="441" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="14" font-weight="500" fill="#111B21">Lovely! Here’s your payment link to</text>
+<text x="36" y="460" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="14" font-weight="500" fill="#111B21">confirm the order.</text>
+</g></g><g transform="translate(1250 230)" filter="url(#lift)"><rect width="300" height="64" rx="18" fill="#FFFFFF"/>
+<rect x="12" y="12" width="40" height="40" rx="12" fill="#DCFCE7"/><circle cx="32" cy="32" r="8" fill="#D97706"/>
+<text x="64" y="29" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#0B1F17">14 orders today</text>
+<text x="64" y="48" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="12.5" fill="#41524A">Peak season mode</text></g><g transform="translate(1250 560)" filter="url(#lift)"><rect width="300" height="64" rx="18" fill="#FFFFFF"/>
+<rect x="12" y="12" width="40" height="40" rx="12" fill="#DCFCE7"/><circle cx="32" cy="32" r="8" fill="#7C3AED"/>
+<text x="64" y="29" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#0B1F17">Away message on</text>
+<text x="64" y="48" font-family="'Plus Jakarta Sans','Inter',Arial,Helvetica,sans-serif" font-size="12.5" fill="#41524A">Replies in the morning</text></g></svg>

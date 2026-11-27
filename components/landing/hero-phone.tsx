@@ -37,7 +37,7 @@ const typingWindows: [number, number][] = [
 ];
 const between = (t: number, a: number, b: number) => t >= a && t < b;
 const ACCENT = '#1DAA61'; // iOS WhatsApp accent
-type Tick = 'sent' | 'delivered' | 'read';
+export type Tick = 'sent' | 'delivered' | 'read';
 
 export function HeroPhone({ showEvents = true }: { showEvents?: boolean }) {
   const { ref, t, reduce } = useClock(T.loop, T.loop - 800);
@@ -247,7 +247,7 @@ export function HeroPhone({ showEvents = true }: { showEvents?: boolean }) {
 
 /* ---------- device ---------- */
 
-function IPhone({ children }: { children: React.ReactNode }) {
+export function IPhone({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative w-[19rem] max-w-[calc(100vw-2.5rem)] rounded-[3.1rem] bg-[#2B2E33] p-[3px] shadow-[0_60px_100px_-40px_rgba(11,46,35,0.55),0_25px_40px_-20px_rgba(0,0,0,0.35)]">
       <span aria-hidden className="absolute -left-[3px] top-[6.5rem] h-7 w-[3px] rounded-l bg-[#3B3F45]" />
@@ -264,7 +264,7 @@ function IPhone({ children }: { children: React.ReactNode }) {
   );
 }
 
-function StatusBar() {
+export function StatusBar() {
   return (
     <div className="relative flex h-11 items-end justify-between bg-[#F7F7F7] px-7 pb-1.5 text-[13px] font-semibold text-black">
       <span>9:41</span>
@@ -289,7 +289,7 @@ function StatusBar() {
   );
 }
 
-function Wallpaper() {
+export function Wallpaper() {
   return (
     <svg aria-hidden className="absolute inset-0 h-full w-full opacity-[0.07]">
       <defs>
@@ -311,7 +311,7 @@ function Wallpaper() {
   );
 }
 
-function DateChip({ children }: { children: React.ReactNode }) {
+export function DateChip({ children }: { children: React.ReactNode }) {
   return (
     <div className="my-1 flex justify-center">
       <span className="rounded-lg bg-white/90 px-2.5 py-[3px] text-[11px] font-medium text-black/55 shadow-[0_1px_0.5px_rgba(0,0,0,0.1)]">{children}</span>
@@ -325,7 +325,7 @@ function Row({ children, me }: { children: React.ReactNode; me?: boolean }) {
 
 /* ---------- messages ---------- */
 
-function Tail({ me }: { me?: boolean }) {
+export function Tail({ me }: { me?: boolean }) {
   return (
     <svg aria-hidden viewBox="0 0 8 13" className={cn('absolute bottom-0 h-[13px] w-2', me ? '-right-[7px]' : '-left-[7px] -scale-x-100')}>
       <path d="M0 0v13h8C4 12 1 9 0 0z" fill={me ? '#D9FDD3' : '#fff'} />
@@ -338,7 +338,7 @@ function Ticks({ state }: { state: Tick }) {
   return <CheckCheck className={cn('h-[15px] w-[15px] transition-colors duration-300', state === 'read' ? 'text-[#53BDEB]' : 'text-black/40')} strokeWidth={2.4} />;
 }
 
-function Meta({ time, tick }: { time: string; tick?: Tick }) {
+export function Meta({ time, tick }: { time: string; tick?: Tick }) {
   return (
     <span className="float-right ml-2 mt-[5px] inline-flex translate-y-[3px] items-center gap-[3px] text-[10.5px] leading-none text-black/45">
       {time}

@@ -12,7 +12,7 @@ export function Footer() {
       <div aria-hidden className="rule-shine absolute inset-x-0 top-0" />
       <div aria-hidden className="bg-grain-light absolute inset-0 opacity-60" />
       <Container className="relative py-16 sm:py-20">
-        <div className="grid gap-12 lg:grid-cols-[1.5fr_repeat(4,1fr)]">
+        <div className="grid gap-12 lg:grid-cols-[1.5fr_repeat(5,1fr)]">
           <div className="max-w-xs">
             <Link href="/" aria-label="BigBrosAI home" className="shine inline-block rounded-md">
               <Logo width={150} tone="light" />
@@ -61,7 +61,7 @@ export function Footer() {
             )}
           </div>
 
-          <div className="grid grid-cols-2 gap-10 sm:grid-cols-4 lg:col-span-4">
+          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:col-span-5 lg:grid-cols-5">
             {footerNav.map((col) => (
               <div key={col.title}>
                 <h3 className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-brand-300">

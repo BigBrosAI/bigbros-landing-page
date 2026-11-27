@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
+import { ProductGlyph } from '@/components/landing/product-card';
+import { getProduct } from '@/lib/catalog';
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
 import { ButtonLink, Container, JsonLd } from '@/components/site/primitives';
@@ -80,7 +82,32 @@ export function ToolShell({ tool, children }: { tool: Tool; children: React.Reac
         </section>
 
         <section className="pb-16">
-          <Container>{children}</Container>
+          <Container>
+            {children}
+            <aside
+              aria-label="Do more with BigBrosAI"
+              className="mt-8 flex flex-col gap-5 rounded-3xl border border-brand-100 bg-brand-50/60 p-6 dark:border-brand-900/50 dark:bg-brand-900/20 sm:flex-row sm:items-center sm:justify-between"
+            >
+              <div className="flex items-start gap-4">
+                {getProduct(tool.upsell.product) && <ProductGlyph p={getProduct(tool.upsell.product)!} />}
+                <div>
+                  <p className="text-lg font-bold tracking-tight">{tool.upsell.title}</p>
+                  <p className="mt-1 max-w-2xl text-[15px] leading-relaxed text-ink-600">
+                    {tool.upsell.body}{' '}
+                    <Link href={`/products/${tool.upsell.product}`} className="font-semibold text-foreground underline underline-offset-4">
+                      See how
+                    </Link>
+                  </p>
+                </div>
+              </div>
+              <div className="flex shrink-0 flex-col items-start gap-1.5 sm:items-end">
+                <ButtonLink href={siteConfig.links.signup} arrow className="rounded-full">
+                  Try it free
+                </ButtonLink>
+                <span className="text-xs text-ink-600">Free plan · ₹50 signup bonus</span>
+              </div>
+            </aside>
+          </Container>
         </section>
 
         <section className="border-t border-border py-16 sm:py-20">

@@ -6,6 +6,14 @@ import { siteConfig } from '@/lib/site';
 
 export const faqs = [
   {
+    q: 'What is BigBrosAI?',
+    a: 'BigBrosAI is an Indian WhatsApp Business API platform for businesses that sell and support in chat. It combines WhatsApp campaigns, a shared team inbox, no-code AI chatbots, WhatsApp Pay and an email API in one dashboard, with a free plan to start.',
+  },
+  {
+    q: 'How much does BigBrosAI cost?',
+    a: 'The Starter plan is free, with a ₹50 signup bonus. Basic is ₹999 a month and Pro is ₹2,199 a month, with 10% off yearly. WhatsApp message charges are billed separately at Meta’s rates, for example ₹0.9999 per marketing message in India, and service conversations are free.',
+  },
+  {
     q: 'Is BigBrosAI built on the official WhatsApp Business API?',
     a: 'Yes. BigBrosAI uses the official WhatsApp Business Platform from Meta, so your number gets a verified business profile, approved message templates and reliable delivery.',
   },
